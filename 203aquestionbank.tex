@@ -14,28 +14,97 @@
 
 \begin{questions}
 
+\question (Final 2023): Let $X_n \sim N(0,1)$ if $n$ is odd, and $X_n \sim N(0,n)$ if $n$ is even. Is $X_n = O_p(1)$?
+\begin{solution}
+    No. The definition of $O_p(1)$ is that $\lim_{n \to \infty} P(|X_n| \leq B) = 1$ for all $B$. In this case, the limit is not 1 for any $B$.
+    Note: I'm not sure I like this solution.
+\end{solution}
 
-  \question (Final 2018): Let $X$ have the uniform distribution over the $(0,1)$ interval
-    \begin{parts}
-        \part Calculate $E[\log(X)]$
-        \begin{solution}
-            Use integration by parts:
-            $E[\log(X)] = \int_0^1 \log(x) dx = \left. x \log(x) - x \right|_0^1 = 0 - 1 = -1$.
-        \end{solution}
-        \part Calculate $\log E[X]$
-        \begin{solution}
-            $E[X] = \int_0^1 x dx = 1/2$. So $\log E[X] = \log(1/2) = -\log(2)$.
-        \end{solution}
-        \part Which is bigger?
-        \begin{solution}
-            $\log E[X] = -\log(2) > -1 = E[\log(X)]$. So $\log E[X]$ is bigger.
-        \end{solution}
-        \part Now let $g$ denote some positive valued strictly increasing function defined on $(0,1)$. Let $Y = g(X)$. Between $E[\log(Y)]$ and $\log(E[Y])$, which one is bigger? Or does the answer depend on $g$? Note that there are only three choices.
-        \begin{solution}
-            Jensen's inequality says that $\phi(E[X]) \leq E[\phi(X)]$ for a convex function $\phi$. Since $\log$ is concave, we have that $\log(E[Y]) \geq E[\log(Y)]$. So $\log(E[Y])$ is bigger.\\\\
-            Note: Concavity is the tricky part here. You can convert log into a convex function by multiplying the log by -1, which makes it convex. Then you can apply Jensen's inequality.
-        \end{solution}
-    \end{parts}
+\question (Final 2023): Suppose that $X_1,X_2,...$ are iid such that their common MGF is 
+$$E[exp(t X_i)] = (\frac{1}{1-t})^2$$
+Let $F_n(x) \equiv P(\frac{1}{n} \sum_{i=1}^n X_i^2 \leq x)$. What is $\lim_{n \to \infty} F_n(1)$?
+\begin{solution}
+    First note that the MGF is that of an exponential distribution with $\lambda = 1$. The mean of an exponential distribution is $\frac{1}{\lambda} = 1$. The variance is $\frac{1}{\lambda^2} = 1$. Since $Var(X) = E[X^2] - E[X]^2$ That implies $E[X^2] = 2$. Now we use the fact that 
+    $\lim_{n \to \infty} F_n(1) \equiv \lim_{n \to \infty}  P(\frac{1}{n} \sum_{i=1}^n X_i^2 \leq 1) = P(\lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n X_i^2 \leq 1) = P(E[X^2] \leq 1)$. Since $E[X^2] = 2$, the answer is 0.
+    Note: I'm not sure I like this solution.
+    \end{solution}
+
+\question (Final 2023): Suppose that $X$ has the CDF equal to $\Lambda(t) = \frac{exp(t)}{1+exp(t)}$. Let $X_n \equiv cos(X/n)$. What is $\lim_{n \to \infty} E[cos(X_n)]$?
+\begin{solution}
+\end{solution}
+
+\question (Final 2023): Let $X_1$ denote a random sample of (size 1) from $N(1,\theta)$. We have $H_0 : \theta = 4$ and $H_1 : \theta = 9$. You decided to use the Neyman-Pearson test of size 5\%. If you observe $X_1=6$, do you reject $H_0$ or not?
+\begin{solution}
+    We do not reject $H_0$.
+    \begin{enumerate}
+        \item  identify our test statistic: $ Z = (X_1 - \mu)/\sigma = (6-1)/4 = 5/4$
+        \item  find the critical value: $z_{\alpha} = 1.645$
+        \item  compare the test statistic to the critical value: $5/4 \le 1.645$. So we do not reject $H_0$.
+    \end{enumerate}
+
+\end{solution} 
+
+\question (Final 2023): Suppose that $X_n$ is a sequence of random variables such that $\sqrt{n}(X_n-1)$ converges in distribution to $N(0,1)$. By the multivariate delta method, we can see that
+\begin{align*}
+    \begin{pmatrix}
+    \sqrt{n}(X_n^3-\mu_1)\\
+    \sqrt{n}(\ln(X_n) - \mu_2)\\
+    \end{pmatrix} 
+    &\xrightarrow{d}  N
+    \begin{bmatrix}
+    \begin{pmatrix}
+    0\\
+    0
+    \end{pmatrix}\!\!,&
+    \begin{pmatrix}
+    \sigma_{1,1} & \sigma_{1,2}\\
+    \sigma_{2,1} & \sigma_{2,2}
+    \end{pmatrix}
+    \end{bmatrix}\\[2\jot]
+    \end{align*}
+for some $\mu_1, \mu_2, \sigma_{1,1}, \sigma_{1,2}, \sigma_{2,1}, \sigma_{2,2}$, and $\sigma_{1,2}$. What are their numerical values?
+\begin{solution}
+\end{solution}
+
+\question (Final 2023): Suppose that a random sample $X_1$ of size 1 where $X_i ~ N(\mu,1)$. We want to test the null hypothesis $\mu=0$ versus $H_1: \mu > 0$. We will reject the null if $X_1 > c$. Suppose that c was chosen such that the size of the test is 2.5\%. For what value of $\mu$ is the power of the test 5\%?
+\begin{solution}
+\end{solution}
+
+\question (Final 2023): Let $X_1$ denote a random sample (of size 1) from a Poisson distribution with mean equal to $\theta$. We would like to test $H_0 : \theta = 5$ against $H_1 : \theta != 5$. 
+\begin{parts}
+    \part Suppose that $X_1 = 25$ What is the value of the LR statistic? Hint 1: The PDF of the Poisson Distribution with mean equal to $\theta$ is given by $f(x;\theta) = \frac{\theta^x e^-\theta}{x!}$ Hint 2: $\ln 5 = 1.6094$
+    \begin{solution}
+    \end{solution}
+    \part Do you reject or accept the null at the 5\% significance level?
+    \begin{solution}
+    \end{solution}
+\end{parts}
+
+\question (Final 2023): Suppose that $X_1,...,X_10$ are iid $N(0,1)$. Let $\bar{X} = \frac{1}{10} \sum_{i=1}^{10} X_i$. What is $E[\bar{X}^2(\sum{i=1}^n(X_i-\bar(X))^2)]$?
+\begin{solution}
+\end{solution}
+
+\question (Final 2018): Let $X$ have the uniform distribution over the $(0,1)$ interval
+\begin{parts}
+    \part Calculate $E[\log(X)]$
+    \begin{solution}
+        Use integration by parts:
+        $E[\log(X)] = \int_0^1 \log(x) dx = \left. x \log(x) - x \right|_0^1 = 0 - 1 = -1$.
+    \end{solution}
+    \part Calculate $\log E[X]$
+    \begin{solution}
+        $E[X] = \int_0^1 x dx = 1/2$. So $\log E[X] = \log(1/2) = -\log(2)$.
+    \end{solution}
+    \part Which is bigger?
+    \begin{solution}
+        $\log E[X] = -\log(2) > -1 = E[\log(X)]$. So $\log E[X]$ is bigger.
+    \end{solution}
+    \part Now let $g$ denote some positive valued strictly increasing function defined on $(0,1)$. Let $Y = g(X)$. Between $E[\log(Y)]$ and $\log(E[Y])$, which one is bigger? Or does the answer depend on $g$? Note that there are only three choices.
+    \begin{solution}
+        Jensen's inequality says that $\phi(E[X]) \leq E[\phi(X)]$ for a convex function $\phi$. Since $\log$ is concave, we have that $\log(E[Y]) \geq E[\log(Y)]$. So $\log(E[Y])$ is bigger.\\\\
+        Note: Concavity is the tricky part here. You can convert log into a convex function by multiplying the log by -1, which makes it convex. Then you can apply Jensen's inequality.
+    \end{solution}
+\end{parts}
 
 \question (Final 2018): Suppose that the support of $Y$ is $\{0,1\}$, and $Pr[Y=1|X] = \Phi(X' \beta)$ where $\Phi$ is the standard normal cdf. We know that $Pr[Y=1|(X_1,X_2) = (2,1)] = .5$ and $Pr[Y=1|(X_1,X_2) = (2,2)] = .975$. What is the value of $\beta = (\beta_1,\beta_2)'$?\\\\
 The Phi scores you may want to use are: \begin{tabular}{cc}
