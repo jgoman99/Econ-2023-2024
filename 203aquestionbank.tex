@@ -1,0 +1,257 @@
+\documentclass[answers]{exam}
+
+\usepackage{enumitem} % For customization of numbering
+\usepackage{amsmath} % For \text
+\title{203A Question Bank}
+\author{John Friedman}
+\date{\today}
+
+% do final, midterms, and comps
+% all finals done except 2023 and 2015.
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+
+  \question (Final 2018): Let $X$ have the uniform distribution over the $(0,1)$ interval
+    \begin{parts}
+        \part Calculate $E[\log(X)]$
+        \begin{solution}
+            Use integration by parts:
+            $E[\log(X)] = \int_0^1 \log(x) dx = \left. x \log(x) - x \right|_0^1 = 0 - 1 = -1$.
+        \end{solution}
+        \part Calculate $\log E[X]$
+        \begin{solution}
+            $E[X] = \int_0^1 x dx = 1/2$. So $\log E[X] = \log(1/2) = -\log(2)$.
+        \end{solution}
+        \part Which is bigger?
+        \begin{solution}
+            $\log E[X] = -\log(2) > -1 = E[\log(X)]$. So $\log E[X]$ is bigger.
+        \end{solution}
+        \part Now let $g$ denote some positive valued strictly increasing function defined on $(0,1)$. Let $Y = g(X)$. Between $E[\log(Y)]$ and $\log(E[Y])$, which one is bigger? Or does the answer depend on $g$? Note that there are only three choices.
+        \begin{solution}
+            Jensen's inequality says that $\phi(E[X]) \leq E[\phi(X)]$ for a convex function $\phi$. Since $\log$ is concave, we have that $\log(E[Y]) \geq E[\log(Y)]$. So $\log(E[Y])$ is bigger.\\\\
+            Note: Concavity is the tricky part here. You can convert log into a convex function by multiplying the log by -1, which makes it convex. Then you can apply Jensen's inequality.
+        \end{solution}
+    \end{parts}
+
+\question (Final 2018): Suppose that the support of $Y$ is $\{0,1\}$, and $Pr[Y=1|X] = \Phi(X' \beta)$ where $\Phi$ is the standard normal cdf. We know that $Pr[Y=1|(X_1,X_2) = (2,1)] = .5$ and $Pr[Y=1|(X_1,X_2) = (2,2)] = .975$. What is the value of $\beta = (\beta_1,\beta_2)'$?\\\\
+The Phi scores you may want to use are: \begin{tabular}{cc}
+    \hline
+    $\Phi(x)$ & Value \\ \hline
+    $\Phi(0)$ & $0.5$ \\
+    $\Phi(0.253)$ & $0.6$ \\
+    $\Phi(0.534)$ & $0.7$ \\
+    $\Phi(0.842)$ & $0.8$ \\
+    $\Phi(1.282)$ & $0.9$ \\
+    $\Phi(1.645)$ & $0.95$ \\
+    $\Phi(1.960)$ & $0.975$ \\
+    $\Phi(2.576)$ & $0.995$ \\
+    \hline
+    \end{tabular}
+\begin{solution}
+    $\beta_1 = -.98$ and $\beta_2 = 1.96$
+    
+    We have $Pr[Y=1|(2,1)] = \Phi(2\beta_1 + \beta_2) = .5$ and $Pr[Y=1|(2,2)] = \Phi(2\beta_1 + 2\beta_2) = .975$. We can take the inverse of $\Phi$ using the table above. So we have $2\beta_1 + \beta_2 = 0$ and $2\beta_1 + 2\beta_2 = 1.960$. By subtraction, we get $\beta_2 = 1.96$. We then solve for $\beta_1$ using the first equation to get $\beta_1 = -.98$.
+    \end{solution}
+
+\question (Final 2018): Let $X_1,...,X_n$ be a random sample of size $n$ from $N(3,2)$, and let $\bar{X}$ denote the sample average. what is the asymptotic distribution of $\sqrt{n}(\bar{X}^2-9)$? Your answer should be numerical.
+\begin{solution}
+    We use the Delta method: $\sqrt{n}[g(\bar{X}) - g(a)] \xrightarrow{d} N(0, g'(a)^2 \sigma^2)$ where $g(x) = x^2$ and $a = 3$. So $g'(a) = 6$ and $\sigma^2 = 2$. So the answer is $N(0, 72)$.
+\end{solution}
+
+\question (Final 2018): Let $X_n$ denote a sequence of random variables such that the PDF $f_n$ of $X_n$ is given by
+$$f_n(x)=\frac{1}{2n}1(|X|\leq n)$$
+\begin{parts}
+    \part Let $0 < B < \infty$ be given what is $\lim_{n \to \infty} P(|X_n| \leq B)$?
+    \begin{solution}
+        $\lim_{n \to \infty} P(|X_n| \leq B) = \lim_{n \to \infty} \int_{-B}^B \frac{1}{2n} dx = \lim_{n \to \infty} \frac{B}{n} = 0$ \\
+        Note: I'm not sure I like this solution.
+    \end{solution}
+    \part Is $X_n = O_p(1)$?
+    \begin{solution}
+        $X_n$ is not bounded in probability. The definition of bounded in probability is $\lim_{n \to \infty} P(|X_n| \leq B)=1$, which is not the case here.
+    \end{solution}
+\end{parts}
+
+\question (Final 2018, 2019) Suppose that $X$ and $\epsilon$ are independent $N(0,1)$ variables. Let $Y = X + \epsilon$ What is the correlation between $X^2$ and $Y$
+
+\begin{solution}
+    The correlation is zero. I'll write the algebra down later.
+\end{solution}
+
+\question (Final 2018, 2019): True or False
+\begin{parts}
+    \part If $X_n = a + o_p(1)$, then $E[X_n] = a + o(1)$
+    \begin{solution}
+
+    \end{solution}
+    \part If $X_n = a + o_p(1)$, then $X_n^2 = a^2 + o_p(1)$
+    \begin{solution}
+    \end{solution}
+    \part If $X_n \xrightarrow{d} N(0,1)$, then $E[X_n] = o(1)$
+    \begin{solution}
+    \end{solution}
+    \part If $X_n \xrightarrow{d} N(0,1)$, then $E[X_n^2] = 1 + o(1)$
+    \begin{solution}
+    \end{solution}
+    \part If $X_n \xrightarrow{d} N(0,1)$, $\chi_n^2 \xrightarrow{d} \chi^2(1) $
+    \begin{solution}
+    \end{solution}
+\end{parts}
+
+\question (Final 2019): Suppose that $Z \sim N(0,1)$, and let $X_n = Z^2 1(|Z|\geq \frac{1}{n})$. What is $lim_{n \to \infty} E[X_n]$?
+\begin{solution} 
+    Not finished. I think there's some law that let's us move the limit inside the expectation.
+    $$lim_{n \to \infty} E[X_n] = E[lim_{n \to \infty} X_n] = E[lim_{n \to \infty} Z^2 1(|Z|\geq \frac{1}{n})] = E[Z =^2] = \chi^2(1) = 1$$
+\end{solution}
+
+\question (Final 2019): Let $X_1,...,X_n$ be a random sample of size $n$ from $N(\mu,1)$, and let $\bar{X}$ denote the sample average.
+\begin{parts}
+    \part Compute $sup_{\mu < 0} lim_{n \to \infty} P(\sqrt{n}\bar{X} > 1.645)$
+    \begin{solution}
+    \end{solution}
+    \part $lim_{n \to \infty} sup_{\mu < 0} P(\sqrt{n}(\bar{X} - \mu) > 1.645)$
+    \begin{solution}
+    \end{solution}
+\end{parts}
+
+\question (Final 2019) Let $X_n$ denote a sequence of random variables such that the PDF $f_n$ of $X_n$ is given by
+$$f_n(x)=\frac{1}{4}1(n \leq |x| \leq n + 1) + \frac{1}{4}1(|x|\leq 1)$$
+\begin{parts}
+    \part Let $1 < B < \infty$ be given what is $\lim_{n \to \infty} P(|X_n| \leq B)$?
+    \begin{solution}
+    \end{solution}
+    \part Is $X_n = O_p(1)$?
+    \begin{solution}
+    \end{solution}
+\end{parts}
+
+\question (Final 2019, 2021) Consider $X_1,...,X_n$ iid $N(\mu,\sigma^2)$ We assume that $\sigma^2 = 1$ We have $H_0 : \mu = 0$ vs $H_1 : \mu > 0$ Suppose that C is a critical region such that (1) the test of the form "Reject $H_0$ if $(X_1,...,X_n) \in C$" is the uniformly most powerful test; and (2) the probability of rejecting $H_0$ when $\mu = 0$ is 5\%
+\begin{parts}
+    \part  Provide a mathematical characterization of rejecting $H_0$ of such a test as a function of $n$ and $\mu > 0$
+    \begin{solution}
+    \end{solution}
+    \part What is the power of the test when $\mu=.1645$ and $n=100$?
+    \begin{solution}
+    \end{solution}
+\end{parts}
+
+\question (Final 2021) Suppose that $X_1,X_2,...$ are iid such that $X_i = 0$ with probability 1/2, and $X_i = 2$ with probability 1/2. Let $\bar{X_n} = \frac{1}{n} \sum_{i=1}^n X_i$, and $F_n(x) \equiv P(\frac{1}{n}\sum{i=1}^n X_i \leq x)$. What is $lim_{n \to \infty} F(1.1)$?
+\begin{solution}
+\end{solution}
+
+\question (Final 2021) Suppose that $X$ has the CDF equal to
+$$Pr[X \leq x] = \frac{exp(x)}{1+exp(x)} \equiv \Lambda(x)$$
+Let $\Phi(.)$ denote the CDF of $N(0,1)$, and let $\Phi^-1$ denote its inverse. $Y \equiv \Phi^-1(\Lambda(X))$. What is $E[Y^4]$?
+\begin{solution}
+\end{solution}
+
+\question (Final 2021) Consider $X_1,...,X_n$ iid $N(0,1)$. Let $Y_n = 1(\bar{X_n}\geq 1)$.
+\begin{parts}
+    \part What is $E[Y_n]$?
+    \begin{solution}
+    \end{solution}
+    \part What is $Var(Y_n)$?
+    \begin{solution}
+    \end{solution}
+    \part What is the probability limit of $Y_n$?
+    \begin{solution}
+    \end{solution}
+\end{parts}
+
+\question (Final 2021) Suppose that $X_1,...,X_4$ are iid and their common distribution is uniform $(0,\theta)$, i.e. their common PDF $f(x)$ is equal to $1(0<x<\theta)$. We have $H_0: \theta = 1$ vs $H_1 : \theta = 2$. Suppose that you decided to reject $H_0$ if $\max(X_1,...,X_4)>1$
+\begin{parts}
+    \part What is the size of the test?
+    \begin{solution}
+    \end{solution}
+    \part What is the power of the test? Hint: $P(\max(X_1,...,X_4) \leq 1) = P[X_1 \leq 1, X_2 \leq 1, X_3 \leq 1, X_4 \leq 1]$
+    \begin{solution}
+    \end{solution}
+\end{parts}
+
+\question (Final 2021) Let $X_1,...,X_n$ be a random sample of size $n$ from $N(0,1)$. For any positive integer $k$, let $m_k = E[X_i^k]$ and $\hat{m_k} = \frac{1}{n} \sum_{i=1}^n X_i^k$. Assuming that $E[|X_i^k|] < \infty$ for all $k$, derive the asymptotic distribution $\sqrt{n}(\hat{m_k}^{1/2} - m_k^{1/2})$. The asymptotic distribution is normal with mean zero, so your job is to derive the numerical value of the asymptotic variance. Hint: the MGD of $N(0,1)$ is $exp(t^2/2)$.
+\begin{solution}
+\end{solution}
+
+\question (Final 2021) Let $X_1,...,X_5$ denote a random sample from $N(\theta,1)$. We would like to test $H_0 : \theta = 5$ against $H_1 : \theta != 5$. If $X_1=2, X_2=3, X_3=4, X_4=5, X_5=6$, what is the LR statistic?
+\begin{solution}
+\end{solution}
+
+\question (Final 2022) Let $X_n ~ b(n,\frac{q}{n})$ for some $q>0$. Is $X_n = Op(1)$
+\begin{solution}
+\end{solution}
+
+\question (Final 2022) Let $Y_n$ denote the maximum of a random sample of size $n$ from a uniform (0,1) distribution. What is $lim_{n \to \infty} Pr[Y_n \ leq 0.9]$?
+\begin{solution}
+\end{solution}
+
+\question (Final 2022) Let $\Lambda(t) \equiv \frac{exp(t)}{1+exp(t)}$ denote the CDF of the logistic distribution (with location and scale parameters equal to 0 and 1, although these particular details are irrelevant for this question). Let $X_n$ denote a sequence of random variables such that the CDF $F_n$ of $X_n$ is given by $F_n(x) = \lambda(nx)$. What is $\lim_{n \to \infty} E[cos(X_n)]$?
+\begin{solution}
+\end{solution}
+
+\question (Final 2022) Let $X_1$ denote a random sample (of size 1) from $\mathcal{N}(0, \sigma^2)$. We have null hypothesis $H_0: \mu = 1$ and alternative hypothesis $H_1: \mu = 9$.
+\begin{solution} 
+\end{solution}
+
+\question (Final 2022) Suppose that $X_n$ is a sequence of random variables such that $\sqrt{n}(X_n-1)$ converges in distribution to $N(0,1)$. By the multivariate delta method, we can see that
+\begin{align*}
+    \begin{pmatrix}
+    \sqrt{n}(X_n^2-\mu_1)\\
+    \sqrt{n}(\ln(X_n) - \mu_2)\\
+    \end{pmatrix} 
+    &\xrightarrow{d}  N
+    \begin{bmatrix}
+    \begin{pmatrix}
+    0\\
+    0
+    \end{pmatrix}\!\!,&
+    \begin{pmatrix}
+    \sigma_{1,1} & \sigma_{1,2}\\
+    \sigma_{2,1} & \sigma_{2,2}
+    \end{pmatrix}
+    \end{bmatrix}\\[2\jot]
+    \end{align*}
+
+for some $\mu_1, \mu_2, \sigma_{1,1}, \sigma_{1,2}, \sigma_{2,1}, \sigma_{2,2}$, and $\sigma_{1,2}$. What are their numerical values?
+\begin{solution}
+\end{solution}
+
+\question (Final 2022) Let $X$ denote a random sample (of size 1) from a distribution with the PDF equal to $\lambda exp(-\lambda x) 1(x>0)$. We have $H_0 L \lambda = 1$ and $H_1 : \lambda < 1$. Suppose that C is a critical region such that (1) the test of the form "Reject $H_0$ if $X_1 \in C$" is the uniformly most powerful test; and (2) the probability of rejecting $H_0$ when $\lambda = 1$ is $\alpha$. What is the power of your test when $\lambda = 1/2$ and $\alpha = 5\%$
+\begin{solution}
+\end{solution}
+
+\question (Final 2022) Let $X$ denote a random sample (of size 1) from a distribution with the PDF equal to $\lambda exp (-\lambda x)1(x>0)$. We would like to test $H_0 : \lambda = 1$ against $H_1 : \lambda != 1$. Suppose that $X=e$
+\begin{parts}
+    \part What is the value of the LR statistic?
+    \begin{solution}
+    \end{solution}
+    \part Do you reject or accept the null at the 5\% significance level? You maye use the approximation $e = 2.7183$
+    \begin{solution}
+    \end{solution}
+\end{parts}
+
+\question (Final 2022) Let $(X,Y)$ be a two dimensional random vector with the joint PDF $f_{X,Y}(x,y) = 4e^-{2y} 1(y>x>0)$. Let $(\alpha, \beta) \equiv argmin_{a,b} E[(Y-(a+bX))^2]$ What is $(\alpha, \beta)$? Hint: a small number of students may find it useful to know that $\int_0^\infty x^m \lambda e^(-\lambda x)dx=\frac{m!}{\lambda^m}$
+
+
+% skipping rest of Final 2015 for now, because it looks very different
+\question (Final 2015) Suppose that $X_n$ is a sequence of random variables such that $\sqrt{n}(X_n-3) \xrightarrow{d} N(0,1)$
+\begin{parts}
+    \part What is the asymptotic distribution of $\sqrt{n}(X_n^2-9)$?
+    \begin{solution}
+    \end{solution}
+    \part What is the asymptotic distribution of $(\sqrt{n}(X_n^2-3))^2$?
+    \begin{solution}
+    \end{solution}
+\end{parts}
+
+\question (Final 2015) Let $F(y|x)$ denote the conditional CDF of $Y$ given $X$ i.e. $F(y|x) = Pr[Y \leq y|X=x]$. Suppose that $F(y|x)$ is continuous and strictly increasing in y for all x in the support of $X$. Let $V = F(Y|X)$. (It is not $F(Y|x)$). Derive the conditional distribution of $V$ given $x$. Prove that $V$ and $X$ are independent.
+\begin{solution} 
+\end{solution}
+
+
+\end{questions}
+
+\end{document}
