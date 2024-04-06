@@ -1,0 +1,74 @@
+\documentclass[answers]{exam}
+\renewcommand\partlabel{\arabic{partno}.}
+\renewcommand\questionlabel{\textbf{Question \arabic{question}:}}
+
+\usepackage{enumitem} % For customization of numbering
+\usepackage{amsmath} % For \text
+\usepackage [autostyle, english = american]{csquotes}
+\MakeOuterQuote{"}
+
+\title{202C HW1}
+\author{John Friedman}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+    \question In this question, we consider a 4-country version of the Armington model. Consider the following parameter values: $\sigma = 3$, $a_{i,j} = 2$ for all $i = j$, $a_{i,j} = 1$ for all $i \neq j$, $L_1 = 2$, $L_2 = L_3 = L_4 = 1$, $A_1 = A_2 = A_3 = A_4 = 0.6$, and trade cost $\tau_{i,j}$ corresponds to the element $i, j$ in the following matrix:
+    $$ T = \begin{pmatrix}
+        1 & 1.1 & 1.2 & 1.3 \\
+        1.3 & 1 & 1.3 & 1.4 \\
+        1.2 & 1.2 & 1 & 1.1 \\
+        1.1 & 1.1 & 1.1 & 1
+      \end{pmatrix}
+      $$      
+      \begin{parts}
+      \part Solve for equilibrium wages in countries 2, 3 and 4 relative to country 1.
+     \begin{solution}
+        \begin{enumerate}
+            \item We will use the good of country 1 as the numeraire ($p_1 =1)$ Since $p_i=\frac{w_i}{A_i} \implies 1=\frac{w_1}{0.6} \implies w_1 = 0.6$
+            \item The excess demand function of the Armington Model is: 
+            $$Z_i(w) = \{\sum_{j \in S} (\frac{a_{ij}\tau_{ij}^{1-\sigma}(\frac{w_i}{A_i})^{1-\sigma}}{\sum_{k \in S} a_{kj} \tau_{kj}^{1-\sigma}(\frac{w_k}{A_k})^{1-\sigma}})\frac{w_j L_j}{w_i}\}- L_i$$
+            Note that I have moved $\frac{1}{w_i}$ outside the sum for simplicity. 
+            \item We solve by guessing a vector of wages, and iterating until the excess demand function is zero.
+            \\\\TODO
+        \end{enumerate}
+     \end{solution} 
+     \part Solve for bilateral trade shares, $\lambda_{ij}$ for $i = 1, 2, 3, 4$ and $j = 1, 2, 3, 4$
+     \part Consider (only in this question) that country 2's productivity increases by a factor of 2, from $A_2 = 0.6$ to $A_2' = 1.2$, while the others remain unchanged.
+            \begin{enumerate}[label=\alph*)]
+                \item What's the change in welfare for country 2 from the productivity shock?
+                \item What’s the change in welfare for country 2 from the productivity shock under
+                autarky ? (hint: you simply need to use an equation from the lecture and no need
+                to solve the model)
+                \begin{solution}
+                    From Sunny's first section, we know that 
+                    \begin{align*}
+                        W_i = \lambda_{ii}^{\frac{1}{1-\sigma}} \alpha_{ii}^{\frac{1}{\sigma-1}} A_i \\
+                        \text{The change in welfare is:}\\
+                        \frac{W_i^{new}}{W_i^{old}} = \frac{\lambda_{ii}^{\frac{1}{1-\sigma}} \alpha_{ii}^{\frac{1}{\sigma-1}} A_i'}{\lambda_{ii}^{\frac{1}{1-\sigma}} \alpha_{ii}^{\frac{1}{\sigma-1}} A_i} = \frac{A_i'}{A_i} = \frac{1.2}{0.6} = 2
+                    \end{align*}
+                \end{solution}
+                \item Provide intuition for the difference in your answers in (a) and (b)
+            \end{enumerate}
+        \part     $$ T = \begin{pmatrix}
+            1 & 1 & 1.2 & 1.2 \\
+            1 & 1 & 1.2 & 1.2 \\
+            1 & 1.2 & 1 & 1.3 \\
+            1 & 1.2 & 1.2 & 1
+          \end{pmatrix}
+          $$     
+          \begin{enumerate}
+            \item Solve for equilibrium wages in countries 2, 3 and 4 relative to country 1.
+            \item Solve for bilateral trade shares, $\lambda_{ij}$ for $i = 1, 2, 3, 4$ and $j = 1, 2, 3, 4$
+          \end{enumerate}
+          \part Solve for the change in wage in each country (relative to country 1’s wage) using the
+          system in changes discussed in Section 5 in the Lecture Notes. Verify that you get the
+          same result as in 4. What is the advantage of solving the system in changes rather
+          than in levels (two times)?
+          \begin{solution}
+          \end{solution}
+    \end{parts}
+    \end{questions}
+\end{document}
