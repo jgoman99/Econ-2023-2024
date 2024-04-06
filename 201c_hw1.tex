@@ -1,0 +1,88 @@
+\documentclass[answers]{exam}
+
+\usepackage{enumitem} % For customization of numbering
+\usepackage{amsmath} % For \text
+\usepackage [autostyle, english = american]{csquotes}
+\MakeOuterQuote{"}
+
+\title{203A Question Bank}
+\author{John Friedman}
+\date{\today}
+
+% do final, midterms, and comps
+% all finals done except 2023 and 2015.
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+    \question Two firms ("agents") would like to invest in a city (e.g., real estate investments). The Government ("principal") is willing to let the agents invest in exchange for payments. Formally, the principal offers each agent $i \in \{1, 2\}$ a contract $\langle x_i, t_i \rangle$ which describes the investment level $x_i \geq 0$ and payment $t_i \geq 0$. The contracts are observed by both agents before they choose to accept.
+
+    The principal obtains revenue $\pi = t_1 + t_2$. If agent $i$ accepts the contract, he makes utility $u_i = v_i - t_i$, where $v_i = x_i - \frac{1}{2} x_i^2 + \alpha x_j$. If agent $i$ rejects the contract, $\langle x_i, t_i \rangle = \langle 0, 0 \rangle$ and so he makes utility $u_i = v_i = \alpha x_j$. Note that $\alpha > 0$ means the agents have positive externalities on each other, while $\alpha < 0$ means the agents have negative externalities on each other. We assume that $\alpha > -1$.
+    \begin{parts}
+        \part What is the Pareto efficient investment level?
+        \begin{solution}
+            The Pareto efficient investment level is the level that maximizes the sum of the agents' and principal's utility level.
+            \begin{align*}
+                \max_{x_1, x_2} \quad t_1 + t_2 + u_1 + u_2\\
+                \max_{x_1, x_2} \quad t_1 + t_2 + v_1 - t_1 + v_2 - t_2\\
+                \max_{x_1, x_2} \quad v_1 + v_2\\
+                \max_{x_1, x_2} \quad x_1 - \frac{1}{2} x_1^2 + \alpha x_2 + x_2 - \frac{1}{2} x_2^2 + \alpha x_1\\
+                \text{FOC:}\\
+                \frac{\partial}{\partial x_1} \quad 1 - x_1 + \alpha = 0\\
+                \frac{\partial}{\partial x_2} \quad 1 - x_2 + \alpha = 0\\
+                x_1 = 1 + \alpha\\
+                x_2 = 1 + \alpha\\
+                \end{align*}                
+        \end{solution}
+
+    \part Suppose the principal offers a "multilateral" contract $\langle x_i, t_i \rangle$ to each agent simultaneously. Formally:
+
+    \begin{enumerate}
+        \item[(i)]  The principal offers each agent a contract $\langle x_i, t_i \rangle$.
+        \item[(ii)] Both agents choose to accept or reject.
+        \item[(iii)] If either agent rejects, then both contracts are cancelled.
+    \end{enumerate}
+    
+    What are the principal's optimal choices of $x_1$ and $x_2$?
+    \begin{solution}
+        The agent's choice is now between accepting a payoff of zero or $v_i-t_i$. Therefore the agent will accept any $t_i$ such that $v_i - t_i \geq 0$ and so the principal can extract the entire surplus. This has the same solution as the Pareto efficient investment level, as the goal of the principal is to maximize welfare since he can extract all of it. The optimal choices of $x_1$ and $x_2$ are $1 + \alpha$.
+         
+    \end{solution}
+    \part \textbf{(c)} Suppose the principal offers a \emph{bilateral} contract $\langle x_i, t_i \rangle$ to each agent simultaneously. Formally:
+
+    \begin{enumerate}
+        \item[(i)]  The principal offers each agent a contract $\langle x_i, t_i \rangle$.
+        \item[(ii)] Both agents choose to accept or reject.
+        \item[(iii)] If an agent rejects, then the other agent's contract is unaffected.
+    \end{enumerate}
+    
+    What are the principal's optimal choices of $x_1$ and $x_2$?
+    \begin{solution}
+        The agent's choice is now between accepting a payoff of $\alpha x_j$ or $x_i - \frac{1}{2} x_i^2 + \alpha x_j -t_i$. An agent should now accept any offer such that:
+        \begin{align*}
+            \alpha x_j \leq x_i - \frac{1}{2} x_i^2 + \alpha x_j -t_i\\
+            0 \leq x_i - \frac{1}{2} x_i^2 -t_i\\
+            \text{which, using FOC, is maximized at:}\\
+            x_i = 1\\
+        \end{align*}
+        The principal's optimal choices of $x_1$ and $x_2$ are $1$.
+    \end{solution}     
+    \part How does the level of investment under multilateral and bilateral contracts depend on $\alpha$? Provide
+    an intuition.
+    \begin{solution} 
+        Under multilateral contracts the level of investment will increase when $\alpha$ is positive and decrease when $\alpha$ is negative. The intuition here is that when externalities are positive, the principal can force a higher level of investment on both agents, as they will both benefit from the other's investment. When externalities are negative, the principal can't force as high of an investment level, as the agents will be hurt by the other's investment and will choose their outside option of 0 utility.
+        \\\\
+        Under bilateral contracts, the level of investment will always be 1. The intuition here is that bilateral negotiations allow the producer to extract the agent's production function, but not the impact of externalities on the agent, as the agent can always choose to reject the contract and recieve the externalities $\alpha x_j$.
+        \end{solution}
+    \part How does the principal's profit under multilateral and bilateral contracts depend on $\alpha$? Provide
+    an intuition.
+    \begin{solution}
+        Under multilateral contracts, the principal's profit is maximized by maximizing surplus. If $\alpha \geq 0$, the principal extracts at least 1 unit of profit. However, if $\alpha < 0$, the principal's profit can be as low as zero.
+        \\\\
+        Under bilateral contracts, the principal can always extract the individual agent's maximized production $x_i - \frac{1}{2}x_i^2$ regardless of $\alpha$. This is great for the principal if $\alpha < 0$ as he can extract more than he would in the multilateral case, however in the case of $\alpha \geq 0$, the principal can't extract the whole surplus as in the multilateral case, as if he were to take more than $x_i-\frac{1}{2}x_i^2$, the agent would reject the contract and recieve $\alpha x_j$.
+    \end{solution}
+\end{parts}
+\end{questions}
+    
+\end{document}
