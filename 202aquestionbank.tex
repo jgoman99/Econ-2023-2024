@@ -1,0 +1,67 @@
+\documentclass[answers]{exam}
+
+\usepackage{enumitem} % For customization of numbering
+\usepackage{amsmath} % For \text
+\title{202A Question Bank}
+\author{John Friedman}
+\date{\today}
+
+% do all finals, and comps
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question (Comp 2017) Consider an economy with a representative household with $N_t$ identical members. The household's preferences are given by,
+$$\sum_{t=0}^{\infty} \beta^t N_t [\log{c_t} + A log(1-h_t)]$$
+Each member of the household is endowed with one unit of labor each period. The number of members evolves over time according to the law of motion, $N_{t+1} = \eta N_t, \eta>1$. \\
+Output is produced using the following technology:
+$$Y_t = \gamma^t e^{z_t} K_t^\mu (N_t h_t)^{\phi} L_t^{1-\mu - \phi}$$
+
+Here $\gamma > 1$ is the gross rate of exogeneous total factor productivity growth, $K_t$ is the total (not per capita) capital, $Y_t$ is the total output, and $L_t$ is the total stock of land. Land is assumed to be a fixed factor; it cannot be produced and does not depreciate. To simplify without loss of generality, assume that $L_t = 1$ for all $t$. \\
+The variable $z_t$ is a technology shock that follows an autoregeressive process, $z_{t+1} =\rho z_t + \epsilon_{t+1}$, where $\epsilon$ is independently and identically distributed over time with mean 0 and standard deviation $\sigma$.\\
+The resource constraint, assuming 100 percent depreciation of capital each period, is given by:
+$$N_t c_t + K_{t+1} = Y_t$$
+\begin{parts}
+    \part Formulate the social planning problem for this economy as a stationary dynamic program. Be clear about the transformation performed such that all the variables are stationary.
+    \begin{solution}
+        \begin{enumerate}
+            \item Normalize the population so $N_0 = 1 \implies N_{t} = \eta^t$.
+            \item Simplify the total capital equation $K_t = N_t k_t = \eta^t k_t$
+            \item Substitute for $Y_t$ in the resource constraint: $N_t c_t + K_{t+1} = \gamma^t e^{z_t} K_t^\mu (N_t h_t)^{\phi} L_t^{1-\mu - \phi}$
+            \item Substitute $N_t$ and $K_t$: $\eta^t c_t + \eta^{t+1} k_{t+1} = \gamma^t e^{z_t} (\eta^t k_t)^\mu (\eta_t h_t)^{\phi} L_t^{1-\mu - \phi}$
+            \item Since $L_t=1$: $K_t$: $\eta^t c_t + \eta^{t+1} k_{t+1} = \gamma^t e^{z_t} (\eta^t k_t)^\mu (\eta_t h_t)^{\phi}$
+            \item (IMPROVE) Define the following terms: $c_t = g_c^t \hat{c}_t,\ k_t = g_k^t \hat{k}_t,\ h_t = g_h^t \hat{h}_t$
+            \item (improve) $g_h = 1$ as we assume hours worked is constant 
+            \item Substitute into the resource constraint: $\eta^t g_c^t \hat{c}_t + \eta^{t+1} g_k^{t+1} \hat{k}_{t+1} = \gamma^t e^{z_t} (\eta^t g_k^t \hat{k}_t)^\mu (\eta_t g_h^t \hat{h}_t)^{\phi}$
+            \item Group terms by $t$: $(\eta g_c)^t \hat{c}_t+ (\eta g_k)^{t+1} \hat{k}_{t+1} =  e^{z_t} \hat{k}_t^\mu \hat{h}_t^\phi (\gamma \eta^{\mu + \phi} g_k^\mu)^t$
+            \item Divide by $g_c^t$ and $\eta^t$: $\hat{c}_t + \eta g_k (\frac{g_k}{g_c})^t \hat{k}_{t+1} = e^{z_t} \hat{k}_t^\mu \hat{h}_t^\phi (\frac{\gamma \eta^{\mu + \phi - 1} g_k^\mu}{g_c})^t$
+            \item Therefore, to be stationary, $g_k=g_c$ and $g_c = \gamma \eta^{\mu + \phi - 1} g_k^\mu$
+            \item Using $g_k=g_c \implies g_k=g_c = (\gamma \eta^{\mu + \phi -1})^{\frac{1}{1-\mu}}$ 
+            \item Substitute $g_k$ into the resource constraint: $\hat{c}_t + \eta (\gamma \eta^{\mu + \phi -1})^{\frac{1}{1-\mu}} (1)^t \hat{k}_{t+1} = e^{z_t} \hat{k}_t^\mu \hat{h}_t^\phi (1)^t$
+            \item We do the same for preferences 
+            \begin{align*}
+                \sum_{t=0}^{\infty} \beta^t N_t [\log{c_t} + A log(1-h_t)]\\
+                \sum_{t=0}^{\infty} \beta^t \eta^t [\log{g_c^t \hat{c}_t} + A \log(1-g_h^t \hat{h}_t)]\\
+                \sum_{t=0}^{\infty} \beta^t \eta^t [\log{g_c^t \hat{c}_t} + A \log(1- \hat{h}_t)]\\
+            \end{align*}
+            \item The social planning problem is now:
+            \begin{align*}
+                \max_{\hat{c}_t,\hat{h}_t,\hat{k}_{t+1}}\sum_{t=0}^{\infty} \beta^t \eta^t [\log{g_c^t \hat{c}_t} + A \log(1-g_h^t \hat{h}_t)]\\
+                \text{s.t. } \hat{c}_t + \eta (\gamma \eta^{\mu + \phi -1})^{\frac{1}{1-\mu}} (1)^t \hat{k}_{t+1} = e^{z_t} \hat{k}_t^\mu \hat{h}_t^\phi (1)^t\\
+                \text{and } z_{t+1} = \rho z_t + \epsilon_{t+1} \text{, where $\epsilon \sim N(0,\sigma^2)$ and $\epsilon$ is iid}\\
+                \text{given $k_0, z_0$}
+            \end{align*}
+            \item Or we can use the Dynamic Programming problem:
+            \begin{align*}
+                V(\hat{k},z) = \max_{\hat{c},\hat{h},\hat{k}'} \log{\hat{c} + A \log(1-\hat{h})} + \beta \eta E[V(\hat{k}',z'|z)]\\
+                \text{s.t. } \hat{c} + \eta (\gamma \eta^{\mu + \phi -1})^{\frac{1}{1-\mu}} \hat{k}' = e^{z} \hat{k}^\mu \hat{h}^\phi\\
+                \text{and } z' = \rho z + \epsilon \text{, where $\epsilon \sim N(0,\sigma^2)$ and $\epsilon$ is iid}
+            \end{align*}
+        \end{enumerate}
+
+        \end{solution}
+\end{parts}
+\end{questions}
+\end{document}
