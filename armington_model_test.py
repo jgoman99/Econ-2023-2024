@@ -1,7 +1,62 @@
 import numpy as np
+from scipy.optimize import root, least_squares
 
-# this is the fuckup
-def excess_demand_vars(a, tau, w, L, sigma, A):
+# declare parameters #
+
+# first part paramaters
+S = 4  # Number of goods
+sigma = 3  # Elasticity of substitution
+a = np.eye(4)+1
+# trade costs
+tau = np.array([[1, 1.1, 1.2, 1.3],
+              [1.3, 1, 1.3, 1.4],
+              [1.2, 1.2, 1, 1.1],
+              [1.1, 1.1, 1.1, 1]])
+
+
+L = np.array([2, 1, 1, 1])
+A = np.ones(S) * 0.6
+
+# 2nd part parameters
+tau = np.array([[1 , 1 , 1.2 , 1.2],
+            [1 , 1 , 1.2 , 1.2],
+            [1 , 1.2 , 1 , 1.3],
+            [1 , 1.2 , 1.2 , 1]])
+
+
+
+# Calculate the absolute trade
+def calculate_trade(w):
+  trade = np.zeros([w.shape[0],w.shape[0]])
+  S = w.shape[0]
+  for i in range(S):
+    for j in range(S):
+      top = a[i, j] * tau[i, j]**(1-sigma)* (w[i]/A[i])**(1-sigma)
+      bottom = 0
+      for k in range(S):
+        bottom += a[k, j] * tau[k, j]**(1-sigma)* (w[k]/A[k])**(1-sigma)
+    
+      trade[i,j] = top/bottom
+  return(trade)
+
+def calculate_trade_shares(w):
+  S = w.shape[0]
+  trade_matrix = calculate_trade(w)
+  trade_shares = np.zeros([S,S])
+  for i in range(S):
+    for j in range(S):
+      trade_shares[i,j] = trade_matrix[i,j] / w[j]*L[j]
+  return trade_shares
+
+def calculate_welfare(w):
+  S = w.shape[0]
+  trade_matrix = calculate_trade_shares(w)
+  welfare = np.zeros(S)
+  for i in range(S):
+    welfare[i] = (trade_matrix[i,i])**(1/(1-sigma)) * (a[i, i])**(1/(sigma-1)) * A[i]
+  return welfare
+
+def excess_demand(w): #a, tau, w, L, sigma, A):
   """
   This function calculates the excess demand for the Armington Model.
 
@@ -20,45 +75,23 @@ def excess_demand_vars(a, tau, w, L, sigma, A):
   S = len(a)  # Number of goods
   Z = np.zeros(S)
   for i in range(S):
-    denom = 0
+    summation = 0
+    # for j in range(S):
+    #   top = a[i, j] * tau[i, j]**(1-sigma)* (w[i]/A[i])**(1-sigma)
+    #   bottom = 0
+    #   for k in range(S):
+    #     bottom += a[k, j] * tau[k, j]**(1-sigma)* (w[k]/A[k])**(1-sigma)
+      
+    #   top = top * w[j] * L[j]
+    #   bottom = bottom * w[i] 
+    #   summation += top/bottom
+    trade_matrix = calculate_trade(w)
     for j in range(S):
-      denom += a[i, j] * tau[i, j]**(1-sigma) * (w[j]/A[j])**(1-sigma)
-    for j in range(S):
-      Z[i] += (a[i, j] * tau[i, j]**(1-sigma) * (w[j]/A[j])**(1-sigma) / denom) * w[j] * L[j]
-    Z[i] -= L[i]
+      summation += trade_matrix[i,j] * w[j] * L[j] / w[i]
+
+    Z[i] = summation - L[i]
   return Z
 
-# Example usage
-S = 4  # Number of goods
-sigma = 3  # Elasticity of substitution
-a = np.eye(4)+1
-# trade costs
-tau = np.array([[1, 1.1, 1.2, 1.3],
-              [1.3, 1, 1.3, 1.4],
-              [1.2, 1.2, 1, 1.1],
-              [1.1, 1.1, 1.1, 1]])
-
-
-L = np.array([2, 1, 1, 1])
-A = np.ones(S) * 0.6
-
-# modifications to check old hw
-tau = np.array([[1, 1.2, 1.3, 1.2],
-        [1.1, 1, 1.4, 1.1],
-        [1.3, 1.4, 1, 1.2],
-        [1.2, 1.4, 1.2, 1]])
-L = np.array([1, 1, 1, 1])
-A = np.array([1, .7, .7, .7])
-sigma = 3 
-A = np.ones(4)
-
-#Z = excess_demand(a, tau, w, L, sigma, A)
-#print(Z)
-def excess_demand(w):
-  return excess_demand_vars(a, tau, w, L, sigma, A)
-
-
-from scipy.optimize import root, least_squares
 
 def approximate_equilibrium(excess_demand, initial_wages):
   """
@@ -82,12 +115,18 @@ def approximate_equilibrium(excess_demand, initial_wages):
   # Return the solution (wages) from the root finding process.
   return result.x
 
-# Initial guess for wages (adjust as needed)
-initial_wages = [1, 1.1, 1.2, 1.3]
+#Initial guess for wages (adjust as needed)
+initial_wages = [1, .8,.76, .77]
 
 # Find the approximate equilibrium wages
 equilibrium_wages = approximate_equilibrium(excess_demand, initial_wages)
+# normalize wages relative to first index
+normalized_wages = equilibrium_wages/(equilibrium_wages[0])
 
-# Print the equilibrium wages
-print("Equilibrium wages: ", equilibrium_wages)
-print("Excess demand: ", excess_demand(equilibrium_wages))
+#Print the equilibrium wages
+print("Equilibrium wages: ", np.around(normalized_wages,4))
+print("Excess demand: ", excess_demand(normalized_wages))
+
+print("Bilateral Trade Shares: \n", np.around(calculate_trade_shares(normalized_wages),4))
+
+print("Welfare: ", np.around(calculate_welfare(normalized_wages),4))

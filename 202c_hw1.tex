@@ -27,18 +27,33 @@
       \part Solve for equilibrium wages in countries 2, 3 and 4 relative to country 1.
      \begin{solution}
         \begin{enumerate}
-            \item We will use the good of country 1 as the numeraire ($p_1 =1)$ Since $p_i=\frac{w_i}{A_i} \implies 1=\frac{w_1}{0.6} \implies w_1 = 0.6$
+            \item We will use the good of country 1 as the numeraire ($p_1 =1)$ 
             \item The excess demand function of the Armington Model is: 
             $$Z_i(w) = \{\sum_{j \in S} (\frac{a_{ij}\tau_{ij}^{1-\sigma}(\frac{w_i}{A_i})^{1-\sigma}}{\sum_{k \in S} a_{kj} \tau_{kj}^{1-\sigma}(\frac{w_k}{A_k})^{1-\sigma}})\frac{w_j L_j}{w_i}\}- L_i$$
-            Note that I have moved $\frac{1}{w_i}$ outside the sum for simplicity. 
             \item We solve by guessing a vector of wages, and iterating until the excess demand function is zero.
-            \\\\TODO
+            
+            Using the code attached in the appendix:
+            $\frac{w_2}{w_1} = 1.1458, \frac{w_3}{w_1} = 1.2238, \frac{w_4}{w_1} = 1.2614$
         \end{enumerate}
      \end{solution} 
      \part Solve for bilateral trade shares, $\lambda_{ij}$ for $i = 1, 2, 3, 4$ and $j = 1, 2, 3, 4$
+     \begin{solution}
+        Since we have already solved for wages, we can use the formula $\lambda_{ij} = \frac{X_{ij}}{Y_j}$ To solve for bilateral trade shares we use the code attached in the appendix. We get:
+        $$\lambda = \begin{pmatrix}
+            1.1649 & 0.2164 & 0.1892 & 0.1682\\
+            0.2625 & 0.3989 & 0.1228 & 0.1105\\
+            0.2701 & 0.1214 & 0.3637 & 0.1568\\
+            0.3025 & 0.136  & 0.1415 & 0.3573\\
+        \end{pmatrix}
+        $$
+     \end{solution}
      \part Consider (only in this question) that country 2's productivity increases by a factor of 2, from $A_2 = 0.6$ to $A_2' = 1.2$, while the others remain unchanged.
             \begin{enumerate}[label=\alph*)]
                 \item What's the change in welfare for country 2 from the productivity shock?
+                \begin{solution}
+                    The formula for welfare is $W_i = \lambda{ii}^{\frac{1}{1-\sigma}} a_{ii}^{\frac{1}{\sigma - 1}} A_i$ So using our code:
+                    $$W_i^{new}/W_i^{old} = \frac{3.1484}{1.3435} = 2.3434$$
+                \end{solution}
                 \item What’s the change in welfare for country 2 from the productivity shock under
                 autarky ? (hint: you simply need to use an equation from the lecture and no need
                 to solve the model)
@@ -51,6 +66,13 @@
                     \end{align*}
                 \end{solution}
                 \item Provide intuition for the difference in your answers in (a) and (b)
+                \begin{solution}
+                    In part (a) and (b) we have shown that the increase in welfare from a individual country's productivity shock is greater in an open economy than under autarky for that country.\\\\
+
+                    Under this model's parameters, as country 2 becomes more productive, it's income effects dominates its substition effects, and so it's increase in welfare is higher than in autarky. This is due to a strong taste shock preference for its own goods.\\\\
+
+                    Note that if the country preferred other countries goods to its own, the likely result would be for country 2 to trade more with the world, which would reduce its relative price and import share. e.g. terms of trade would become more unfavorable for country 2.
+                \end{solution}
             \end{enumerate}
         \part     $$ T = \begin{pmatrix}
             1 & 1 & 1.2 & 1.2 \\
@@ -61,14 +83,29 @@
           $$     
           \begin{enumerate}
             \item Solve for equilibrium wages in countries 2, 3 and 4 relative to country 1.
+            \begin{solution} 
+                $\frac{w_2}{w_1} = 1.2337 \frac{w_3}{w_1} =1.2356 \frac{w_4}{w_1} = 1.2506$
+                
+            \end{solution}
             \item Solve for bilateral trade shares, $\lambda_{ij}$ for $i = 1, 2, 3, 4$ and $j = 1, 2, 3, 4$
+            \begin{solution}
+                $$\lambda = \begin{pmatrix}
+                    1.0123 & 0.2523 & 0.1935 & 0.1971\\
+                    0.3325 & 0.3315 & 0.1271 & 0.1295\\
+                    0.3316 & 0.1148 & 0.365 & 0.11\\
+                    0.3236 & 0.112  & 0.1237 & 0.363\\
+                \end{pmatrix}
+                $$
+              \end{solution}
           \end{enumerate}
           \part Solve for the change in wage in each country (relative to country 1’s wage) using the
           system in changes discussed in Section 5 in the Lecture Notes. Verify that you get the
           same result as in 4. What is the advantage of solving the system in changes rather
           than in levels (two times)?
           \begin{solution}
+            TODO
           \end{solution}
+
     \end{parts}
     \end{questions}
 \end{document}
