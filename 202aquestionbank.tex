@@ -43,12 +43,12 @@ $$N_t c_t + K_{t+1} = Y_t$$
             \item We do the same for preferences 
             \begin{align*}
                 \sum_{t=0}^{\infty} \beta^t N_t [\log{c_t} + A log(1-h_t)]\\
-                \sum_{t=0}^{\infty} \beta^t \eta^t [\log{g_c^t \hat{c}_t} + A \log(1-g_h^t \hat{h}_t)]\\
-                \sum_{t=0}^{\infty} \beta^t \eta^t [\log{g_c^t \hat{c}_t} + A \log(1- \hat{h}_t)]\\
+                \sum_{t=0}^{\infty} \beta^t \eta^t [\log{(g_c^t \hat{c}_t)} + A \log(1-g_h^t \hat{h}_t)]\\
+                \sum_{t=0}^{\infty} \beta^t \eta^t [\log{(g_c^t \hat{c}_t)} + A \log(1- \hat{h}_t)]\\
             \end{align*}
             \item The social planning problem is now:
             \begin{align*}
-                \max_{\hat{c}_t,\hat{h}_t,\hat{k}_{t+1}}\sum_{t=0}^{\infty} \beta^t \eta^t [\log{g_c^t \hat{c}_t} + A \log(1-g_h^t \hat{h}_t)]\\
+                \max_{\hat{c}_t,\hat{h}_t,\hat{k}_{t+1}}\sum_{t=0}^{\infty} \beta^t \eta^t [\log{(g_c^t \hat{c}_t)} + A \log(1- \hat{h}_t)]\\
                 \text{s.t. } \hat{c}_t + \eta (\gamma \eta^{\mu + \phi -1})^{\frac{1}{1-\mu}} (1)^t \hat{k}_{t+1} = e^{z_t} \hat{k}_t^\mu \hat{h}_t^\phi (1)^t\\
                 \text{and } z_{t+1} = \rho z_t + \epsilon_{t+1} \text{, where $\epsilon \sim N(0,\sigma^2)$ and $\epsilon$ is iid}\\
                 \text{given $k_0, z_0$}
@@ -62,6 +62,136 @@ $$N_t c_t + K_{t+1} = Y_t$$
         \end{enumerate}
 
         \end{solution}
+    \part Characterize the balanced growth path of this economy. That is, find expressions that determine $c_t$
+    $h_t$ and $K_t$ along this growth path. In particular, solve explicitly for the growth rate of this set of
+    variables.
+    \begin{solution}
+        \begin{enumerate}
+            \item To characterize the balanced growth path of this economy we take the FOC: (IMPROVE: why can we drop subscripts)
+            \begin{align}
+                [c]: \frac{1}{\hat{c}} - \lambda = 0\\
+                [h]: -\frac{A}{1-\hat{h}} + \lambda \phi e^z \hat{k}^{\mu} \hat{h}^{\phi-1} = 0 \\
+                [k]: \mu e^{z} \hat{k}^{\mu-1} \hat{h}^\phi = \eta (\gamma \eta^{\mu + \phi -1})^{\frac{1}{1-\mu}} \text{ Using the envelope condition }
+            \end{align}
+            \item We then combine (1) with (2), use the fact that in steady state hat variables are constant, and add in the resource constraint for the steady state:
+            \begin{align} 
+                [h]: -\frac{A}{1-\bar{h}} + \frac{1}{\bar{c}} \phi e^z \bar{k}^{\mu} \bar{h}^{\phi-1} = 0 \\
+                [k]: \mu e^{z} \bar{k}^{\mu-1} \bar{h}^\phi = \eta (\gamma \eta^{\mu + \phi -1})^{\frac{1}{1-\mu}}\\
+                \bar{c}_t + \eta (\gamma \eta^{\mu + \phi -1})^{\frac{1}{1-\mu}} \bar{k}_{t+1} = e^{z_t} \bar{k}_t^\mu \bar{h}_t^\phi
+            \end{align}
+        \item These three equations characterize the balanced growth path for $\bar{c},\bar{h},\bar{k}$ that we would then plug in for:
+        \begin{align}
+            c_t = g_c^t \bar{c}\\
+            h_t = g_h^t \bar{h}\\
+            K_t = g_k^t \eta^t \bar{k}
+        \end{align}
+        \item We found the explicit growth rate of these variables in the previous part:
+            $$g_k=g_c = (\gamma \eta^{\mu + \phi -1})^{\frac{1}{1-\mu}}, g_h = 1$$
+        \end{enumerate}
+    \end{solution}
+    \part Discuss how your answer to part B would change if $\phi = 1 - \mu$. In particular, what is the growth rate
+    of income per capita in the two cases (part A and B)?
+    \begin{solution} (IMPROVE)
+        We still have $c_t = g_c^t \bar{c}, h_t = g_h^t \bar{h}, K_t = g_k^t \eta^t \bar{k}$, but now $g_k=g_c=\gamma^\frac{1}{1-\mu}$. And our charateristic equations are now:
+        \begin{align} 
+            [h]: -\frac{A}{1-\bar{h}} + \frac{1}{\bar{c}} \phi e^z \bar{k}^{\mu} \bar{h}^{\phi-1} = 0 \\
+            [k]: \mu e^{z} \bar{k}^{\mu-1} \bar{h}^\phi = \eta (\gamma \eta^{\mu + \phi -1})^{\frac{1}{1-\mu}}\\
+            \bar{c}_t + \eta (\gamma \eta^{\mu + \phi -1})^{\frac{1}{1-\mu}} \bar{k}_{t+1} = e^{z_t} \bar{k}_t^\mu \bar{h}_t^\phi
+        \end{align}
+        To find the growth rate per capita of income, let's first simplify the income equation:
+        \begin{align*} 
+            Y_t = \gamma^t e^{z_t} K_t^\mu (N_t h_t)^{\phi} L_t^{1-\mu - \phi}\\
+            \eta^t y_t = \gamma^t e^{z_t} (\eta^t k_t)^\mu (\eta^t h_t)^{1-\mu} (1)\\
+            y_t = \gamma^t e^{z_t} k_t^\mu h_t^{1-\mu}
+        \end{align*}
+        The change in income between periods in the steady state is 
+        $$\frac{y_{t+1}}{y_t} = \gamma \frac{e^{z_{t+1}} k_{t+1}^\mu h_{t+1}^{1-\mu}}{e^{z_t} k_t^\mu h_t^{1-\mu}}$$
+        Since we are in steady state we can simplify capital, leisure, and the technology shock:
+        $$\frac{y_{t+1}}{y_t} = \gamma$$
+        Therefore the per capita growth rate of income is $y^t$
+    \end{solution}
+    \part Suppose that a period is one quarter and suppose you are given annual growth rates for population
+    and per capita income. You are also given values for factor shares, the average amount of time spent
+    working and the annual capital-output ratio. Show how these facts can be used to calibrate $\gamma,\eta,A, \beta$
+    \begin{solution}
+        \begin{enumerate}
+            \item Since $\text{annual growth rate} = (\text{quarterly growth rate})^4 \\ \implies \eta = (\text{annual growth rate of population})^\frac{1}{4}$
+            \item TODO
+        \end{enumerate}
+    \end{solution}
+    \part Define a recursive competitive equilibrium for this economy assuming markets for labor,
+    consumption goods, land rental, and capital services.
+    \begin{solution}
+        Note: that we drop the hats. The household problem is:
+        \begin{align*}
+            V(k,K,z) = max_{c,h,k',l} \log{c} + A \log(1-h) + \beta \eta E[V(k',K',z'|z)]\\
+            s.t.\ c + \eta (\gamma \eta^{\mu + \phi -1})^{\frac{1}{1-\mu}} k' = hw(K,z) + kr(K,z) + t(K,z)l\\
+            K' = G(K)\\
+            z_{t+1} = \rho z_t + \epsilon_{t+1}, \text{where $\epsilon \sim N(0,\sigma^2)$ and $\epsilon$ is iid}\\
+            \text{given $k_0, z_0$}
+        \end{align*}
+        \begin{align*}
+            \text{The firm problem is:}\\
+            \max_{h^f,l^f,k^f}[e^{z_t}(h^f)_t^\phi (k_f)_t^\mu l_f^{1-\mu-\phi} - t(K,z)l^f - k^f r(K,z) - h^f w(K,z)]
+        \end{align*}
+        A recursive competetive equilibrium is defined by:
+        \begin{itemize}
+            \item A set of household decision rules $c(k,K,z), h(k,K,z), k'(k,K,z), l(k,K,z)$
+            \item A set of firm decision rules $h^f(K,z), l^f(K,z), k^f(K,z)$
+            \item A set of pricing functions $w(K,z), r(K,z), t(K,z)$ where consumption price is the numeraire
+            \item Perceived law of motion for aggregate capital $G(K)$ such that:
+            \begin{itemize}
+                \item Given pricing functions and a percieved law of motion for aggregate capital, the household decision rules solve the household problem
+                \item Given pricing functions, firm decision rules solve the firm's problem
+                \item Markets clear
+                \begin{itemize}
+                    \item $h^f(K,z) = h(K,K,z)$ 
+                    \item $l^f(K,z) = l(K,K,z)$
+                    \item $k^f(K,z) = K$
+                    \item The consumption market by Walras' Law
+                \end{itemize}
+                Note that little $k$ is now big $K$, as the firm optimizes over aggregate capital (improve)
+                \item Rational expectations: $G(K) = k'(K,K,z)$
+            \end{itemize}
+        \end{itemize}
+    \end{solution}
+    \part Add a real estate market to your equilibrium definition in part E. Derive an equation determining the
+    price of land.
+    \begin{solution}
+        Note: that we drop the hats. The household problem is:
+        \begin{align*}
+            V(k,K,l,L,z) = max_{c,h,k',l'} \log{c} + A \log(1-h) + \beta \eta E[V(k',K',l',L',z'|z)]\\
+            s.t.\ c + \eta (\gamma \eta^{\mu + \phi -1})^{\frac{1}{1-\mu}} k' + s(K,z,L)l' = hw(K,z,L) + kr(K,z,L) + (t(K,z,L)+s(K,z,L))l\\
+            K' = G(K)\\
+            L' = H(L)\\
+            z_{t+1} = \rho z_t + \epsilon_{t+1}, \text{where $\epsilon \sim N(0,\sigma^2)$ and $\epsilon$ is iid}\\
+            \text{given $k_0, z_0$}
+        \end{align*}
+        \begin{align*}
+            \text{The firm problem is:}\\
+            \max_{h^f,l^f,k^f}[e^{z_t}(h^f)_t^\phi (k_f)_t^\mu l_f^{1-\mu-\phi} - t(K,z,L)l^f - k^f r(K,z,L) - h^f w(K,z,L)]\\
+        \end{align*}
+        A recursive competetive equilibrium is defined by:
+        \begin{itemize}
+            \item A set of household decision rules $c(k,K,z,l,L), h(k,K,z,l,L), k'(k,K,z,l,L), l(k,K,z,l,L)$
+            \item A set of firm decision rules $h^f(K,z,L), l^f(K,z,L), k^f(K,z,L)$
+            \item A set of pricing functions $w(K,z,L), r(K,z,L), t(K,z,L)$ where consumption price is the numeraire
+            \item Perceived law of motion for aggregate capital $G(K)$ and land $H(L)$ such that:
+            \begin{itemize}
+                \item Given pricing functions and a percieved law of motion for aggregate capital and land, the household decision rules solve the household problem
+                \item Given pricing functions, firm decision rules solve the firm's problem
+                \item Markets clear
+                \begin{itemize}
+                    \item $h^f(K,z,L) = h(K,K,L,L,z)$ 
+                    \item $l'(K,z,L) = l'(K,K,L,L,z)$
+                    \item $l^f(K,z,L) = l(K,K,L,L,z)$
+                    \item $k^f(K,z,L) = K$
+                    \item The consumption market by Walras' Law
+                \end{itemize}
+                \item Rational expectations: $G(K) = k'(K,K,z,L,L)$ and $H(L) = l'(K,K,z,L,L)$
+            \end{itemize}
+        \end{itemize}
+    \end{solution}
 \end{parts}
 \end{questions}
 \end{document}
