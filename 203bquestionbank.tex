@@ -1,0 +1,60 @@
+\documentclass[answers]{exam}
+
+\usepackage{enumitem} % For customization of numbering
+\usepackage{amsmath} % For \text
+\usepackage{hyperref}
+
+\title{203B Question Bank}
+\author{John Friedman}
+
+%Comps post 2018 Spring, ignoring 23S, 22S, 21S
+
+\date{\today}
+\hypersetup{
+    colorlinks=true,   
+    urlcolor=blue
+    }
+
+    \begin{document}
+    \maketitle
+    
+    \begin{questions}
+        \question \href{https://economics.ucla.edu/wp-content/uploads/2023/09/comp-fall-2023-part1-2-3_c.pdf#page=5}{(Comp Fall 2023 B1)}
+        Let $\{Y_i, X_i \}_{i=1}^n$ be an iid sample with $Y_i \in R \text{ and } X_i \in R^d$ satisfying:
+        \begin{equation}  Y_i = X_i' \beta_0 +\epsilon_i \text{ and } E[(\epsilon - E[\epsilon])(X-E[X])] = 0 
+        \end{equation}
+        In what follows please be careful that we have assumed that the covariance between $\epsilon$ and $X=0$, but not necessarily that $E[\epsilon X]=0$.
+        \begin{parts}
+            \part Does model (1) imply that $E[\epsilon X]=0$? Prove your answer.
+            \part Show that under our assumptions we must have the restriction:
+            $$E[\{(Y_i-E[Y]) - (X_i-E[X])'\beta_0\}(X-E[X])]=0$$
+            \part Can the moment restriction in part (b) identify $\beta_0$? if $X_i$ contains a constant. Why or why not? Justify your answer.
+            \part Let $\bar{Y}_n \equiv \frac{1}{n}\sum_{i=1}^n(Y_i)$ and $\bar{X}_n \equiv \frac{1}{n}\sum_{i=1}^n(X_i)$, and define the estimator:
+            $$\hat{\beta}_n = \arg \min_{b \in R^d} \frac{1}{n} \sum_{i=1}^n(Y_i-\bar{Y}_n - (X_i - \bar{X}_n)'b)^2$$
+            Establish the consistency of $\hat{\beta}_n$ to $\beta_0$ clearly stating any assumptions you make.
+            \part Another researcher is concerned that you did not include a constant in (1). He instead prefers the traditional regression:
+            $$(\tilde{\alpha}_n, \tilde{\beta}_n ) \equiv \arg \min_{a \in R, b \in R^d} \frac{1}{n} \sum_{i=1}^n(Y_i-a-X_i'b)^2$$
+            How does his estimator $\tilde{\beta}_n$ compare to your estimator $\hat{\beta}_n$ from part (c)? Justify your answer. Hint: Frisch-Waugh-Lovell Theorem.
+        \end{parts}
+
+
+        \question \href{https://economics.ucla.edu/wp-content/uploads/2023/09/comp-fall-2023-part1-2-3_c.pdf#page=6}{(Comp Fall 2023 B2)}
+        Let $Z \in {0,1}$ be an instrument, $D in {0,1}$ be a treatment, and $Y$ an observable outcome. Throughout, assume a LATE framework in which there are two potential outcome $(Y(0), Y(1))$, two potential treatment assignments $(D(0), D(1))$, and assume that the observable $D$ and $Y$ are determined according to:
+        $$D = D(0) + Z(D(1)-D(0))$$
+        i.e. we observe the potential outcome corresponding to the actual treatment status, and the potential treatment assigment corresponding to the realization of Z. Further, assume that $Y(0), Y(1), D(0), D(1)$ are all independent of $Z$. The monotonocity condition that:
+        $$P(D(1)\geq D(0))=1$$
+        and that we have available an iid sample $\{Y_i, D_i, Z_i\}_{i=1}^n$ of $(Y,D ,Z)$.
+        \begin{parts}
+            \part Show that under the stated assumptions we must have
+            $$P(D=1|Z=1) = P(D(1)=1) \text{ and } P(D=1|Z=0) = P(D(0)=1)$$
+            \part use part (a) to argue that if the monotonicity assumption (e.g. $P(D(1)\geq D(0))=1)$), is correct, then the following restriction must hold:
+            $$P(D=1|Z=1) - P(D=1|Z=0) \geq 0 $$
+            \part In order to check whether the monotonocity assumption is correct, we compute the following sample analague to the quantities in $P(D=1|Z=1) - P(D=1|Z=0) \geq 0$:
+            $$ \frac{\sum_{i=1}^n(D_iZ_i)}{\sum_{i=1}^n(Z_i)}  - \frac{\sum_{i=1}^n(D_i(1-Z_i))}{\sum_{i=1}^n(1-Z_i)}$$
+            (recall that $D \in {0,1}$ and $Z \in {0,1}$). Carefully derive the asymptotic distribution of the estimator above.
+            \part Propose an estimator for the asymptotic variance of the estimator in part (c). You do not need to formally establish consistency.
+            \part Use the results of parts (b)-(d) to propose a test of the monotonocity assumption $P(D(1)\geq D(0))=1$. You do not need to formally establish results, but you should clearly outline exactly how to computer the test if we want the probability of a Type I error to be $\alpha$.  
+        \end{parts}
+    \end{questions}
+    
+    \end{document}

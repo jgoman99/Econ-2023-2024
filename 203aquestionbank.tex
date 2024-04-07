@@ -31,6 +31,7 @@ Let $F_n(x) \equiv P(\frac{1}{n} \sum_{i=1}^n X_i^2 \leq x)$. What is $\lim_{n \
 
 \question (Final 2023): Suppose that $X$ has the CDF equal to $\Lambda(t) = \frac{exp(t)}{1+exp(t)}$. Let $X_n \equiv cos(X/n)$. What is $\lim_{n \to \infty} E[cos(X_n)]$?
 \begin{solution}
+    (CHECK)
 \end{solution}
 
 \question (Final 2023): Let $X_1$ denote a random sample of (size 1) from $N(1,\theta)$. We have $H_0 : \theta = 4$ and $H_1 : \theta = 9$. You decided to use the Neyman-Pearson test of size 5\%. If you observe $X_1=6$, do you reject $H_0$ or not?
@@ -64,24 +65,65 @@ Let $F_n(x) \equiv P(\frac{1}{n} \sum_{i=1}^n X_i^2 \leq x)$. What is $\lim_{n \
     \end{align*}
 for some $\mu_1, \mu_2, \sigma_{1,1}, \sigma_{1,2}, \sigma_{2,1}, \sigma_{2,2}$, and $\sigma_{1,2}$. What are their numerical values?
 \begin{solution}
+    (TODO)
+    The multivariate delta method:
+    \begin{align*}
+        \text{if } \sqrt{n}(X_n - \theta) &\xrightarrow{d} N(0, \Sigma)\\
+        \text{then } \sqrt{n}(h(X_n) - h(\theta)) &\xrightarrow{d} N(0, H \Sigma H')\\
+        \text{where } H &= \frac{\partial  h(t)}{\partial t'} \bigg|_{t=\theta}
+    \end{align*}
+
+    
 \end{solution}
 
 \question (Final 2023): Suppose that a random sample $X_1$ of size 1 where $X_i ~ N(\mu,1)$. We want to test the null hypothesis $\mu=0$ versus $H_1: \mu > 0$. We will reject the null if $X_1 > c$. Suppose that c was chosen such that the size of the test is 2.5\%. For what value of $\mu$ is the power of the test 5\%?
 \begin{solution}
+    The power of a test is the probability of correctly rejecting the null hypothesis. In this case, we know that $c = 1.96$ as the null hypothesis is $X \sim N(0,1)$ and\\
+     $Pr(\text{reject null if null is correct}) = 1-\Phi(1.96)=.025$
+     \begin{align*}
+        Pr(x+\mu > 1.96) &= Pr(x > 1.96 - \mu)\\
+        &= 1-Pr(x \leq 1.96 - \mu)\\
+        &= 1-\Phi(1.96 - \mu) = .05\\
+        &\implies .95 = \Phi(1.96 - \mu)\\
+        &= 1.645 = 1.96 - \mu\\
+        &\implies \mu = 1.96-1.645 = .315
+     \end{align*}
 \end{solution}
 
-\question (Final 2023): Let $X_1$ denote a random sample (of size 1) from a Poisson distribution with mean equal to $\theta$. We would like to test $H_0 : \theta = 5$ against $H_1 : \theta != 5$. 
+\question (Final 2023): Let $X_1$ denote a random sample (of size 1) from a Poisson distribution with mean equal to $\theta$. We would like to test $H_0 : \theta = 5$ against $H_1 : \theta \ne 5$. 
 \begin{parts}
-    \part Suppose that $X_1 = 25$ What is the value of the LR statistic? Hint 1: The PDF of the Poisson Distribution with mean equal to $\theta$ is given by $f(x;\theta) = \frac{\theta^x e^-\theta}{x!}$ Hint 2: $\ln 5 = 1.6094$
-    \begin{solution}
-    \end{solution}
+    \part Suppose that $X_1 = 25$ What is the value of the LR statistic? Hint 1: The PDF of the Poisson Distribution with mean equal to $\theta$ is given by $f(x;\theta) = \frac{\theta^x e^{-\theta}}{x!}$ Hint 2: $\ln 5 = 1.6094$
+    \begin{solution} (CHECK)
+        \begin{enumerate}
+            \item The MLE of $\theta$ is $\hat{\theta} = X_1 = 25$ Note: I forgot how to calculate MLE
+            \item The Likelihood ratio statistic is:
+            \begin{align*}
+                LR &= -2\ln(\frac{L(\theta_0)}{L(\hat{\theta})}) \\
+                &= -2\ln(\frac{L(5)}{L(25)})\\
+                &= -2\ln(\frac{5^25 e^{-5}}{25^25 e^{-25}})\\
+                &= -2\ln(\frac{5^25}{25^25})\\
+                &= 50\ln(5) - 50\\
+                &= 50(1.6094) - 50\\
+                &= 30.47
+            \end{align*}
+        \end{enumerate}
+    \end{solution} 
     \part Do you reject or accept the null at the 5\% significance level?
-    \begin{solution}
+    \begin{solution} (CHECK)
+        if $LR > \chi_{\alpha}^2$ then reject the null. In this case, if $X \sim \chi^2(1) \implies P(X > 1.96^2) = 5\%$. Since $30.47 > 1.96^2$, we reject the null.
     \end{solution}
 \end{parts}
 
-\question (Final 2023): Suppose that $X_1,...,X_10$ are iid $N(0,1)$. Let $\bar{X} = \frac{1}{10} \sum_{i=1}^{10} X_i$. What is $E[\bar{X}^2(\sum{i=1}^n(X_i-\bar(X))^2)]$?
-\begin{solution}
+\question (Final 2023): Suppose that $X_1,...,X_{10}$ are iid $N(0,1)$. Let $\bar{X} = \frac{1}{10} \sum_{i=1}^{10} X_i$. \\
+What is $E[\bar{X}^2(\sum_{i=1}^n(X_i-\bar{X})^2)]$?
+\begin{solution} (CHECK) Note: that I am confused whether it is the $E[X]^2$ or $E[X^2]$ for $\bar{X}^2$.
+    \begin{align*}
+        Var(X) = E[X^2] - E[X]^2 = 1 \implies E[X^2] = 1\\
+        E[\bar{X}^2(\sum_{i=1}^n(X_i-\bar{X})^2)] = \bar{X}^2 E[\sum_{i=1}^n(X_i-\bar{X})^2)]\\
+        = \bar{X}^2 E[Var(X)]\\
+        = \bar{X}^2 E[1] = \bar{X}^2\\
+        = 0
+    \end{align*}
 \end{solution}
 
 \question (Final 2018): Let $X$ have the uniform distribution over the $(0,1)$ interval
