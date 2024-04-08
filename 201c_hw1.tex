@@ -133,6 +133,18 @@
     \begin{solution} (Better explanation needed?)
         If the agent does not choose the first-best effort, then $\Pi < q^*$ and the principal will choose not to buyback the firm. If the agent chooses the first-best effort, then $\Pi = q^*$ and the principal will choose to buyback the firm. The intuition here is that by selling the firm with a buyback option the principal pushes the cost of shirking onto the agent.
     \end{solution}
+    \part Show that the agent will choose effort $a^*$ and recieve utility $\bar{u}$.
+    \begin{solution}
+        First note that this problem is equivalent to the one in lecture where the principal sells the firm and can't buy it back. This is because of the unstated assumption that the agent is risk-neutral, and the stated assumption that the principal can observe effort. Since the principal can observe effort, the principal will always sell the firm at the price of the first best effort, and so choosing to exercise the buyback in the first best effort case is equivalent to not buying the firm back in the first best effort.
+    \\\\
+    Suppose $u(w) = w$ the first best action $a^*$ maximizes:
+    $$\Pi = E[q|a] - u^{-1}(c(a) + \bar{u}) = E[q|a] - c(a) -\bar{u}$$
+    The agent's wage is $w(q) = q - \Pi^*$. Under this contract the agent chooses to maximize:
+    $$U = E [u(w(q)- \Pi^* - c(a))] = E[u(q - \Pi^* - c(a))] = E[q|a] - \Pi^* - c(a)$$
+    The optimal $\Pi^*$ makes the agent's (IR) bind:
+    $$\Pi* = E[q|a^*] - c(a^*) - \bar{u}$$
+    Therefore the agent chooses first best effort $a^*$ and recieves utility $\bar{u}$.
+    \end{solution}
 \end{parts}
 
 \end{questions}
