@@ -2,9 +2,16 @@
 
 \usepackage{enumitem} % For customization of numbering
 \usepackage{amsmath} % For \text
+\usepackage{hyperref}
+
 \title{203A Question Bank}
 \author{John Friedman}
 \date{\today}
+\date{\today}
+\hypersetup{
+    colorlinks=true,   
+    urlcolor=blue
+    }
 
 % do final, midterms, and comps
 % all finals done except 2023 and 2015.
@@ -197,35 +204,55 @@ $$f_n(x)=\frac{1}{2n}1(|X|\leq n)$$
 \begin{parts}
     \part If $X_n = a + o_p(1)$, then $E[X_n] = a + o(1)$
     \begin{solution}
-
+        (ASK)
     \end{solution}
     \part If $X_n = a + o_p(1)$, then $X_n^2 = a^2 + o_p(1)$
-    \begin{solution}
+    \begin{solution} True
+        \begin{align*}
+            X_n^2 &= (a + o_p(1))^2\\
+            &= a^2 + (2a) o_p(1) + o_p(1)\\
+            &= a^2 + o_p(1)
+        \end{align*}
+        Since a constant times $o_p(1)$ is $o_p(1)$, and since $o_p(1) + o_p(1) = o_p(1)$.
     \end{solution}
     \part If $X_n \xrightarrow{d} N(0,1)$, then $E[X_n] = o(1)$
-    \begin{solution}
+    \begin{solution} (ASK)
     \end{solution}
     \part If $X_n \xrightarrow{d} N(0,1)$, then $E[X_n^2] = 1 + o(1)$
-    \begin{solution}
+    \begin{solution} (ASK)
     \end{solution}
     \part If $X_n \xrightarrow{d} N(0,1)$, $\chi_n^2 \xrightarrow{d} \chi^2(1) $
-    \begin{solution}
+    \begin{solution} True. 
+        Using the continuous mapping theorem we know that if $X_n \xrightarrow{d} X$ and $g$ is a continuous function, then $g(X_n) \xrightarrow{d} g(X)$. In this case, $g(x) = x^2$ is continuous, so $X_n^2 \xrightarrow{d} \chi^2(1)$.
+
     \end{solution}
 \end{parts}
 
 \question (Final 2019): Suppose that $Z \sim N(0,1)$, and let $X_n = Z^2 1(|Z|\geq \frac{1}{n})$. What is $lim_{n \to \infty} E[X_n]$?
 \begin{solution} 
-    Not finished. I think there's some law that let's us move the limit inside the expectation.
-    $$lim_{n \to \infty} E[X_n] = E[lim_{n \to \infty} X_n] = E[lim_{n \to \infty} Z^2 1(|Z|\geq \frac{1}{n})] = E[Z =^2] = \chi^2(1) = 1$$
+    (Check) 
+    $$\lim_{n \to \infty} E[X_n] = E[\lim_{n \to \infty} X_n] = E[\lim_{n \to \infty} Z^2 1(|Z|\geq \frac{1}{n})] = E[Z =^2] = \chi^2(1) = 1$$
 \end{solution}
 
 \question (Final 2019): Let $X_1,...,X_n$ be a random sample of size $n$ from $N(\mu,1)$, and let $\bar{X}$ denote the sample average.
 \begin{parts}
-    \part Compute $sup_{\mu < 0} lim_{n \to \infty} P(\sqrt{n}\bar{X} > 1.645)$
+    \part Compute $sup_{\mu < 0} \lim_{n \to \infty} P(\sqrt{n}\bar{X} > 1.645)$
     \begin{solution}
+        \begin{align*}
+            sup_{\mu < 0} \lim_{n \to \infty} P(\sqrt{n}\bar{X} > 1.645) &= sup_{\mu < 0} \lim_{n \to \infty} P(\sqrt{n}(\bar{X} - \mu) > 1.645 - \sqrt{n}\mu)\\
+            &= sup_{\mu < 0} \lim_{n \to \infty} P(Z > 1.645 - \sqrt{n}\mu)\\
+            &= 0
+        \end{align*}
     \end{solution}
-    \part $lim_{n \to \infty} sup_{\mu < 0} P(\sqrt{n}(\bar{X} - \mu) > 1.645)$
+    \part $\lim_{n \to \infty} sup_{\mu < 0} P(\sqrt{n}\bar{X} > 1.645)$
     \begin{solution}
+        \begin{align*}
+            &\lim_{n \to \infty} sup_{\mu < 0} P(\sqrt{n}(\bar{X}- \mu)>1.645-\sqrt{n}\mu)\\
+            =& \lim_{n \to \infty} sup_{\mu < 0} P(Z > 1.645 - \sqrt{n}\mu)\\
+            =& \lim_{n \to \infty}  P(Z > 1.645)\\
+            =& 1 - \Phi(1.645)\\
+            =& 1 - .95 = .05
+        \end{align*}
     \end{solution}
 \end{parts}
 
@@ -233,10 +260,13 @@ $$f_n(x)=\frac{1}{2n}1(|X|\leq n)$$
 $$f_n(x)=\frac{1}{4}1(n \leq |x| \leq n + 1) + \frac{1}{4}1(|x|\leq 1)$$
 \begin{parts}
     \part Let $1 < B < \infty$ be given what is $\lim_{n \to \infty} P(|X_n| \leq B)$?
-    \begin{solution}
+    \begin{solution} 
+        $$\lim_{n \to \infty} P(|X_n| \leq B) =  \int_{-1}^1 \frac{1}{4} dx = \frac{1}{2}$$
+
     \end{solution}
     \part Is $X_n = O_p(1)$?
     \begin{solution}
+        No. The definition of $O_p(1)$ is that $\lim_{n \to \infty} P(|X_n| \leq B)=1$ for all $B$. In this case, the limit is 1/2.
     \end{solution}
 \end{parts}
 
@@ -250,8 +280,13 @@ $$f_n(x)=\frac{1}{4}1(n \leq |x| \leq n + 1) + \frac{1}{4}1(|x|\leq 1)$$
     \end{solution}
 \end{parts}
 
-\question (Final 2021) Suppose that $X_1,X_2,...$ are iid such that $X_i = 0$ with probability 1/2, and $X_i = 2$ with probability 1/2. Let $\bar{X_n} = \frac{1}{n} \sum_{i=1}^n X_i$, and $F_n(x) \equiv P(\frac{1}{n}\sum{i=1}^n X_i \leq x)$. What is $lim_{n \to \infty} F(1.1)$?
+\question \href{https://drive.google.com/drive/folders/1f3rKaHYUMvUB4_RBHUFTtTVIzO9osoP4}{(Final 2021)} Suppose that $X_1,X_2,...$ are iid such that $X_i = 0$ with probability 1/2, and $X_i = 2$ with probability 1/2. Let $\bar{X}_n = \frac{1}{n} \sum_{i=1}^n X_i$, and $F_n(x) \equiv P(\frac{1}{n}\sum_{i=1}^n X_i \leq x)$. What is $lim_{n \to \infty} F(1.1)$?
 \begin{solution}
+    \begin{align*}
+        E[X_i] &= 0(1/2) + 2(1/2) = 1\\
+        \lim_{n \to \infty} F(1.1) &=  P( \lim_{n \to \infty}\frac{1}{n}\sum_{i=1}^n X_i \leq 1.1)\\
+        &= P(1 \leq 1.1) = 1
+    \end{align*}
 \end{solution}
 
 \question (Final 2021) Suppose that $X$ has the CDF equal to
@@ -260,7 +295,7 @@ Let $\Phi(.)$ denote the CDF of $N(0,1)$, and let $\Phi^-1$ denote its inverse. 
 \begin{solution}
 \end{solution}
 
-\question (Final 2021) Consider $X_1,...,X_n$ iid $N(0,1)$. Let $Y_n = 1(\bar{X_n}\geq 1)$.
+\question (Final 2021) Consider $X_1,...,X_n$ iid $N(0,1)$. Let $Y_n = 1(\bar{X}_n\geq 1)$.
 \begin{parts}
     \part What is $E[Y_n]$?
     \begin{solution}
@@ -277,9 +312,11 @@ Let $\Phi(.)$ denote the CDF of $N(0,1)$, and let $\Phi^-1$ denote its inverse. 
 \begin{parts}
     \part What is the size of the test?
     \begin{solution}
+        Size is the probability of rejecting the null when the null is true. In this case, $P(\max(X_1,...,X_4)>1|\theta=1) = 0$ since under the null hypothesis, the maximum value of $X_i$ is 1.
     \end{solution}
     \part What is the power of the test? Hint: $P(\max(X_1,...,X_4) \leq 1) = P[X_1 \leq 1, X_2 \leq 1, X_3 \leq 1, X_4 \leq 1]$
     \begin{solution}
+        The power of a test is the probability of correctly rejecting the null hypothesis. In this case, the power is $P(\max(X_1,...,X_4) > 1|\theta=2) = 1 - P(\max(X_1,...,X_4) \leq 1|\theta=2) = 1 - P[X_1 \leq 1, X_2 \leq 1, X_3 \leq 1, X_4 \leq 1 |\theta =2] = 1 - (1/2)^4 = 15/16$
     \end{solution}
 \end{parts}
 
@@ -287,24 +324,39 @@ Let $\Phi(.)$ denote the CDF of $N(0,1)$, and let $\Phi^-1$ denote its inverse. 
 \begin{solution}
 \end{solution}
 
-\question (Final 2021) Let $X_1,...,X_5$ denote a random sample from $N(\theta,1)$. We would like to test $H_0 : \theta = 5$ against $H_1 : \theta != 5$. If $X_1=2, X_2=3, X_3=4, X_4=5, X_5=6$, what is the LR statistic?
+\question (Final 2021) Let $X_1,...,X_5$ denote a random sample from $N(\theta,1)$. We would like to test $H_0 : \theta = 5$ against $H_1 : \theta \ne 5$. If $X_1=2, X_2=3, X_3=4, X_4=5, X_5=6$, what is the LR statistic?
 \begin{solution}
+    First, note that the MLE of $\theta$ is $\hat{\theta} = \bar{X} = 4$. The likelihood ratio statistic is:
+    \begin{align*} LR &= -2\ln(\frac{L(\theta_0)}{L(\theta_1)})\\
+    &= -2\ln(\frac{L(5)}{L(4)})
+    \end{align*}
+    Note that $L(\theta) = \prod_{i=1}^n f(x;\theta)$ so the above equation simplifies to:
+    \begin{align*} &\frac{e^{-.5 \sum_{i=1}^n (x_i - 5)^2}}{e^{-.5 \sum_{i=1}^n (x_i - 4)^2}}\\
+    &\frac{e^{1/2(-15)}}{e^{1/2(-10)}} \\
+    &= 5\end{align*}
 \end{solution}
 
-\question (Final 2022) Let $X_n ~ b(n,\frac{q}{n})$ for some $q>0$. Is $X_n = Op(1)$
+\question (Final 2022) Let $X_n \sim b(n,\frac{q}{n})$ for some $q>0$. Is $X_n = O_p(1)$
 \begin{solution}
+    Yes. $X_n = O_p(1)$ if $\lim_{n \to \infty} P(|X_n| \leq B) = 1$ for some finite $B$. 
 \end{solution}
 
-\question (Final 2022) Let $Y_n$ denote the maximum of a random sample of size $n$ from a uniform (0,1) distribution. What is $lim_{n \to \infty} Pr[Y_n \ leq 0.9]$?
+\question (Final 2022) Let $Y_n$ denote the maximum of a random sample of size $n$ from a uniform (0,1) distribution. What is $\lim_{n \to \infty} Pr[Y_n \leq 0.9]$?
 \begin{solution}
+    0. As $n$ approaches infinity, the maximum value of a sample from a uniform distribution approaches 1.
 \end{solution}
 
-\question (Final 2022) Let $\Lambda(t) \equiv \frac{exp(t)}{1+exp(t)}$ denote the CDF of the logistic distribution (with location and scale parameters equal to 0 and 1, although these particular details are irrelevant for this question). Let $X_n$ denote a sequence of random variables such that the CDF $F_n$ of $X_n$ is given by $F_n(x) = \lambda(nx)$. What is $\lim_{n \to \infty} E[cos(X_n)]$?
+\question (Final 2022) Let $\Lambda(t) \equiv \frac{exp(t)}{1+exp(t)}$ denote the CDF of the logistic distribution (with location and scale parameters equal to 0 and 1, although these particular details are irrelevant for this question). Let $X_n$ denote a sequence of random variables such that the CDF $F_n$ of $X_n$ is given by $F_n(x) = \Lambda(nx)$. What is $\lim_{n \to \infty} E[cos(X_n)]$?
 \begin{solution}
+
 \end{solution}
 
-\question (Final 2022) Let $X_1$ denote a random sample (of size 1) from $\mathcal{N}(0, \sigma^2)$. We have null hypothesis $H_0: \mu = 1$ and alternative hypothesis $H_1: \mu = 9$.
+\question (Final 2022) Let $X_1$ denote a random sample (of size 1) from $\mathcal{N}(0, \sigma^2)$. We have null hypothesis $H_0: \mu = 1$ and alternative hypothesis $H_1: \mu = 9$. You decided to use the Neyman-Pearson test of size 5\%. If you observe $X_1$ = 2.5, do you reject $H_0$ or
+not? Your answer should be either Reject or Do not reject.
 \begin{solution} 
+    \begin{align*}
+        TODO
+    \end{align*}
 \end{solution}
 
 \question (Final 2022) Suppose that $X_n$ is a sequence of random variables such that $\sqrt{n}(X_n-1)$ converges in distribution to $N(0,1)$. By the multivariate delta method, we can see that
@@ -334,10 +386,10 @@ for some $\mu_1, \mu_2, \sigma_{1,1}, \sigma_{1,2}, \sigma_{2,1}, \sigma_{2,2}$,
 \begin{solution}
 \end{solution}
 
-\question (Final 2022) Let $X$ denote a random sample (of size 1) from a distribution with the PDF equal to $\lambda exp (-\lambda x)1(x>0)$. We would like to test $H_0 : \lambda = 1$ against $H_1 : \lambda != 1$. Suppose that $X=e$
+\question \href{https://drive.google.com/drive/folders/1YOs26vcgyGiRhLpL4rkDJ6rVDJQ1RU2v}{(Final 2022)} Let $X$ denote a random sample (of size 1) from a distribution with the PDF equal to $\lambda \exp (-\lambda x)1(x>0)$. We would like to test $H_0 : \lambda = 1$ against $H_1 : \lambda \ne 1$. Suppose that $X=e$
 \begin{parts}
     \part What is the value of the LR statistic?
-    \begin{solution}
+    \begin{solution} 
     \end{solution}
     \part Do you reject or accept the null at the 5\% significance level? You maye use the approximation $e = 2.7183$
     \begin{solution}
@@ -351,10 +403,12 @@ for some $\mu_1, \mu_2, \sigma_{1,1}, \sigma_{1,2}, \sigma_{2,1}, \sigma_{2,2}$,
 \question (Final 2015) Suppose that $X_n$ is a sequence of random variables such that $\sqrt{n}(X_n-3) \xrightarrow{d} N(0,1)$
 \begin{parts}
     \part What is the asymptotic distribution of $\sqrt{n}(X_n^2-9)$?
-    \begin{solution}
+    \begin{solution} \href{https://drive.google.com/drive/folders/1ao6GKKacifVeN5z_LPwcnW3aReg_-fF0}{(Verified)}
+        By the delta method $\sqrt{n}(g(X_n) - g(a)) \xrightarrow{d} N(0, g'(a)^2 \sigma^2)$. In this case, $g(x) = x^2$ and $a = 3$. So $g'(a) = 6$ and $\sigma^2 = 1$. So the answer is $N(0, 36)$
     \end{solution}
-    \part What is the asymptotic distribution of $(\sqrt{n}(X_n^2-3))^2$?
-    \begin{solution}
+    \part What is the asymptotic distribution of $(\sqrt{n}(X_n-3))^2$?
+    \begin{solution} \href{https://drive.google.com/drive/folders/1ao6GKKacifVeN5z_LPwcnW3aReg_-fF0}{(Verified)}
+        A standard normal distribution squared is a chi-squared distribution. So the answer is $\chi^2(1)$
     \end{solution}
 \end{parts}
 

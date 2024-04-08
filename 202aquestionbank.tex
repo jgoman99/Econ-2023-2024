@@ -31,8 +31,17 @@
     $$z_{t+1} = \rho z_t + \epsilon_{t+1}, \epsilon_{t+1} \text{ is iid random variable with mean 0}$$
     \begin{parts}
         \part Carefully formulate the dynamic program that would be solved by a social planner that chooses capital, labor, and consumption sequences to maximize a social welfare function that weights all agent's utilities equally. 
+        \begin{solution} (CHECK)
+            The dynamic programming problem is:
+            \begin{align*}
+                V(k,z) &= \max_{c_1,c_2,c_3, n_1, n_2, k'}  n_1 \ln{(c_1 + A \ln(1-h_1))} + n_2 \ln{(c_2 + A \ln(1-h_1- h_2))} \\
+                &+ (1-n_1 -n_2) \ln(c_3) + \beta E[V(k',z'|z)]\\
+                &s.t.\ c_1 + c_2 + c_3 + k' - (1-\delta) k = e^{z}(h_1 k^\theta (n_{1}+n_{2})^{(1-\theta)} + h_2 k^\theta n_{2}^{(1-\theta)})\\
+                &\text{and } z_{t+1} = \rho z_t + \epsilon_{t+1}, \epsilon_{t+1} \text{ is iid random variable with mean 0}
+            \end{align*}
+        \end{solution}
         \part Prove that in equilibrium the fraction of employed households that work overtime is constant even when the economy is not in a steady state
-        \part Suppose that there are moving costs that must be incurred when the number of straight tiem workers is changed, $m_t = \frac{d}{2}(n_{1t} - n_{1t-1})^2$. The output available for consumption and investment is, in this case $y_t - m_t$.  Repeat A for this case and show that the statement in part B no longer holds.
+        \part Suppose that there are moving costs that must be incurred when the number of straight time workers is changed, $m_t = \frac{d}{2}(n_{1t} - n_{1t-1})^2$. The output available for consumption and investment is, in this case $y_t - m_t$.  Repeat A for this case and show that the statement in part B no longer holds.
         \part Define a recursive competitive equilibrium for the model of part (A) where agents trade employment lotteries. Be sure to completely specify the problem solved by households and firms in your decentralized economy.
         \part Derive an expression for the straight time hourly wage rate and the overtime wage rate as a function of the prices determined in part D. Next, derive an expression for the overtime wage premium, which is the ratio of the hourly overtime wage rate to the hourly straight-time wage rate in terms of the parameters of the model. Under what conditions will the overtime premium be greater than one?
     \end{parts}

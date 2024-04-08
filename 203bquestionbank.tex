@@ -26,8 +26,21 @@
         In what follows please be careful that we have assumed that the covariance between $\epsilon$ and $X=0$, but not necessarily that $E[\epsilon X]=0$.
         \begin{parts}
             \part Does model (1) imply that $E[\epsilon X]=0$? Prove your answer.
+            \begin{solution}
+                No. Taking the expectation of both sides of the moment restriction, we get:
+                \begin{align*}
+                    E[(\epsilon - E[\epsilon])(X-E[X])] &= 0 \\
+                    E[\epsilon X - \epsilon E[X] - E[\epsilon]X + E[\epsilon]E[X]] &= 0 \\
+                    E[\epsilon X] - E[\epsilon E[X]] - E[E[\epsilon]X] + E[E[\epsilon]E[X]] &= 0 \\
+                    E[\epsilon X] - E[\epsilon]E[X] - E[\epsilon]E[X] + E[\epsilon]E[X] &= 0 \\
+                    E[\epsilon X] - E[\epsilon]E[X] &= 0
+                \end{align*}
+                Thus, we see that $E[\epsilon X] = E[\epsilon]E[X]$, which is not necessarily equal to zero.
+            \end{solution}
             \part Show that under our assumptions we must have the restriction:
             $$E[\{(Y_i-E[Y]) - (X_i-E[X])'\beta_0\}(X-E[X])]=0$$
+            \begin{solution}
+            \end{solution}
             \part Can the moment restriction in part (b) identify $\beta_0$? if $X_i$ contains a constant. Why or why not? Justify your answer.
             \part Let $\bar{Y}_n \equiv \frac{1}{n}\sum_{i=1}^n(Y_i)$ and $\bar{X}_n \equiv \frac{1}{n}\sum_{i=1}^n(X_i)$, and define the estimator:
             $$\hat{\beta}_n = \arg \min_{b \in R^d} \frac{1}{n} \sum_{i=1}^n(Y_i-\bar{Y}_n - (X_i - \bar{X}_n)'b)^2$$
@@ -39,7 +52,7 @@
 
 
         \question \href{https://economics.ucla.edu/wp-content/uploads/2023/09/comp-fall-2023-part1-2-3_c.pdf#page=6}{(Comp Fall 2023 B2)}
-        Let $Z \in {0,1}$ be an instrument, $D in {0,1}$ be a treatment, and $Y$ an observable outcome. Throughout, assume a LATE framework in which there are two potential outcome $(Y(0), Y(1))$, two potential treatment assignments $(D(0), D(1))$, and assume that the observable $D$ and $Y$ are determined according to:
+        Let $Z \in {0,1}$ be an instrument, $D \in {0,1}$ be a treatment, and $Y$ an observable outcome. Throughout, assume a LATE framework in which there are two potential outcome $(Y(0), Y(1))$, two potential treatment assignments $(D(0), D(1))$, and assume that the observable $D$ and $Y$ are determined according to:
         $$D = D(0) + Z(D(1)-D(0))$$
         i.e. we observe the potential outcome corresponding to the actual treatment status, and the potential treatment assigment corresponding to the realization of Z. Further, assume that $Y(0), Y(1), D(0), D(1)$ are all independent of $Z$. The monotonocity condition that:
         $$P(D(1)\geq D(0))=1$$
