@@ -40,10 +40,10 @@
      \begin{solution}
         Since we have already solved for wages, we can use the formula $\lambda_{ij} = \frac{X_{ij}}{Y_j}$ To solve for bilateral trade shares we use the code attached in the appendix. We get:
         $$\lambda = \begin{pmatrix}
-            1.1649 & 0.2164 & 0.1892 & 0.1682\\
-            0.2625 & 0.3989 & 0.1228 & 0.1105\\
-            0.2701 & 0.1214 & 0.3637 & 0.1568\\
-            0.3025 & 0.136  & 0.1415 & 0.3573\\
+        0.5825 & 0.248 & 0.2315 & 0.2122 \\
+        0.1313 & 0.4571 & 0.1502 & 0.1393 \\
+        0.135 & 0.1391 & 0.4451 & 0.1978 \\
+        0.1513 & 0.1558 & 0.1731 & 0.4507 \\
         \end{pmatrix}
         $$
      \end{solution}
@@ -52,7 +52,7 @@
                 \item What's the change in welfare for country 2 from the productivity shock?
                 \begin{solution}
                     The formula for welfare is $W_i = \lambda{ii}^{\frac{1}{1-\sigma}} a_{ii}^{\frac{1}{\sigma - 1}} A_i$ So using our code:
-                    $$W_i^{new}/W_i^{old} = \frac{3.1484}{1.3435} = 2.3434$$
+                    $$W_i^{new}/W_i^{old} = \frac{2.2863}{1.2551 } = 1.82$$
                 \end{solution}
                 \item What’s the change in welfare for country 2 from the productivity shock under
                 autarky ? (hint: you simply need to use an equation from the lecture and no need
@@ -67,11 +67,9 @@
                 \end{solution}
                 \item Provide intuition for the difference in your answers in (a) and (b)
                 \begin{solution}
-                    In part (a) and (b) we have shown that the increase in welfare from a individual country's productivity shock is greater in an open economy than under autarky for that country.\\\\
-
-                    Under this model's parameters, as country 2 becomes more productive, it's income effects dominates its substition effects, and so it's increase in welfare is higher than in autarky. This is due to a strong taste shock preference for its own goods.\\\\
-
-                    Note that if the country preferred other countries goods to its own, the likely result would be for country 2 to trade more with the world, which would reduce its relative price and import share. e.g. terms of trade would become more unfavorable for country 2.
+                    In part (a) and (b), we showed that the increase in welfare from a home productivity shock is bigger under autarky than in an open economy for the affected country.
+                    \\
+                    The intuition for this is that in an open economy, as country 2 becomes more productive it increases the supply of goods to the rest of the world, which pushes down its relative price and import share. e.g. Country 2's terms of trade decrease. In autarky, the country fully absorbs the benefits of its productivity shock, as it is not trading with the rest of the world.
                 \end{solution}
             \end{enumerate}
         \part     $$ T = \begin{pmatrix}
@@ -84,16 +82,16 @@
           \begin{enumerate}
             \item Solve for equilibrium wages in countries 2, 3 and 4 relative to country 1.
             \begin{solution} 
-                $\frac{w_2}{w_1} = 1.2337 \frac{w_3}{w_1} =1.2356 \frac{w_4}{w_1} = 1.2506$
+                $\frac{w_2}{w_1} = 2.0182 \frac{w_3}{w_1} =1.2255 \frac{w_4}{w_1} = 1.239$
                 
             \end{solution}
             \item Solve for bilateral trade shares, $\lambda_{ij}$ for $i = 1, 2, 3, 4$ and $j = 1, 2, 3, 4$
             \begin{solution}
                 $$\lambda = \begin{pmatrix}
-                    1.0123 & 0.2523 & 0.1935 & 0.1971\\
-                    0.3325 & 0.3315 & 0.1271 & 0.1295\\
-                    0.3316 & 0.1148 & 0.365 & 0.11\\
-                    0.3236 & 0.112  & 0.1237 & 0.363\\
+                0.4652 & 0.2578 & 0.2197 & 0.226 \\
+                0.2284 & 0.5064 & 0.2158 & 0.2219 \\
+                0.1549 & 0.1192 & 0.4213 & 0.1282 \\
+                0.1515 & 0.1166 & 0.1431 & 0.4239 \\
                 \end{pmatrix}
                 $$
               \end{solution}

@@ -19,6 +19,7 @@
 \maketitle
 
 \begin{questions}
+    % is c) for that question only? We have calculated everything else based on that assumption.
     \question \href{https://drive.google.com/file/d/1Oc2RsQ-J3MtMMVoAwpuAdPodoOrIJZmm/view}{(Final 2016 Q1)}
     Consider an economy population by a continuum of identical households with the following preferences:
     $$\sum_{t=0}^{\infty} \beta^t \ln(c_t + A \ln l_t), 0 < \beta < 1, $$
@@ -36,12 +37,26 @@
             \begin{align*}
                 V(k,z) &= \max_{c_1,c_2,c_3, n_1, n_2, k'}  n_1 \ln{(c_1 + A \ln(1-h_1))} + n_2 \ln{(c_2 + A \ln(1-h_1- h_2))} \\
                 &+ (1-n_1 -n_2) \ln(c_3) + \beta E[V(k',z'|z)]\\
-                &s.t.\ c_1 + c_2 + c_3 + k' - (1-\delta) k = e^{z}(h_1 k^\theta (n_{1}+n_{2})^{(1-\theta)} + h_2 k^\theta n_{2}^{(1-\theta)})\\
+                &s.t.\ n_1 c_1 + n_2 c_2 + (1-n_1-n_2) c_3 + k' - (1-\delta) k = e^{z}(h_1 k^\theta (n_{1}+n_{2})^{(1-\theta)} + h_2 k^\theta n_{2}^{(1-\theta)})\\
+                &\text{and } z_{t+1} = \rho z_t + \epsilon_{t+1}, \epsilon_{t+1} \text{ is iid random variable with mean 0}
+            \end{align*}
+            We can simplify the problem further by proving seperability of consumption. Taking the FOCs wrt to consumption:
+            \begin{align*}
+                [c_1]: \frac{n_1}{c_1} - \lambda = 0\\
+                [c_2]: \frac{n_2}{c_2} - \lambda = 0\\
+                [c_3]: \frac{1-n_1-n_2}{c_3} - \lambda = 0
+            \end{align*}
+            We can see from the FOCs that the consumption is seperable. Therefore, we can simplify the dynamic programming problem to:
+            \begin{align*}
+                V(k,z) &= \max_{c, n_1, n_2, k'}  \ln(c) +  n_1 \ln{( A \ln(1-h_1))} + n_2 \ln{(A \ln(1-h_1- h_2))} \\
+                &+ \beta E[V(k',z'|z)]\\
+                &s.t.\ c + k' - (1-\delta) k = e^{z}(h_1 k^\theta (n_{1}+n_{2})^{(1-\theta)} + h_2 k^\theta n_{2}^{(1-\theta)})\\
                 &\text{and } z_{t+1} = \rho z_t + \epsilon_{t+1}, \epsilon_{t+1} \text{ is iid random variable with mean 0}
             \end{align*}
         \end{solution}
         \part Prove that in equilibrium the fraction of employed households that work overtime is constant even when the economy is not in a steady state
         \part Suppose that there are moving costs that must be incurred when the number of straight time workers is changed, $m_t = \frac{d}{2}(n_{1t} - n_{1t-1})^2$. The output available for consumption and investment is, in this case $y_t - m_t$.  Repeat A for this case and show that the statement in part B no longer holds.
+        % note that n_1{t=0} is state variable. n1 determines n2, and we cant use n2 as state variable due to moing costs
         \part Define a recursive competitive equilibrium for the model of part (A) where agents trade employment lotteries. Be sure to completely specify the problem solved by households and firms in your decentralized economy.
         \part Derive an expression for the straight time hourly wage rate and the overtime wage rate as a function of the prices determined in part D. Next, derive an expression for the overtime wage premium, which is the ratio of the hourly overtime wage rate to the hourly straight-time wage rate in terms of the parameters of the model. Under what conditions will the overtime premium be greater than one?
     \end{parts}
@@ -56,8 +71,11 @@
     Assume that an infinitely lived representative household values nondurable consumption, durables and leisure according to the period utility function,
     $$\alpha \log C_t + (1-\alpha) \log D_t + \phi log (1-H_t)$$
     Households maximize the sum of utility at each date with future utility discounted at the rate $0 < \beta < 1$. 
-    \begin{parts}
+    \begin{parts} %TODO, check if mobility of capital effects anything, e.g. can we use growth rate of sector 1 capital and 2, or just groth rate of capital
         \part Find a change of variables so that the resource constraints in terms of the transformed variables are stationary. That is, they do not depend on calendar time (t)
+        \begin{solution}
+            First, we assume that hours worked are constant. (TODO)
+        \end{solution}
         \part Formulate a stationary dynamic programming problem solved by a social planner who puts equal weight on all individuals
         \part Derive expressions that determine how the planner allocates a given amount of capital and labor across the two sectors. Prove that the same fraction of each input is allocated to a given sector in period $t$. That is, show that $h_{1,t} = \phi_t H_t$ and $K_{1,t} = \theta_t K_t$. Obviously the remainder, a fraction $1-\phi_t$, is allocated to sector 2.
         \part Show that the result obtained in part C can be used to aggregate the sectoral resource constraints into one resource constraint (derive it).
@@ -66,14 +84,35 @@
     \end{parts}
 \question \href{https://drive.google.com/file/d/1Oc2RsQ-J3MtMMVoAwpuAdPodoOrIJZmm/view}{(Final 2016 Q3)}
 \begin{parts}
-    \part Suppose that $z_t$ can take on one of three possible values, {$a_1,a_2,a_3$}. Suppose that the stochastic process for the shock $z_t$ is a Markov chain with transition matrix P.
+    \part Suppose that $z_t$ can take on one of three possible values, {$a_1,a_2,a_3$}. Suppose that the stochastic process for the shock $z_t$ is a Markov chain with transition matrix P.  (check all)
     \begin{enumerate}
         \item Provide an example of a transtion matrix P such that there is a unique invariant distribution and one transient state. Describe how to find the invariant distribution.
         \begin{solution}
-            
+            Remember that an item in the transition matrix $P$, $P_{ij}$ is the probability of moving from state $i$ to state $j$. A transient state is a state where it is possible to leave and never return. An invariant distribution is a distribution that is unchanged by the transition matrix. Such a matrix is:
+            $$P = \begin{bmatrix}
+                0 & .5 & .5\\
+                0 & .5 & .5\\
+                0 & .5 & .5
+            \end{bmatrix}$$
         \end{solution}
         \item Provide an example of a transition matrix P such that there are three ergodic sets. Characterize the invariant distribution(s) in this case. Given an initial distribution, $\pi_0$, what will be the limit distribution?
+        \begin{solution}
+            An ergodic set is a set of states, which once reached, will never leave. An example of such a matrix is:
+            $$P = \begin{bmatrix}
+                0 & 1 & 0\\
+                0 & 0 & 1\\
+                1 & 0 & 0
+            \end{bmatrix}$$
+            TODO: given an initial distribution what will be the limit distribution:
+        \end{solution}
         \item Provide an example of a transition matrix P such that the invariant distribution is unique and places equal probability on all three states.
+        \begin{solution} (CHECK, better explanation)
+            $$P = \begin{bmatrix}
+                q & \frac{1-q}{2} & \frac{1-q}{2}\\
+                \frac{1-q}{2} & \frac{1-q}{2} & 1\\
+                \frac{1-q}{2} & \frac{1-q}{2} & q
+            \end{bmatrix}$$
+        \end{solution}
         \item Consider now a 2-state Markov chain. Suppose you are told that the unconditional mean of z is zero, the unconditional variance of z is equal to $\sigma^2$, and the first order autocovariance of z is equal to b. what values for $\{a_1,a_2\}$ and the transition matrix P would be consistent with these restrictions?
         \item Suppose we solve a standard stochastic growth where the capital stock must lie on a grid and the transition matrix is your answer to part a of this question. That is, $k_t \in \{k_1,k_2,...,k_M\}$ for all $t$ and we know the optimal law of motion $K' = G(z,K)$. Describe how this can be used to solve for the invariant distribution for this model. How can one determine if the invariant distribution is unique?
     \end{enumerate}

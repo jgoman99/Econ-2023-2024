@@ -145,8 +145,28 @@
     $$\Pi* = E[q|a^*] - c(a^*) - \bar{u}$$
     Therefore the agent chooses first best effort $a^*$ and recieves utility $\bar{u}$.
     \end{solution}
+
+
 \end{parts}
 
+\question The following normal-linear model is regularly used in applied models. Given action $a \in R$, output is $q=a+x$, where $x \sim N(0,\sigma^2)$. The cost of effort is $c(a)$ is increasing and convex. The agent's utility equals $u(w(q) - c(a))$, while the principal's is $q-w(q)$. Suppose the agent's outside option is $u(0)$.
+\\\\
+We make two large assumptions. First, the principal uses a linear contract:
+$$w(q) = \alpha + \beta q$$
+Second, the agent's utility is CARA, i.e. $u(w) = -e^{-w}$.
+
+\begin{parts}
+\part Suppose that $w \sim N(\mu, \sigma^2)$. Denote the certainty equivalent of $w$ by $\bar{w}$, where:
+$$u(\bar{w}) = E[u(w)]$$
+Show that $\bar{w} = \mu - \frac{\sigma^2}{2}$.
+\part Suppose effort is unobservable. The principal's problem is:
+\begin{align*}
+    \max_{w(q), \alpha} E[q-w(q)]\\
+    s.t. \ E[u(w(q) - c(a))| a] \geq u(0)\\
+    a \in argmax_{a' \in R} E[(u(w(q))-c(a'))|a']
+\end{align*}
+Use the first order approach to implicitly characterize the optimal contract. $(\alpha, \beta, a)$ Hint: write utilities in terms of their certainty equivalent.
+\end{parts}
 \end{questions}
     
 \end{document}

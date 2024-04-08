@@ -16,14 +16,28 @@ tau = np.array([[1, 1.1, 1.2, 1.3],
 
 L = np.array([2, 1, 1, 1])
 A = np.ones(S) * 0.6
+A[1] = 1.2
 
-# 2nd part parameters
+#2nd part parameters
 tau = np.array([[1 , 1 , 1.2 , 1.2],
             [1 , 1 , 1.2 , 1.2],
             [1 , 1.2 , 1 , 1.3],
             [1 , 1.2 , 1.2 , 1]])
 
+# #paramters to check against last years
+# S = 4
+# sigma = 4
+# L = np.ones(S)
+# A = np.ones(S)*.6
+# A[0] = 1
+# a = np.ones([S,S])
+# tau = np.array([[1, 1.1, 1.2, 1.1],
+#         [1.4, 1, 1.3, 1.4],
+#         [1.2, 1.3, 1, 1.1],
+#         [1.1, 1.3, 1.1, 1]])
 
+# # last years productivity shock
+# A[1] = 1.2
 
 # Calculate the absolute trade
 def calculate_trade(w):
@@ -39,21 +53,30 @@ def calculate_trade(w):
       trade[i,j] = top/bottom
   return(trade)
 
-def calculate_trade_shares(w):
-  S = w.shape[0]
-  trade_matrix = calculate_trade(w)
-  trade_shares = np.zeros([S,S])
-  for i in range(S):
-    for j in range(S):
-      trade_shares[i,j] = trade_matrix[i,j] / w[j]*L[j]
-  return trade_shares
+# def calculate_trade_shares(w):
+#   S = w.shape[0]
+#   trade_matrix = calculate_trade(w)
+#   trade_shares = np.zeros([S,S])
+#   for i in range(S):
+#     for j in range(S):
+#       trade_shares[i,j] = trade_matrix[i,j] / w[j]*L[j]
+#   return trade_shares
+
+# def calculate_lambda(w):
+#     S = w.shape[0]
+#     trade_shares = calculate_trade_shares(w)
+#     lambda_matrix = np.zeros([S,S])
+#     for i in range(S):
+#         for j in range(S):
+#             lambda_matrix[i,j] = trade_shares[i,j] / (w[j]*L[j])
+#     return lambda_matrix
 
 def calculate_welfare(w):
   S = w.shape[0]
-  trade_matrix = calculate_trade_shares(w)
+  trade_matrix = calculate_trade(w)
   welfare = np.zeros(S)
   for i in range(S):
-    welfare[i] = (trade_matrix[i,i])**(1/(1-sigma)) * (a[i, i])**(1/(sigma-1)) * A[i]
+    welfare[i] = trade_matrix[i,i]**(1/(1-sigma)) * a[i, i]**(1/(sigma-1)) * A[i]
   return welfare
 
 def excess_demand(w): #a, tau, w, L, sigma, A):
@@ -127,6 +150,6 @@ normalized_wages = equilibrium_wages/(equilibrium_wages[0])
 print("Equilibrium wages: ", np.around(normalized_wages,4))
 print("Excess demand: ", excess_demand(normalized_wages))
 
-print("Bilateral Trade Shares: \n", np.around(calculate_trade_shares(normalized_wages),4))
+print("Bilateral Trade Shares: \n", np.around(calculate_trade(normalized_wages),4))
 
 print("Welfare: ", np.around(calculate_welfare(normalized_wages),4))
