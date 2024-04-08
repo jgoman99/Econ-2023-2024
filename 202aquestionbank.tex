@@ -13,14 +13,49 @@
     urlcolor=blue
     }
 
-% do all finals, and comps
+% Switch to doing hansen comps, then if need be do old finals
 
 \begin{document}
 \maketitle
 
 \begin{questions}
+    \question \href{https://drive.google.com/file/d/1Oc2RsQ-J3MtMMVoAwpuAdPodoOrIJZmm/view}{(Final 2016 Q1)}
+    Consider an economy population by a continuum of identical households with the following preferences:
+    $$\sum_{t=0}^{\infty} \beta^t \ln(c_t + A \ln l_t), 0 < \beta < 1, $$
+    where $c_t$ is consumption and $l_t$ is leisure at date $t$. Households are endowed with one unit of time each period that can be used for labor or leisure. In addition, each household is endowed with $k_0$ units of capital in period 0 and can accumulate capital according to the law of motion:
+    $$k_{t+1} = (1-\delta) k_t + i_t, 0 < \delta < 1$$
+    where $i_t$ is investment at date $t$.\\
+    The households sell labor to a competitive firm and can work either a straight time shift of length $h_1$, a straight time plus overtime shift of length $h_1+h_2$, or not at all (thus, labor is an indivisible commodity). The technology for combining capital with straight time and overtime labor to produce output $(y_t)$ is given by:
+    $$y_t = e^{z_t}(h_1 k_t^\theta (n_{1t}+n_{2t})^{(1-\theta)} + h_2 k_t^\theta n_{2t}^{(1-\theta)}), 0 < \theta < 1$$
+    where $n_{1t}$ is the number of households working only straight time and $n_{2t}$ is the number of households working both straight time and overtime. Output can be used for current consumption or investment. The technology shock, $z_t$ evolves according to:
+    $$z_{t+1} = \rho z_t + \epsilon_{t+1}, \epsilon_{t+1} \text{ is iid random variable with mean 0}$$
+    \begin{parts}
+        \part Carefully formulate the dynamic program that would be solved by a social planner that chooses capital, labor, and consumption sequences to maximize a social welfare function that weights all agent's utilities equally. 
+        \part Prove that in equilibrium the fraction of employed households that work overtime is constant even when the economy is not in a steady state
+        \part Suppose that there are moving costs that must be incurred when the number of straight tiem workers is changed, $m_t = \frac{d}{2}(n_{1t} - n_{1t-1})^2$. The output available for consumption and investment is, in this case $y_t - m_t$.  Repeat A for this case and show that the statement in part B no longer holds.
+        \part Define a recursive competitive equilibrium for the model of part (A) where agents trade employment lotteries. Be sure to completely specify the problem solved by households and firms in your decentralized economy.
+        \part Derive an expression for the straight time hourly wage rate and the overtime wage rate as a function of the prices determined in part D. Next, derive an expression for the overtime wage premium, which is the ratio of the hourly overtime wage rate to the hourly straight-time wage rate in terms of the parameters of the model. Under what conditions will the overtime premium be greater than one?
+    \end{parts}
 
-\question \href{https://drive.google.com/file/d/1Oc2RsQ-J3MtMMVoAwpuAdPodoOrIJZmm/view}{(Final 2016)}
+    \question \href{https://drive.google.com/file/d/1Oc2RsQ-J3MtMMVoAwpuAdPodoOrIJZmm/view}{(Final 2016 Q2)}
+    Consider a two-sector economy with technological progress and population groqth. The first sector combines capital and labor to produce a consumption good according to the resource constraint:
+    $$C_t = \gamma_1^t K_{1,t}^\theta H_{1,t}^{1-\theta}, \gamma > 1$$
+    The second sector uses capital and labor to produce new capital and a consumer durable good. In particular,
+    $$\frac{N_{t+1}}{N_t}(D_{t+1} + K_{t+1}) = \gamma_2^t K_{2,t}^\theta H_{2,t}^{1-\theta}+ (1 - \delta_k) K_t + (1-\delta_D)D_t, \gamma_2 > 1$$
+    Here all variables are in per capita units. $K_t = K_{1,t} + K_{2,t}$ is physical capital, $D_t$ is the stock of consumer durables, and $H_1 = H_{1,t} + H_{2,t}$ is hours worked. Assume that the population $N_t$ evolves according to the law of motion $N_{t+1} = \eta N_t, \eta > 1$.  Note that productivity grows in the two sectors but at potentially different rates.
+    \\
+    Assume that an infinitely lived representative household values nondurable consumption, durables and leisure according to the period utility function,
+    $$\alpha \log C_t + (1-\alpha) \log D_t + \phi log (1-H_t)$$
+    Households maximize the sum of utility at each date with future utility discounted at the rate $0 < \beta < 1$. 
+    \begin{parts}
+        \part Find a change of variables so that the resource constraints in terms of the transformed variables are stationary. That is, they do not depend on calendar time (t)
+        \part Formulate a stationary dynamic programming problem solved by a social planner who puts equal weight on all individuals
+        \part Derive expressions that determine how the planner allocates a given amount of capital and labor across the two sectors. Prove that the same fraction of each input is allocated to a given sector in period $t$. That is, show that $h_{1,t} = \phi_t H_t$ and $K_{1,t} = \theta_t K_t$. Obviously the remainder, a fraction $1-\phi_t$, is allocated to sector 2.
+        \part Show that the result obtained in part C can be used to aggregate the sectoral resource constraints into one resource constraint (derive it).
+        \part Characterize the balanced growth path for this economy
+        \part Explain how the equations you obtained in part C can be used to calibrate the parameters $\alpha, \beta, \phi, \delta_K, \delta_D$. Be explicit about what sorts of data would be required and what statistics you would need to calculate from the data (to save time you don't need to go into detail about HOW you would calculate these statistics).
+    \end{parts}
+\question \href{https://drive.google.com/file/d/1Oc2RsQ-J3MtMMVoAwpuAdPodoOrIJZmm/view}{(Final 2016 Q3)}
 \begin{parts}
     \part Suppose that $z_t$ can take on one of three possible values, {$a_1,a_2,a_3$}. Suppose that the stochastic process for the shock $z_t$ is a Markov chain with transition matrix P.
     \begin{enumerate}
@@ -28,6 +63,10 @@
         \begin{solution}
             
         \end{solution}
+        \item Provide an example of a transition matrix P such that there are three ergodic sets. Characterize the invariant distribution(s) in this case. Given an initial distribution, $\pi_0$, what will be the limit distribution?
+        \item Provide an example of a transition matrix P such that the invariant distribution is unique and places equal probability on all three states.
+        \item Consider now a 2-state Markov chain. Suppose you are told that the unconditional mean of z is zero, the unconditional variance of z is equal to $\sigma^2$, and the first order autocovariance of z is equal to b. what values for $\{a_1,a_2\}$ and the transition matrix P would be consistent with these restrictions?
+        \item Suppose we solve a standard stochastic growth where the capital stock must lie on a grid and the transition matrix is your answer to part a of this question. That is, $k_t \in \{k_1,k_2,...,k_M\}$ for all $t$ and we know the optimal law of motion $K' = G(z,K)$. Describe how this can be used to solve for the invariant distribution for this model. How can one determine if the invariant distribution is unique?
     \end{enumerate}
 \end{parts}
 
