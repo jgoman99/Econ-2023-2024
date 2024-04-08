@@ -15,7 +15,6 @@
 
 \begin{questions}
     \question Two firms ("agents") would like to invest in a city (e.g., real estate investments). The Government ("principal") is willing to let the agents invest in exchange for payments. Formally, the principal offers each agent $i \in \{1, 2\}$ a contract $\langle x_i, t_i \rangle$ which describes the investment level $x_i \geq 0$ and payment $t_i \geq 0$. The contracts are observed by both agents before they choose to accept.
-
     The principal obtains revenue $\pi = t_1 + t_2$. If agent $i$ accepts the contract, he makes utility $u_i = v_i - t_i$, where $v_i = x_i - \frac{1}{2} x_i^2 + \alpha x_j$. If agent $i$ rejects the contract, $\langle x_i, t_i \rangle = \langle 0, 0 \rangle$ and so he makes utility $u_i = v_i = \alpha x_j$. Note that $\alpha > 0$ means the agents have positive externalities on each other, while $\alpha < 0$ means the agents have negative externalities on each other. We assume that $\alpha > -1$.
     \begin{parts}
         \part What is the Pareto efficient investment level?
@@ -81,6 +80,61 @@
         Under bilateral contracts, the principal can always extract the individual agent's maximized production $x_i - \frac{1}{2}x_i^2$ regardless of $\alpha$. This is great for the principal if $\alpha < 0$ as he can extract more than he would in the multilateral case, however in the case of $\alpha \geq 0$, the principal can't extract the whole surplus as in the multilateral case, as if he were to take more than $x_i-\frac{1}{2}x_i^2$, the agent would reject the contract and recieve $\alpha x_j$.
     \end{solution}
 \end{parts}
+
+\question And agent chooses effort $a \in A$ with increasing, convex cost $c(a)$. Suppose output $q \sim f(q|a)$ increases in effort in the sense of first-order stochastic dominance. The agent is risk averse with utility $u(w(q))-c(a)$, where $w(q)$ is their final compensation. The principal is risk-neutral with profits $q-w$. The agent has outside option $\bar{u}$, while the firm has all the bargaining power.
+\begin{parts}
+    \part Supose the principal can contract on the agent's effort. Characterize the first-best effort $\alpha^*$, expected output $q^*$, and expected profit, $\Pi^*$.
+    \begin{solution} (Not sure if I need to show things bind)
+        $a$ is contractible, so there is no moral hazard. The principal chooses the effort $a$ and the wage $w(q)$ to solve:
+        \begin{align*} 
+            \max_{a,w(q)} &E[q-w(q)|a]\\
+            &s.t. \  (IR) \ E[u(w(q) - c(a))|a] \geq \bar{u}
+        \end{align*}
+        The "IR" stands for individual rationality. It means the agent is willing to sign the contract.
+        \\\\
+        We show that the (IR) binds in the optimal contract.
+        \begin{itemize}
+            \item If (IR) is slack, then we can lower the wage in each state. E.g. given contract $w(q)$ define a new contract $\tilde{w}(q) = w(q) - \epsilon$. 
+            \item We will actually want a slightly stronger statement: That the Lagrange multiplier on the constraints is strictly positive
+            \begin{itemize}
+                \item This follows since a reduction in $\bar{u}$ allows the firm to lower wages and strictly increase profits.
+            \end{itemize}
+            Therefore the principal maximizes the Lagrangian:
+            \begin{align*}
+                \L = &E[q-w(q)|a] + \lambda (E[u(w(q) - c(a)  - \bar{u})|a])\\
+                &= \int_{q} [q - w(q) + \lambda(q) + \lambda u (w(q))] d F[q|a] - \lambda c(a) - \lambda \bar{u}
+            \end{align*}
+            We show that the optimal contract fully insures the agent:
+            \begin{itemize}
+                \item What wages should the principal use? The above equation is additive over the states so we can maximize pointwise:
+                $$\max_{w} -w +\lambda u(w)$$
+                So the optimal choice of wage is independent of output. This objective is also concave.
+                \item Using differentiation we find the principal sets $w(q) = w^* \ \forall q$ where $w^*$ is given by:
+                $$\frac{1}{u'(w^*)} = \lambda$$
+                \item $\lambda$ is the cost of delivering a util. Therefore the above equation shows that the cost of delivering a util is equal across all states and is given by $\lambda$.
+                \end{itemize}
+                We now find the optimal effort level.
+                \begin{itemize}
+                    \item the binding (IR) constraints show that:
+                    $$u(w^*) -c(a) = \bar{u}$$
+                    \item Therefore the principal chooses $a$ to maximize 
+                    \begin{align*} 
+                        \Pi &= E[q|a] - w^*\\
+                        &= E[q|a] - u^{-1}(c(a)+\bar{u})
+                    \end{align*}
+                \end{itemize}
+                The expected effort is $\Pi^* = q^* - w^*$ 
+        \end{itemize}
+
+
+    \end{solution}
+    Now, suppose that both principal and agent can observe effort $a$, but can't contract on it. We wish to show that the following option contract implements the first-best. The agent first buys the firm for $\Pi^*$. After the effort is chosen, but before output is realized the principal then has the option to buy back the firm and obtain all the output for a price $q^*$.
+    \part How does the principal's decision to exercise the option depend on the agent's choice of effort? 
+    \begin{solution} (Better explanation needed?)
+        If the agent does not choose the first-best effort, then $\Pi < q^*$ and the principal will choose not to buyback the firm. If the agent chooses the first-best effort, then $\Pi = q^*$ and the principal will choose to buyback the firm. The intuition here is that by selling the firm with a buyback option the principal pushes the cost of shirking onto the agent.
+    \end{solution}
+\end{parts}
+
 \end{questions}
     
 \end{document}
