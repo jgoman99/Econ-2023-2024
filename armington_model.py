@@ -148,7 +148,7 @@ def print_results(a, tau, L, sigma, A):
   print("Equilibrium wages: ", np.around(equilibrium_wages,4))
   print("Normalized Equilibrium wages: ", np.around(normalized_wages,4))
   print("Excess demand: ", excess_demand(normalized_wages, a, tau, L, sigma, A))
-  print("Bilateral Trade Shares: \n", np.around(calculate_trade(equilibrium_wages,a, tau, sigma, A),4))
+  print("Lambda: \n", np.around(calculate_trade(equilibrium_wages,a, tau, sigma, A),4))
   print("Welfare: ", np.around(calculate_welfare(equilibrium_wages,  a, tau, sigma, A),4))
         
 print("2024")
@@ -164,3 +164,4 @@ print("2023: Productivity Shock")
 print_results(a23, tau23, L23, sigma23, A23shock)
 print("2023: New Trade Costs")
 print_results(a23, tau23_new, L23, sigma23, A23)
+
