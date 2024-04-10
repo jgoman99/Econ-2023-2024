@@ -108,6 +108,50 @@
           \end{solution}
 
     \end{parts}
-    
+    \question In this question, we consider a specification of the armington model in which each country produces output 
+    using labor and intermediate inputs (rather than just labor). Intermediate inputs are made of the same final good as consumption. That it, intermediate outputs contain the same import content as consumption.\\
+    Specifically, output in country $i$ is produced according to:
+    $$Q_i = A_i L_i^\alpha M_i^{1-\alpha}$$
+    where $L_i$ denotes labor (in fixed supply) and $M_i$ denotes the use of intermediate input. In our baseline model, we have assumed $\alpha = 1$.\\
+    The intermediate input is made of the same final good that is used for consumption (welfare). Specifically, we assume that a final good is produced in each country $j$ according to the argmington aggregator: $(\sum_{i\in S} a_{ij}^{\frac{1}{\sigma}} q_{ij}^\frac{\sigma-1}{\sigma})^{\frac{\sigma}{\sigma - 1}}$. Given this technology, 
+    competitive final good firms purchase individual goods $q_{ij}$ to produce the final good.
+    Profit maximization
+    by these final good producers results in the standard CES demand that we derived in the
+    Armington model. The final good is then used for production ($M_j$) and for consumption
+    by households ($C_j$). Households derive utility from consumption of the final good, $u(C_j)$
+    Therefore, the resource constraint for the final good is given by:
+    $$(\sum_{i\in S} a_{ij}^{\frac{1}{\sigma}} q_{ij}^\frac{\sigma-1}{\sigma})^{\frac{\sigma}{\sigma - 1}} = M_j + C_j$$
+    Note that, in our baseline model, $M_j = 0$.\\ 
+    The resource cosntraint for output produced in country $i$ is:
+    $$Q_i = \sum_{j} \tau_{ij} q_{ij}$$
+    \begin{parts}
+        \part Show that the output price at the factory door, $p_i$, is given by:
+        \begin{align*}
+            p_i &= \kappa \frac{w_i^\alpha P_i^{1-\alpha}}{A_i} \\
+            \text{where } \kappa &= \frac{1}{\alpha^\alpha (1-\alpha)^{1-\alpha}}\\
+            \text{and } P_j &= (\sum_{i'\in S} a_{i'j} p_{i' j}^{1-\sigma} )^{\frac{1}{1-\sigma}} \\
+            \text{and } p_{ij} &= \tau_{ij} p_j
+        \end{align*}
+        \part Show that the value of use of the intermediate inputs and the wage bill in country $i$ must satisfy:
+        \begin{align}
+             P_i M_i &= (1-\alpha)p_i Q_i\\
+             w_i L_i &= \alpha p_i Q_i
+        \end{align}
+        where $p_i$ is the "factory door" price (e.g. without shipping costs) of the good produced in country $i$, and $P_i$ is the price of the final good (and henced intermediate inputs).
+        \part The general equilibrium conditions of the model are now given by:
+        \begin{align}
+            P_i C_i &= w_i L_i \text{ where } w_i L_i \text{ is GDP in country } i, \\
+             p_i Q_i &= \sum_{j \in S} X_{ij}\\
+        \end{align}
+            Equation (3) is the budget constraint indicating the consumption expenditures must be equal to income. Equation (4) indicates that the value of production must be equal to total sales. Show that:
+            $$ P_i (C_i + M_i) = \frac{1}{\alpha} w_i L_i$$
+
+        \part Show that the ratio of sales from country $i$ to $j$ relative to country $j$'s GDP is
+        $$\lambda_{ij} = \frac{X_{ij}}{w_j L_j} = a_{ij} \tau_{ij}^{1-\sigma} (\kappa \frac{w_i^\alpha P_i^{1-\alpha}}{A_i})^{1-\sigma} \frac{1}{\alpha} P_j^{\sigma-1}$$
+        and that the ratio of sales from country $i$ relative to $i$'s GDP is
+        $$\lambda_{ii} = \frac{a_{ii}}{\alpha} (\frac{\kappa}{A_i})^{1-\sigma} (\frac{w_i}{P_i})^{\alpha(1-\sigma)}$$
+        \part How do the gains from trade (for a given change in $\lambda_{ii}$) depend on $\alpha$? Provide intuition for your answer.
+        \part How does the answer to the previous question change if the intermediate input in each country is made of deomestic labor rather than made of the final consumption good.
+    \end{parts}
     \end{questions}
 \end{document}

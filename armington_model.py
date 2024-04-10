@@ -80,17 +80,61 @@ def approximate_equilibrium(excess_demand, initial_wages, a, tau, L, sigma, A):
   # Return the solution (wages) from the root finding process.
   return result.x
 
-def calculate_lambda_hat(tau_new, tau_old, lambda_old,w_new,w_old,sigma):
-  S = len(tau_new)
-  lambda_hat = np.zeros([S,S])
+def get_K(a, A, tau, sigma):
+  K = np.zeros([tau.shape[0], tau.shape[1]])
+  for i in range(tau.shape[0]):
+    for j in range(tau.shape[1]):
+      term = A[i]**(sigma-1) * a[i,j] * tau[i, j]** (1-sigma)
+      K[i, j] = term
+  
+  return K
+
+# we define excess trade as a combination of equation 18 and 19 from lecture notes
+def calculate_excess_trade(w_hat, tau_new, tau_old,L_new, L_old,a_new,a_old, A_new, A_old, lambda_old,sigma, Y_old):
+  S = tau_new.shape[0]
+  excess_trade = np.zeros(S)
+  L_hat = L_new/L_old
+  Y_hat = w_hat * L_hat
+  K_hat = np.divide(get_K(a=a_new, A=A_new, tau = tau_new, sigma = sigma),get_K(a = a_old, A = A_old, tau = tau_old, sigma = sigma))
   for i in range(S):
+    summation = 0
     for j in range(S):
-      numerator[i,j] = tau_new[i,j]/tau_old[i,j] * (w_new[i]/w_old[i]) ** (1-sigma)
+      numerator = lambda_old[i,j] * Y_old[j]/Y_old[i]*w_hat[j]*L_hat[j]*(K_hat[i,j]*w_hat[i]**(1-sigma))
       denominator = 0
       for k in range(S):
-        denominator += lambda_old[k,j] * tau_new[k,j]/tau_old[k,j] * (w_new[k]/w_old[k]) ** (1-sigma)
-      lambda_hat[i,j] = numerator[i,j]/denominator
-  return (lambda_hat)
+        denominator_term = lambda_old[k,j] * K_hat[k,j] * w_hat[k]**(1-sigma)
+        denominator += denominator_term
+      
+      summation += numerator/denominator
+    excess_trade[i] = summation - Y_hat[i]
+
+  return (excess_trade)
+
+# we define a function to approximate the new lambda_hat
+# Note: didnt finish spaghetti code
+def approximate_lambda_hat(excess_trade, initial_what, tau_new, tau_old,L_new, L_old,a_new,a_old, A_new, A_old, lambda_old,sigma, Y_old):
+  """
+  This function approximates the solution where excess_demand is close to zero.
+
+  Args:
+      excess_demand: A function that takes a vector of wages and returns a vector of excess demand.
+      initial_wages: An initial guess for the vector of wages.
+
+  Returns:
+      A vector of wages that approximates the equilibrium point.
+  """
+  # Define a function that takes wages and returns the negative of excess demand.
+  # This is because we want to find the root (zero) of the excess demand function.
+  def negative_excess_trade(w_hat = w_hat, tau_new = tau_new, tau_old = tau_old,L_new = L_new, L_old = L_old,a_new = a_new, a_old = a_old, A_new = A_new, A_old = A_old, lambda_old = lambda_old,sigma = sigma, Y_old = Y_old):
+    return -calculate_excess_trade(w_hat = w_hat, tau_new = tau_new, tau_old = tau_old,L_new = L_new, L_old = L_old,a_new = a_new, a_old = a_old, A_new = A_new, A_old = A_old, lambda_old = lambda_old,sigma = sigma, Y_old = Y_old)
+
+  # Use the root function from scipy.optimize to find the root of the negative excess demand function.
+  partial_negative_excess_trade = partial(excess_trade, tau_new = tau_new, tau_old = tau_old, L_new = L_new, L_old = L_old, a_new = a_new, a_old = a_old, A_new = A_new, A_old = A_old, lambda_old = lambda_old, sigma = sigma, Y_old = Y_old)
+
+  result = root(partial_negative_excess_trade, initial_what, method='lm', options={'maxiter': 1000})
+
+  # Return the solution (wages) from the root finding process.
+  return result.x
 
 # declare parameters #
 S = 4  # Number of goods
@@ -165,3 +209,13 @@ print_results(a23, tau23, L23, sigma23, A23shock)
 print("2023: New Trade Costs")
 print_results(a23, tau23_new, L23, sigma23, A23)
 
+equilibrium_wages_old = approximate_equilibrium(excess_demand, [1, .8,.76, .77], a24, tau24, L24, sigma24, A24)
+equilibrium_wages_new = approximate_equilibrium(excess_demand, [1, .8,.76, .77], a24, tau24_new, L24, sigma24, A24)
+lambda_old = calculate_trade(equilibrium_wages_old,a24, tau24, sigma24, A24)
+Y_old = equilibrium_wages_old*L24
+w_hat = equilibrium_wages_new/equilibrium_wages_old
+excess_trade = calculate_excess_trade(tau24_new, tau24,L24, L24,a24,a24, A24, A24, lambda_old, w_hat, sigma24, Y_old)
+print("Excess Trade: ", excess_trade)
+
+print("Test")
+print(approximate_lambda_hat(excess_trade, [1, .8,.76, .77], tau24_new, tau24, L24, L24, a24, a24, A24, A24, lambda_old, sigma24, Y_old))
