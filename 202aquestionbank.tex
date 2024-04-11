@@ -19,6 +19,24 @@
 \maketitle
 
 \begin{questions}
+    \question \href{https://drive.google.com/drive/folders/1UWwY7p_JSQYuK9Ux_qW2YtpXHbVJyX4T}{(Hansen Final 2017 Q1)} Consider a stochastic growth model where a representative household's preferences are given by,
+    $$E \sum_{t=0}^{\infty} \beta^t {\log{c_t} - A \frac{h_t^{1+\frac{1}{\omega}}}{1+ \frac{1}{\omega}}}, A> 0, \omega > 0$$
+    where $0 < \beta < 1$. For each $t \geq 0$, the technology is given by:
+    \begin{align*}
+        c_t + i_t &= e^{z_t} (u_t k_t)^{\theta} h_t^{1-\theta}, \text{ where}\\
+        k_{t+1} &= (1-\delta_t) k_t + i_t,\\
+        \delta_t &= \delta u_t^\phi\\
+        z_{t+1} &= \rho z_t + \epsilon_{t+1}, \text{where $\epsilon_{t}$ is iid with mean 0 and variance $\sigma_{\epsilon}^2$}
+    \end{align*}
+    The variable $u$ is a choice variable describing the fraction of the capital stock utilized in a given period, where $0 \leq u_t \leq 1$. The parameters $\phi > 1$ and $0 < \delta < 1$. Hours worked, $h$, is also constrained to be in the interval $[0,1]$.
+    \begin{parts}
+        \part Carefully state the representative agent's dynamic programming problem for this economy. Obtain a set of equations that, along with a transversality condition, determine the optimal stochastic process for $\{k_{t+1}, c_t, h_t, u_t, \delta_t\}_{t=0}^\infty$.
+        \part Define a recursive competitive equilibrium for this economy. Hint: consider a market for utilized capital services rather than a capital rental market.
+        \part The Frish elasticity of labor supply is defined to be the elasticity of hours worked to the wage rate holding the marginal utility of wealth (The Lagrange multiplier for the budget constraint) constant. Derive the Frisch Elasticity for your decentralized economy. Make sure you clearly explain your derivation.
+        \part Derive a log-linear approximation that expresses the percentage-deviation of hours worked as a function of the percentage deviation of the wage rate and consumption from their steady states. Assuming consumption is equal to its steady state, use this equation to determine how large is the standard deviation of hours divided by the standard deviation for the wage rate in this economy.
+        \part Discuss the implications of this model for using the Solow residual or total factor productivity to measure exogenous technical progress.
+    \end{parts}
+
     % is c) for that question only? We have calculated everything else based on that assumption.
     \question \href{https://drive.google.com/file/d/1Oc2RsQ-J3MtMMVoAwpuAdPodoOrIJZmm/view}{(Final 2016 Q1)}
     Consider an economy population by a continuum of identical households with the following preferences:
@@ -32,7 +50,7 @@
     $$z_{t+1} = \rho z_t + \epsilon_{t+1}, \epsilon_{t+1} \text{ is iid random variable with mean 0}$$
     \begin{parts}
         \part Carefully formulate the dynamic program that would be solved by a social planner that chooses capital, labor, and consumption sequences to maximize a social welfare function that weights all agent's utilities equally. 
-        \begin{solution} (CHECK)
+        \begin{solution}
             The dynamic programming problem is:
             \begin{align*}
                 V(k,z) &= \max_{c_1,c_2,c_3, n_1, n_2, k'}  n_1 \ln{(c_1 + A \ln(1-h_1))} + n_2 \ln{(c_2 + A \ln(1-h_1- h_2))} \\

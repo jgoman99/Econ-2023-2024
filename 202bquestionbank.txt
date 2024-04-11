@@ -1,0 +1,20 @@
+\documentclass[answers]{exam}
+
+\usepackage{enumitem} % For customization of numbering
+\usepackage{amsmath} % For \text
+\usepackage{hyperref}
+
+\title{202A Question Bank}
+\author{John Friedman}
+
+\date{\today}
+\hypersetup{
+    colorlinks=true,   
+    urlcolor=blue
+    }
+
+% Switch to doing hansen comps, then if need be do old finals
+
+\begin{document}
+\maketitle
+

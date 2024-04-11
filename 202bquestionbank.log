@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.2)  11 APR 2024 14:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.2)  11 APR 2024 14:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/jgfri/OneDrive/Desktop/Cheatsheets/202aquestionbank
-(c:/Users/jgfri/OneDrive/Desktop/Cheatsheets/202aquestionbank.tex
+**c:/Users/jgfri/OneDrive/Desktop/Cheatsheets/202bquestionbank
+(c:/Users/jgfri/OneDrive/Desktop/Cheatsheets/202bquestionbank.tex
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
 (c:/texlive/2023/texmf-dist/tex/latex/exam/exam.cls
@@ -296,8 +296,8 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 14.
 File: l3backend-pdftex.def 2023-04-19 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count327
 \l__pdf_internal_box=\box55
-) (./202aquestionbank.aux)
-\openout1 = `202aquestionbank.aux'.
+) (./202bquestionbank.aux)
+\openout1 = `202bquestionbank.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
@@ -340,54 +340,35 @@ File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 \everyMPtoPDFconversion=\toks31
 )) (c:/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx))
 Package hyperref Info: Link coloring ON on input line 18.
- (./202aquestionbank.out) (./202aquestionbank.out)
+ (./202bquestionbank.out) (./202bquestionbank.out)
 \@outlinefile=\write3
-\openout3 = `202aquestionbank.out'.
+\openout3 = `202bquestionbank.out'.
 
  [1
 
 {c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (6.36905pt too wide) detected at line 60
-[]
- []
-
-[2]
-Overfull \hbox (15.31223pt too wide) in paragraph at lines 101--102
-[]\OT1/cmr/m/n/10 Explain how the equa-tions you ob-tained in part C can be used to cal-i-brate the pa-ram-e-ters $\OML/cmm/m/it/10 ; ^^L; ^^^; ^^N[]; ^^N[]$\OT1/cmr/m/n/10 .
- []
-
-[3] [4] [5]
-Underfull \vbox (badness 10000) detected at line 235
- []
-
-[6] [7]
-Overfull \hbox (6.77893pt too wide) in paragraph at lines 299--300
-[]\OT1/cmr/m/n/10 A set of house-hold de-ci-sion rules $\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k; K; z; l; L\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; h\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k; K; z; l; L\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; k[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k; K; z; l; L\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; l\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k; K; z; l; L\OT1/cmr/m/n/10 )$ 
- []
-
-[8{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [9]
-This exam contains 5 questions with 23 parts, 0 subparts, and 0 subsubparts.
-(./202aquestionbank.aux)
+This exam contains 1 questions with 0 parts, 0 subparts, and 0 subsubparts.
+(./202bquestionbank.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
  ***********
-Package rerunfilecheck Info: File `202aquestionbank.out' has not changed.
+Package rerunfilecheck Info: File `202bquestionbank.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 10385 strings out of 474928
- 157566 string characters out of 5763562
- 1943785 words of memory out of 5000000
- 31767 multiletter control sequences out of 15000+600000
- 562875 words of font info for 53 fonts, out of 8000000 for 9000
+ 10187 strings out of 474928
+ 155044 string characters out of 5763562
+ 1920785 words of memory out of 5000000
+ 31646 multiletter control sequences out of 15000+600000
+ 561778 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,14n,79p,515b,822s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on 202aquestionbank.pdf (9 pages, 191054 bytes).
+ 75i,6n,79p,304b,436s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
+Output written on 202bquestionbank.pdf (1 page, 36836 bytes).
 PDF statistics:
- 207 PDF objects out of 1000 (max. 8388607)
- 166 compressed objects within 2 object streams
- 77 named destinations out of 1000 (max. 500000)
+ 31 PDF objects out of 1000 (max. 8388607)
+ 21 compressed objects within 1 object stream
+ 3 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
