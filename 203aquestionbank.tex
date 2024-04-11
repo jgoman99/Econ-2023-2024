@@ -293,22 +293,36 @@ $$f_n(x)=\frac{1}{4}1(n \leq |x| \leq n + 1) + \frac{1}{4}1(|x|\leq 1)$$
 $$Pr[X \leq x] = \frac{exp(x)}{1+exp(x)} \equiv \Lambda(x)$$
 Let $\Phi(.)$ denote the CDF of $N(0,1)$, and let $\Phi^-1$ denote its inverse. $Y \equiv \Phi^-1(\Lambda(X))$. What is $E[Y^4]$?
 \begin{solution}
+
 \end{solution}
 
-\question (Final 2021) Consider $X_1,...,X_n$ iid $N(0,1)$. Let $Y_n = 1(\bar{X}_n\geq 1)$.
+\question \href{https://drive.google.com/drive/folders/1f3rKaHYUMvUB4_RBHUFTtTVIzO9osoP4}{(Final 2021)} \href{https://drive.google.com/drive/folders/1f3rKaHYUMvUB4_RBHUFTtTVIzO9osoP4}{(Verified)} Consider $X_1,...,X_n$ iid $N(0,1)$. Let $Y_n = 1(\bar{X}_n\geq 1)$.
 \begin{parts}
     \part What is $E[Y_n]$?
     \begin{solution}
+        $$\bar{X_n} \sim N(0,1/n) \implies \sqrt{n} \bar{X_n} \sim N(0,1)$$
+        \begin{align*}
+            E[Y_n] &= P(\bar{X_n} \geq 1) \\
+            &= P(\sqrt{n}\bar{X_n} \geq \sqrt{n})\\
+            &= 1 - \Phi(\sqrt{n})
+        \end{align*}
     \end{solution}
     \part What is $Var(Y_n)$?
     \begin{solution}
+        Note that $Y_n$ is a Bernoulli random variable.\\
+        So $Var(Y_n) = p(1-p) = (1 - \Phi(\sqrt{n}))(\Phi(\sqrt{n}))$
     \end{solution}
     \part What is the probability limit of $Y_n$?
     \begin{solution}
+        Markov's inequality is $P(x \geq a) \leq \frac{E[X]}{a}$:
+        \begin{align*}
+            P(Y_n \geq 1) &\leq \frac{E[Y_n]}{1} = 1 - \Phi(\sqrt{n})
+        \end{align*}
+        As $n \to \infty$, $1 - \Phi(\sqrt{n}) \to 0$. So $Y_n \xrightarrow{p} 0$.
     \end{solution}
 \end{parts}
 
-\question (Final 2021) Suppose that $X_1,...,X_4$ are iid and their common distribution is uniform $(0,\theta)$, i.e. their common PDF $f(x)$ is equal to $1(0<x<\theta)$. We have $H_0: \theta = 1$ vs $H_1 : \theta = 2$. Suppose that you decided to reject $H_0$ if $\max(X_1,...,X_4)>1$
+\question \href{https://drive.google.com/drive/folders/1f3rKaHYUMvUB4_RBHUFTtTVIzO9osoP4}{(Final 2021)} Suppose that $X_1,...,X_4$ are iid and their common distribution is uniform $(0,\theta)$, i.e. their common PDF $f(x)$ is equal to $1(0<x<\theta)$. We have $H_0: \theta = 1$ vs $H_1 : \theta = 2$. Suppose that you decided to reject $H_0$ if $\max(X_1,...,X_4)>1$
 \begin{parts}
     \part What is the size of the test?
     \begin{solution}
@@ -320,11 +334,11 @@ Let $\Phi(.)$ denote the CDF of $N(0,1)$, and let $\Phi^-1$ denote its inverse. 
     \end{solution}
 \end{parts}
 
-\question (Final 2021) Let $X_1,...,X_n$ be a random sample of size $n$ from $N(0,1)$. For any positive integer $k$, let $m_k = E[X_i^k]$ and $\hat{m_k} = \frac{1}{n} \sum_{i=1}^n X_i^k$. Assuming that $E[|X_i^k|] < \infty$ for all $k$, derive the asymptotic distribution $\sqrt{n}(\hat{m_k}^{1/2} - m_k^{1/2})$. The asymptotic distribution is normal with mean zero, so your job is to derive the numerical value of the asymptotic variance. Hint: the MGD of $N(0,1)$ is $exp(t^2/2)$.
+\question \href{https://drive.google.com/drive/folders/1f3rKaHYUMvUB4_RBHUFTtTVIzO9osoP4}{(Final 2021)} Let $X_1,...,X_n$ be a random sample of size $n$ from $N(0,1)$. For any positive integer $k$, let $m_k = E[X_i^k]$ and $\hat{m_k} = \frac{1}{n} \sum_{i=1}^n X_i^k$. Assuming that $E[|X_i^k|] < \infty$ for all $k$, derive the asymptotic distribution $\sqrt{n}(\hat{m_k}^{1/2} - m_k^{1/2})$. The asymptotic distribution is normal with mean zero, so your job is to derive the numerical value of the asymptotic variance. Hint: the MGD of $N(0,1)$ is $exp(t^2/2)$.
 \begin{solution}
 \end{solution}
 
-\question (Final 2021) Let $X_1,...,X_5$ denote a random sample from $N(\theta,1)$. We would like to test $H_0 : \theta = 5$ against $H_1 : \theta \ne 5$. If $X_1=2, X_2=3, X_3=4, X_4=5, X_5=6$, what is the LR statistic?
+\question \href{https://drive.google.com/drive/folders/1f3rKaHYUMvUB4_RBHUFTtTVIzO9osoP4}{(Final 2021)} Let $X_1,...,X_5$ denote a random sample from $N(\theta,1)$. We would like to test $H_0 : \theta = 5$ against $H_1 : \theta \ne 5$. If $X_1=2, X_2=3, X_3=4, X_4=5, X_5=6$, what is the LR statistic?
 \begin{solution}
     First, note that the MLE of $\theta$ is $\hat{\theta} = \bar{X} = 4$. The likelihood ratio statistic is:
     \begin{align*} LR &= -2\ln(\frac{L(\theta_0)}{L(\theta_1)})\\
@@ -351,9 +365,10 @@ Let $\Phi(.)$ denote the CDF of $N(0,1)$, and let $\Phi^-1$ denote its inverse. 
 
 \end{solution}
 
-\question (Final 2022) Let $X_1$ denote a random sample (of size 1) from $\mathcal{N}(0, \sigma^2)$. We have null hypothesis $H_0: \mu = 1$ and alternative hypothesis $H_1: \mu = 9$. You decided to use the Neyman-Pearson test of size 5\%. If you observe $X_1$ = 2.5, do you reject $H_0$ or
+\question (Final 2022) Let $X_1$ denote a random sample (of size 1) from $N(0, \theta)$. We have null hypothesis $H_0: \theta = 1$ and alternative hypothesis $H_1: \theta = 9$. You decided to use the Neyman-Pearson test of size 5\%. If you observe $X_1$ = 2.5, do you reject $H_0$ or
 not? Your answer should be either Reject or Do not reject.
 \begin{solution} 
+    Note: Neyman Pearson means uniformly most powerful.
     \begin{align*}
         TODO
     \end{align*}
@@ -382,7 +397,7 @@ for some $\mu_1, \mu_2, \sigma_{1,1}, \sigma_{1,2}, \sigma_{2,1}, \sigma_{2,2}$,
 \begin{solution}
 \end{solution}
 
-\question (Final 2022) Let $X$ denote a random sample (of size 1) from a distribution with the PDF equal to $\lambda exp(-\lambda x) 1(x>0)$. We have $H_0 L \lambda = 1$ and $H_1 : \lambda < 1$. Suppose that C is a critical region such that (1) the test of the form "Reject $H_0$ if $X_1 \in C$" is the uniformly most powerful test; and (2) the probability of rejecting $H_0$ when $\lambda = 1$ is $\alpha$. What is the power of your test when $\lambda = 1/2$ and $\alpha = 5\%$
+\question (Final 2022) Let $X$ denote a random sample (of size 1) from a distribution with the PDF equal to $\lambda exp(-\lambda x) 1(x>0)$. We have $H_0 :\lambda = 1$ and $H_1 : \lambda < 1$. Suppose that C is a critical region such that (1) the test of the form "Reject $H_0$ if $X_1 \in C$" is the uniformly most powerful test; and (2) the probability of rejecting $H_0$ when $\lambda = 1$ is $\alpha$. What is the power of your test when $\lambda = 1/2$ and $\alpha = 5\%$
 \begin{solution}
 \end{solution}
 
@@ -414,6 +429,7 @@ for some $\mu_1, \mu_2, \sigma_{1,1}, \sigma_{1,2}, \sigma_{2,1}, \sigma_{2,2}$,
 
 \question (Final 2015) Let $F(y|x)$ denote the conditional CDF of $Y$ given $X$ i.e. $F(y|x) = Pr[Y \leq y|X=x]$. Suppose that $F(y|x)$ is continuous and strictly increasing in y for all x in the support of $X$. Let $V = F(Y|X)$. (It is not $F(Y|x)$). Derive the conditional distribution of $V$ given $x$. Prove that $V$ and $X$ are independent.
 \begin{solution} 
+
 \end{solution}
 
 
