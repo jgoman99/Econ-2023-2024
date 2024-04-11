@@ -152,7 +152,7 @@
             $$\lambda_i = A_i^{-1} \frac{P_i}{1-\alpha}^{1-\alpha} (\frac{w_i}{\alpha})^\alpha$$
             In equilibrium, the marginal cost should be equal to the price $p_i = \frac{1}{A_i} (\frac{P_i}{1-\alpha})^{1-\alpha}(\frac{w_i}{\alpha})^\alpha$. Then $p_{ij} = \tau_{ij} p_i$.
             $$p_{ij} = \tau_{ij} \frac{1}{A_i} (\frac{P_i}{1-\alpha})^{1-\alpha}(\frac{w_i}{\alpha})^\alpha =  \kappa \frac{\tau_{ij}w_i^\alpha P_i^{1-\alpha}}{A_i}$$
-            We now define a final good producer that uses intermediate varietes:
+            We now define a final good producer that uses intermediate varietes (Ask):
             $$Y_j = (\sum_{i\in S} a_{ij}^{\frac{1}{\sigma}} q_{ij}^\frac{\sigma-1}{\sigma})^{\frac{\sigma}{\sigma - 1}} P_j$$
             The optimal demand is
             $$q_ij = a_{ij}(\frac{p_{ij}}{P_j})^{-\sigma} \frac{Y_j}{P_j}$$
@@ -195,10 +195,29 @@
         and that the ratio of sales from country $i$ relative to $i$'s GDP is
         $$\lambda_{ii} = \frac{a_{ii}}{\alpha} (\frac{\kappa}{A_i})^{1-\sigma} (\frac{w_i}{P_i})^{\alpha(1-\sigma)}$$
         \begin{solution}
+            From part a we know that optimal demand is:
+            \begin{align*}
+                q_{ij} &= a_{ij}(\frac{p_{ij}}{P_j})^{-\sigma} \frac{Y_j}{P_j} \text{ LHS is amount of goods made in country i sold in country j}\\
+                q_{ij} P_j = X_{ij} &= a_{ij}(\frac{p_{ij}}{P_j})^{-\sigma} Y_j \text{ LHS is now value of goods}\\
+                \frac{X_{ij}}{Y_j} &= a_{ij}(\frac{p_{ij}}{P_j})^{-\sigma} \text{ LHS is now value of goods from i to j relative to GDP}\\
+                & \text{From the last question we know that } Y_j = \frac{w_i L_i}{\alpha}\\
+                \alpha \frac{X_{ij}}{w_j L_j} &= a_{ij}(\frac{p_{ij}}{P_j})^{-\sigma}\\
+                \frac{X_{ij}}{w_j L_j} = \lambda_{ij} &= \frac{1}{\alpha} a_{ij}(\frac{p_{ij}}{P_j})^{-\sigma}\\
+                &\text{Plugging in for $p_{ij}$ using the formula from part a}\\
+                \lambda_{ij} &= a_{ij} \tau_{ij}^{1-\sigma} (\kappa \frac{w_i^\alpha P_i^{1-\alpha}}{A_i})^{1-\sigma} \frac{1}{\alpha} P_j^{\sigma-1}\\
+                &\implies \lambda_{ii} = \frac{a_{ii}}{\alpha} (\frac{\kappa}{A_i})^{1-\sigma} (\frac{w_i}{P_i})^{\alpha(1-\sigma)}
+            \end{align*}
             
         \end{solution}
         \part How do the gains from trade (for a given change in $\lambda_{ii}$) depend on $\alpha$? Provide intuition for your answer.
+        \begin{solution}
+            $$\frac{W_i}{W_i^A} = \lambda_{ii}^{\frac{1}{\alpha(1-\sigma)}}$$
+            From the above expression we can see that as $\alpha$ increases, the gains from trade decreases. Intuitively, this is because Labor is nontradeable in this model. Since only intermediate goods are traded, moving the production function towards domestic labor reduces the gains from trade.
+    \end{solution}
         \part How does the answer to the previous question change if the intermediate input in each country is made of domestic labor rather than made of the final consumption good.
+        \begin{solution}
+            If the intermediate input is made of domestic labor instead of the final consumption good, we return to the standard Armington model. In this case, the gains from trade are independent of $\alpha$.
+        \end{solution}
     \end{parts}
     \question In this question, we consider a 2-country Armington model which does not impose that countries have balanced trade every period. Specifically, set $\sigma = 3$, $a_{ij} = 1 \ \forall i,j$. $L_1,L_2 = 1$, $A_1 = A_2 = 0.6$ and trade costs $\tau_{ij}$ correspond to the element $i,j$ in the following matrix:
     $$T = \begin{pmatrix}
