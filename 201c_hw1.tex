@@ -159,14 +159,29 @@ Second, the agent's utility is CARA, i.e. $u(w) = -e^{-w}$.
 \part Suppose that $w \sim N(\mu, \sigma^2)$. Denote the certainty equivalent of $w$ by $\bar{w}$, where:
 $$u(\bar{w}) = E[u(w)]$$
 Show that $\bar{w} = \mu - \frac{\sigma^2}{2}$.
+\begin{solution}
+    Note: There is some messy math here that I don't want to write out. I ended up using Wikipedia's List of integrals of exponential functions to solve this.
+    \begin{align*}
+        u(\bar{w}) &= E[u(w)]\\
+        -e^{-\bar{w}} &= E[-e^{-w}]\\
+        -e^{-\bar{w}} &= \int_{-\infty}^{\infty} -e^{-w} \frac{1}{\sqrt{2 \pi}} e^{-\frac{1}{2}(\frac{w-\mu}{\sigma})^2}\\
+        -e^{-\bar{w}} &= -e^{-\mu + \frac{\sigma^2}{2}}\\
+        \bar{w} &= \mu - \frac{\sigma^2}{2}
+    \end{align*}
+\end{solution}
 \part Suppose effort is unobservable. The principal's problem is:
 \begin{align*}
     \max_{w(q), \alpha} E[q-w(q)]\\
     s.t. \ E[u(w(q) - c(a))| a] \geq u(0)\\
-    a \in argmax_{a' \in R} E[(u(w(q))-c(a'))|a']
+    a \in argmax_{a' \in R^+} E[(u(w(q))-c(a'))|a']
 \end{align*}
 Use the first order approach to implicitly characterize the optimal contract. $(\alpha, \beta, a)$ Hint: write utilities in terms of their certainty equivalent.
+\begin{solution}
+    TODO:
+    First, note that this question is equivalent to the one presented on page 10 of the Moral Hazard lecture.
+\end{solution}
 \end{parts}
+
 \end{questions}
     
 \end{document}

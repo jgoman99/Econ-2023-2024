@@ -51,7 +51,7 @@
             \begin{enumerate}[label=\alph*)]
                 \item What's the change in welfare for country 2 from the productivity shock?
                 \begin{solution}
-                    The formula for welfare is $W_i = \lambda{ii}^{\frac{1}{1-\sigma}} a_{ii}^{\frac{1}{\sigma - 1}} A_i$ So using our code:
+                    The formula for welfare is $W_i = \lambda_{ii}^{\frac{1}{1-\sigma}} a_{ii}^{\frac{1}{\sigma - 1}} A_i$ So using our code:
                     $$W_i^{new}/W_i^{old} = \frac{2.2863}{1.2551 } = 1.82$$
                 \end{solution}
                 \item What’s the change in welfare for country 2 from the productivity shock under
@@ -60,7 +60,7 @@
                 \begin{solution}
                     From Sunny's first section, we know that 
                     \begin{align*}
-                        W_i = \lambda_{ii}^{\frac{1}{1-\sigma}} \alpha_{ii}^{\frac{1}{\sigma-1}} A_i \\
+                        W_i = \lambda_{ii}^{\frac{1}{1-\sigma}} a_{ii}^{\frac{1}{\sigma-1}} A_i \\
                         \text{The change in welfare is:}\\
                         \frac{W_i^{new}}{W_i^{old}} = \frac{\lambda_{ii}^{\frac{1}{1-\sigma}} \alpha_{ii}^{\frac{1}{\sigma-1}} A_i'}{\lambda_{ii}^{\frac{1}{1-\sigma}} \alpha_{ii}^{\frac{1}{\sigma-1}} A_i} = \frac{A_i'}{A_i} = \frac{1.2}{0.6} = 2
                     \end{align*}
@@ -132,11 +132,48 @@
             \text{and } P_j &= (\sum_{i'\in S} a_{i'j} p_{i' j}^{1-\sigma} )^{\frac{1}{1-\sigma}} \\
             \text{and } p_{ij} &= \tau_{ij} p_j
         \end{align*}
+        \begin{solution}
+            Using cost minimization for the firm that produces a variety $i$ is:
+            $$min_{L_i,M_i} w_i L_i + P_i M_i \text{ s.t. } A_i L_i^\alpha M_i^{1-\alpha} \geq \bar{Q_i}$$
+            The Lagrangian is:
+            $$\mathcal{L} = w_i L_i + P_i M_i - \lambda_i (\bar{Q_i} - A_i L_i^\alpha M_i^{1-\alpha})$$
+            FOC:
+            \begin{align}
+                [L_i]: & w_i - \lambda_i \alpha A_i Li^{\alpha-1} M_i^{1-\alpha} = 0\\
+                [M_i]: & P_i - \lambda_i (1-\alpha) A_i Li^{\alpha} M_i^{-\alpha} = 0\\
+                [\lambda_i]: & A_i L_i^\alpha M_i^{1-\alpha} - \bar{Q_i} = 0
+            \end{align}
+            From the FOC wrt to labor:
+            $$L_i = (\frac{\alpha \lambda_i A_i}{w_i})^{\frac{1}{1-\alpha}} M_i$$
+            We plug into the FOC wrt to intermediate inputs:
+            $$P_i = \lambda_i (1-\alpha) A_i (\frac{\alpha \lambda_i A_i}{w_i})^{\frac{\alpha}{1-\alpha}} $$
+            $$P_i = \lambda_i ^{\frac{1}{1-\alpha}} A_i^{\frac{1}{1-\alpha}} (1-\alpha) (\frac{\alpha}{w_i})^{\frac{\alpha}{1-\alpha}}$$
+            Note that $\lambda_i$ is our marginal cost for good from country $i$:
+            $$\lambda_i = A_i^{-1} \frac{P_i}{1-\alpha}^{1-\alpha} (\frac{w_i}{\alpha})^\alpha$$
+            In equilibrium, the marginal cost should be equal to the price $p_i = \frac{1}{A_i} (\frac{P_i}{1-\alpha})^{1-\alpha}(\frac{w_i}{\alpha})^\alpha$. Then $p_{ij} = \tau_{ij} p_i$.
+            $$p_{ij} = \tau_{ij} \frac{1}{A_i} (\frac{P_i}{1-\alpha})^{1-\alpha}(\frac{w_i}{\alpha})^\alpha =  \kappa \frac{\tau_{ij}w_i^\alpha P_i^{1-\alpha}}{A_i}$$
+            We now define a final good producer that uses intermediate varietes:
+            $$Y_j = (\sum_{i\in S} a_{ij}^{\frac{1}{\sigma}} q_{ij}^\frac{\sigma-1}{\sigma})^{\frac{\sigma}{\sigma - 1}} P_j$$
+            The optimal demand is
+            $$q_ij = a_{ij}(\frac{p_{ij}}{P_j})^{-\sigma} \frac{Y_j}{P_j}$$
+            Where $P_j = (\sum_{i\in S} a_{ij} p_{ij}^{1-\sigma})$
+        \end{solution}
         \part Show that the value of use of the intermediate inputs and the wage bill in country $i$ must satisfy:
         \begin{align}
              P_i M_i &= (1-\alpha)p_i Q_i\\
              w_i L_i &= \alpha p_i Q_i
         \end{align}
+        \begin{solution}
+            $$\max{L_i,M_i} p_i A_i L_i^\alpha M_i^{1-\alpha} - w_i L_i - p_i M_i$$
+            \begin{align*}
+                \text{[$w_i$]} &= \alpha p_i A_i L^{\alpha-1} M_i^{1-\alpha} - w_i = 0\\
+                w_i &= \alpha p_i A_i L^{\alpha-1} M_i^{1-\alpha}\\
+                w_i L_i &= \alpha p_i Q_i\\ 
+                \text{[$M_i$]} &= (1-\alpha) p_i A_i L_i^\alpha M_i^{-\alpha} - p_i = 0\\
+                p_i &= (1-\alpha) p_i A_i L_i^\alpha M_i^{-\alpha}\\
+                P_i M_i &= (1-\alpha)p_i Q_i
+            \end{align*}
+        \end{solution}
         where $p_i$ is the "factory door" price (e.g. without shipping costs) of the good produced in country $i$, and $P_i$ is the price of the final good (and henced intermediate inputs).
         \part The general equilibrium conditions of the model are now given by:
         \begin{align}
@@ -145,13 +182,56 @@
         \end{align}
             Equation (3) is the budget constraint indicating the consumption expenditures must be equal to income. Equation (4) indicates that the value of production must be equal to total sales. Show that:
             $$ P_i (C_i + M_i) = \frac{1}{\alpha} w_i L_i$$
-
+        \begin{solution}
+            From the previous part we know that $P_i M_i = (1-\alpha)p_i Q_i$ and $w_i L_i = \alpha p_i Q_i$. 
+            \begin{align*}
+                P_i M_i &= (1-\alpha)(\frac{w_i L_i}{\alpha})\\
+                P_i M_i + (P_i C_i) &= \frac{1-\alpha}{\alpha} w_i L_i + (w_i L_i)\\
+                P_i (M_i + C_i) &= \frac{1}{\alpha} w_i L_i
+            \end{align*}
+        \end{solution}
         \part Show that the ratio of sales from country $i$ to $j$ relative to country $j$'s GDP is
         $$\lambda_{ij} = \frac{X_{ij}}{w_j L_j} = a_{ij} \tau_{ij}^{1-\sigma} (\kappa \frac{w_i^\alpha P_i^{1-\alpha}}{A_i})^{1-\sigma} \frac{1}{\alpha} P_j^{\sigma-1}$$
         and that the ratio of sales from country $i$ relative to $i$'s GDP is
         $$\lambda_{ii} = \frac{a_{ii}}{\alpha} (\frac{\kappa}{A_i})^{1-\sigma} (\frac{w_i}{P_i})^{\alpha(1-\sigma)}$$
+        \begin{solution}
+            
+        \end{solution}
         \part How do the gains from trade (for a given change in $\lambda_{ii}$) depend on $\alpha$? Provide intuition for your answer.
-        \part How does the answer to the previous question change if the intermediate input in each country is made of deomestic labor rather than made of the final consumption good.
+        \part How does the answer to the previous question change if the intermediate input in each country is made of domestic labor rather than made of the final consumption good.
+    \end{parts}
+    \question In this question, we consider a 2-country Armington model which does not impose that countries have balanced trade every period. Specifically, set $\sigma = 3$, $a_{ij} = 1 \ \forall i,j$. $L_1,L_2 = 1$, $A_1 = A_2 = 0.6$ and trade costs $\tau_{ij}$ correspond to the element $i,j$ in the following matrix:
+    $$T = \begin{pmatrix}
+        1 & 1.3 \\
+        1.3 & 1
+        \end{pmatrix}$$
+    Different from what we have done in class, now we suppose that country $i$ income is given by:
+    $$Y_i = w_i L_i + D_i$$
+    where $D_i \ne 0$ is expressed in terms of the world numeraire. The vector $[D_1, D_2]$ is exogenously given and satisfies $D_1 + D_2 = 0$. For the numerical example below assume $D = [0.05, -0.05]$.
+    \begin{parts}
+        \part Show that country $i$'s trade deficit (imports minus exports) is equal to $D_i$
+        $$D_i = \sum_{j \ne i} X_{ji} - \sum_{j \ne i} X_{ij} = D_i$$
+        \begin{solution}
+            \begin{align*}
+                Y_i &= X_{ji} + X_{ii} \text{ income is equal to imports}\\
+                D_i + w_i L_i &= X_{ji} + X_{ii} \text{ Using formula for income}\\
+                D_i + X_{ij} + X_{ii} &= X_{ji} + X_{ii} \text{ Wage income is equal to value of goods consumed domestically and abroad}\\
+                D_i &= X_{ij} - X_{ji}
+            \end{align*}
+        \end{solution}
+        \part Characterize the equilibrium conditions to solve for the relative wages across countries. Solve for $w_2$ (normalizing $w_1 = 1$) in the numerical example.
+        \begin{solution}
+            We know that price at factory board is equal to marginal cost of production, $p_i = \frac{w_i}{A_i}$. Since we know $w_1=1 \implies p_1 = \frac{5}{3}$
+
+            TODO. Finish. Note: I don't get how iceberg costs work in context of equations. Do they delete goods?
+        \end{solution}
+        \part Suppose that the world moves to financial autarky, so that countries must run a trade balance $D_1 = D_2 = 0$. What are the new equilibrium wages? Calculate changes in welfare for each country. Provide intuition for your answer.\
+        \begin{solution}
+            Unless I am missing something, the new equilibrium wages are meaningless as they are dependent on the price level in their country.
+            $$p_i = \frac{w_i}{A_i}, W_i = \frac{w_i}{P_i}, \text{ and } P_i = p_i \text{ due to no trade}$$
+            $$\implies W_i = A_i = .6 \text { for all countries}$$
+            TODO: add welfare changes
+        \end{solution}
     \end{parts}
     \end{questions}
 \end{document}
