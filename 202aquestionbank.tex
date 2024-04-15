@@ -4,6 +4,7 @@
 \usepackage{amsmath} % For \text
 \usepackage{hyperref}
 
+
 \title{202A Question Bank}
 \author{John Friedman}
 
@@ -19,7 +20,137 @@
 \maketitle
 
 \begin{questions}
-    \question \href{https://drive.google.com/drive/folders/1UWwY7p_JSQYuK9Ux_qW2YtpXHbVJyX4T}{(Hansen Final 2017 Q1)} Consider a stochastic growth model where a representative household's preferences are given by,
+
+    \question \href{https://economics.ucla.edu/wp-content/uploads/2016/10/macro-f16.pdf}{(Hansen Comp Spring 2016)} (Similar to: Final 2017 Q1) (Not verified yet)
+    $$E \sum_{t=0}^{\infty} \beta^t \{\frac{c_t^{1-\sigma}}{1-\sigma} - A \frac{h_t^{1+\frac{1}{\omega}}}{1+ \frac{1}{\omega}}\}, A> 0, \omega > 0, \sigma > 0$$
+    where $0 < \beta < 1$. For each $t \geq 0$, the technology is given by:
+    \begin{align*}
+        &c_t + i_t = e^{z_t} (u_t k_t)^{\theta} h_t^{1-\theta}, \text{ where}\\
+        &k_{t+1} = (1-\delta_t) k_t + i_t,\\
+        &\delta_t = \delta u_t^\phi\\
+        &z_{t+1} = \rho z_t + \epsilon_{t+1}, \text{where $\epsilon_{t}$ is iid with mean 0 and variance $\sigma_{\epsilon}^2$}
+    \end{align*}
+    The variable $u$ is a choice variable describing the fraction of the capital stock utilized in a given period, where $0 \leq u_t \leq 1$. The parameters $\phi > 1$ and $0 < \delta < 1$. Hours worked, $h$, is also constrained to be in the interval $[0,1]$.
+    \begin{parts}
+        \part Are the preferences of the representative agent consistent with balanced growth? Explain.
+        \begin{solution}
+            Yes, if $\sigma\ne 1$. From Bangyu's Week 7 TA notes, for a model to exhibit balanced growth it must be characterized by one of the following utility functions:
+            \begin{enumerate}
+                \item $U(c,h) = c^{1-\sigma} v(l)$ for $\sigma \ne 1$
+                \item $U(c,h) = \log{c} + v(l)$ for $\sigma = 1$
+            \end{enumerate}
+
+            This is because if the representative agent utility is not one of constant relative risk aversion, as the agent changes wealth, his consumption-output ratio will not be steady.
+        \end{solution}
+        \part Carefully state the representative agent's dynamic programming problem for this economy.
+        Obtain a set of equations that determine the optimal stochastic process for $\{k_{t+1}, c_t, h_t, u_t\}_{t=0}^\infty$.
+        \begin{solution}
+            The dynamic programming problem is:
+            \begin{align*}
+                V(k,z) &= \max_{c,h,u,k'} \frac{c^{1-\sigma}}{1-\sigma} - A \frac{h^{1+\frac{1}{\omega}}}{1+ \frac{1}{\omega}} + \beta E[V(k',z'|z)]\\
+                &s.t.\ c + k' = e^{z} (u k)^{\theta} h^{1-\theta} + (1-\delta u^\phi) k\\
+                &\text{and } z_{t+1} = \rho z_t + \epsilon_{t+1}
+            \end{align*}
+            The FOC are:
+            \begin{align*}
+                &[c]: c^{-\sigma} = \lambda\\
+                &[h]: A h^{\frac{1}{\omega}} = \lambda e^{z} (1-\theta) (u k)^{\theta} h^{-\theta}\\
+                &[u]:  \theta e^z u^{\theta-1}k^\theta h^{1-\theta} = \phi u^{\phi-1} k\\
+                &[k']: \beta E[V_k(k',z'|z)] = \lambda
+            \end{align*}
+            TODO The envelope condition is: Note: the person I asked about this got it wrong
+            \begin{align*}
+                \beta E[V_k(k',z'|z)] =
+            \end{align*}
+        \end{solution}
+        \part Using the equations obtained in part B, determine if the rate of capital utilization is pro-cyclical or counter-cyclical. Explain [be specific by what you mean by pro (or counter)
+        cyclical].
+        \part Define a recursive competitive equilibrium for this economy. Hint: Consider a market for
+        utilized capital services rather than a capital rental market.
+        \begin{solution}
+            A recursive competitive equilibrium is defined by:
+            \begin{enumerate}
+                \item The household's problem:
+                \begin{align*}
+                    V(k,z) &= \max_{c,h,u,k'}  \frac{c^{1-\sigma}}{1-\sigma} - A \frac{h^{1+\frac{1}{\omega}}}{1+ \frac{1}{\omega}} \\
+                    s.t. &\ c + k' = w(K,z)h + r(K,z)\tilde{k} + (1-\delta u^\phi) k\\
+                    &\text{and } z_{t+1} = \rho z_t + \epsilon_{t+1}\\
+                    &\text{and } \tilde{u} = uk\\
+                    &\text{and } K' = G(K,z)
+                \end{align*}
+                \item The firm's problem:
+                \begin{align*}
+                    \max_{\tilde{u}^f,h^f} e^z \tilde{u}^{f \theta} h^{f 1-\theta} - r(K,z) \tilde{h}^f - w(K,z)h^f
+                \end{align*}
+                \item A set of household decisions rules: $c(k,K,z), h(k,K,z), u(k,K,z), k'(k,K,z)$
+                \item A set of firm decision rules: $\tilde{u}^f(K,z), h^f(K,z)$
+                \item A set of pricing functions $r(K,z), w(K,z)$ where consumption price is the numeraire
+                \item A law of motion for the state variables $K' = G(K,z)$ such that:
+                \begin{enumerate}
+                    \item Given pricing functions and perceived law of motion for aggregate capital, the household decision rules solve the household's problem
+                    \item Giving pricing functions, firm decision rules solve the firm's problem.
+                    \item Markets clear:
+                    \begin{enumerate}
+                        \item $h^f(K,z) = h(k,K,z)$
+                        \item $\tilde{u}^f(K,z) = u(k,K,z)$
+                        \item consumption market clears by walras's law
+                    \end{enumerate}
+                    \item There are rational expectations: $G(K) = k'(K,K,z)$
+                \end{enumerate}
+            \end{enumerate}
+        \end{solution}
+        \part The Frisch elasticity of labor supply is defined to be the elasticity of hours worked to the
+        wage rate holding the marginal utility of wealth (the Lagrange multiplier for the budget
+        constraint) constant. Derive the Frisch elasticity for your decentralized economy. Make sure
+        you clearly explain your derivation.
+        \begin{solution}
+            First, we use logs on the FOC for $h$, and substitute in for the wage term holding $\lambda$ constant:
+            \begin{align*} 
+                A h^{\frac{1}{\omega}} = \lambda e^{z} (1-\theta) (u k)^{\theta} h^{-\theta}\\
+                A h^{\frac{1}{\omega}} = \lambda w\\
+                \log{A} + \frac{1}{\omega} \log{h} = \log{\lambda} + \log{w}\\
+            \end{align*}
+            Second, we take the derivative of the log of hours worked wrt to the log of the wage rate:
+            \begin{align*}
+                \frac{d \log{h}}{d \log{w}} = \frac{d h}{d w} = \omega
+            \end{align*}
+            Therefore, the Frisch elasticity of labor supply is $\omega$.
+        \end{solution}
+        \part Derive a log-linear approximation that expresses the percentage deviation of hours worked as
+        a function of the percentage deviation of the wage rate and consumption from their steady
+        states. Assuming consumption is equal to its steady state, use this equation to determine how
+        large is the standard deviation of hours divided by the standard deviation for the wage rate in
+        this economy.
+        \part Discuss the implications of this model for using the Solow residual or total factor
+        productivity to measure exogenous technical progress.
+    \end{parts}        
+    \question \href{https://economics.ucla.edu/wp-content/uploads/2016/10/macro-f16.pdf}{(Hansen Comp Fall 2016)}
+    Consider a real business cycles model with a representative household that lives forever and maximizes the following utility function:
+    $$E_0 \sum_{t=0}^{\infty} \beta^t \{ \log{c_t} + A \log{L_t} \}, 0 < \beta < 1, A > 0$$
+    Here, $c_t$ is consumption and $L_t$ is a convex combination of leisure in periods $t$ and $t-1$. Each period, households are assumed to have one unit of time that can be allocated between market work, $h_t$, and leisure. In particular, let $L_t = a(1-h_t) + (1-a)(1-h_{t-1})$ where $0 \leq a \leq 1$. 
+
+
+    Output, which can be used for consumption, investment ($i_t$) or government purchases is produced according to a constant returns to scale technology, $y_t = e^{z_t} k_t^\theta h_t^{1-\theta}$, where $y_t$ is output and $k_t$ is the stock of capital. The variable $z_t$ is a technology shock observed at 
+    the beginning of period $t$ that evolves through time according to a first order autoregressive process with mean
+    zero innovations. The stock of capital is assumed to depreciate at the rate $\delta$ each period. 
+
+
+    Investment in period $t$ becomes productive capital one period later, $k_{t+1} = (1-\delta)k_t + i_t$. Government spending is an exogenous random variable that, like the technology shock, follows a first order autoregressive process, in this case with an unconditional mean $\bar{g}$ and unconditional variance $\sigma_g^2$. Innovations to this process are assumed 
+    to be independent of innovations to the technology shock process and the value of $g_t$ is observed at the beginning of period $t$. In addition, government purchases are financed with lump sum taxes. Note that government purchases do not directly affect preferences or the technology; they are simply thrown into the sea.
+    \begin{parts}
+        \part Are the equilibrium allocations for this economy the solution to a social planner’s problem?
+        Explain. If so, write the social planners problem for this economy as a dynamic
+        programming problem. Be specific about the stochastic process (law of motion) for $z_t$ and $g_t$.
+        \part Derive as a set of equations that characterize a sequence $\{c_t,h_t,L_t,k_{t+1},y_t\}_{t=0}^\infty$ that solves the social planner’s problem. Be sure that you have the same number of equations as unknowns. Explain the role of the transversality condition in determining this optimal sequence.
+        \part Define a recursive competitive equilibrium for this economy. 
+        \part Assume that for a given variable $x, \tilde{x_t} \sim \log{x_t} - \log{\bar{x}}$ where $\bar{x}$ is the non-stochastic steady state value of $x_t$. Derive a linear expression for $\tilde{h_t}$ as a function of $\tilde{k_t}, \tilde{c_t}, z_t, \tilde{h_{t-1}}$.
+        \part As in the previous part, derive a linear equation expressing $\tilde{c_t}$ as a function of $\tilde{k_t}, z_t, \tilde{g_t}, \tilde{h_t}, \tilde{k_{t+1}}$.
+        \part In a standard real business cycle model, $a=1$. Using the equation derived in part (d and or e), explain how setting $a<1$ might change the cyclical properties of the model economy. In particular, focus on the size of fluctuations in hours worked relative to $z_t$. Provide intuition in your explanation.
+        \part In a standard real business cycle model, $g_t$ is not included as a stochastic shock. Discuss
+        how adding this feature might change the cyclical properties of the model economy. In
+        particular, focus on the correlation between hours worked and $z_t$. Again, provide intuition.
+    \end{parts}
+    \question \href{https://drive.google.com/drive/folders/1UWwY7p_JSQYuK9Ux_qW2YtpXHbVJyX4T}{(Hansen Final 2017 Q1)} \href{https://drive.google.com/file/d/1mlICFZK5ci4eUi5QhH7ZqUfNSqtUGcTc/view}{(Solution)} Consider a stochastic growth model where a representative household's preferences are given by,
     $$E \sum_{t=0}^{\infty} \beta^t {\log{c_t} - A \frac{h_t^{1+\frac{1}{\omega}}}{1+ \frac{1}{\omega}}}, A> 0, \omega > 0$$
     where $0 < \beta < 1$. For each $t \geq 0$, the technology is given by:
     \begin{align*}
@@ -31,12 +162,85 @@
     The variable $u$ is a choice variable describing the fraction of the capital stock utilized in a given period, where $0 \leq u_t \leq 1$. The parameters $\phi > 1$ and $0 < \delta < 1$. Hours worked, $h$, is also constrained to be in the interval $[0,1]$.
     \begin{parts}
         \part Carefully state the representative agent's dynamic programming problem for this economy. Obtain a set of equations that, along with a transversality condition, determine the optimal stochastic process for $\{k_{t+1}, c_t, h_t, u_t, \delta_t\}_{t=0}^\infty$.
+        \begin{solution}
+            The dynamic programming problem is:
+            \begin{align*}
+                V(k,z) &= \max_{c,h,u,k'} \log{c} - A \frac{h^{1+\frac{1}{\omega}}}{1+ \frac{1}{\omega}} + \beta E[V(k',z'|z)]\\
+                &s.t.\ c + k' = e^{z} (u k)^{\theta} h^{1-\theta} + (1-\delta u^\phi) k,\\
+                &\text{and } z_{t+1} = \rho z_t + \epsilon_{t+1}
+            \end{align*}
+            We can simplify the problem by taking the FOCs wrt to $c,h,u$:
+            \begin{align*}
+                &[c]: \frac{1}{c}  = \lambda\\
+                &[h]: A h^{\frac{1}{\omega}} = \lambda e^{z} (1-\theta) (u k)^{\theta} h^{-\theta}\\
+                &[u]:  \theta e^z u^{\theta-1}k^\theta h^{1-\theta} = \phi u^{\phi-1} k\\
+                &[k']: \beta E[V_k(k',z'|z)] = \lambda
+            \end{align*}
+            TODO: envelope condition: Not sure? transversality. fix subscritps, fix E. note policy function and market for capital ask bangyu
+        \end{solution}
         \part Define a recursive competitive equilibrium for this economy. Hint: consider a market for utilized capital services rather than a capital rental market.
+        \begin{solution}
+            A recursive competitive equilibrium is defined by:
+            \begin{enumerate}
+                \item The household's problem:
+                \begin{align*}
+                    V(k,z) &= \max_{c,h,u,k'} \log{c} - A \frac{h^{1+\frac{1}{\omega}}}{1+ \frac{1}{\omega}} \\
+                    s.t. &\ c + k' = w(K,z)h + r(K,z)\tilde{k} + (1-\delta u^\phi) k\\
+                    &\text{and } z_{t+1} = \rho z_t + \epsilon_{t+1}\\
+                    &\text{and } \tilde{u} = uk\\
+                    &\text{and } K' = G(K,z)
+                \end{align*}
+                \item The firm's problem:
+                \begin{align*}
+                    \max_{\tilde{u}^f,h^f} e^z \tilde{u}^{f \theta} h^{f 1-\theta} - r(K,z) \tilde{h}^f - w(K,z)h^f
+                \end{align*}
+                \item A set of household decisions rules: $c(k,K,z), h(k,K,z), u(k,K,z), k'(k,K,z)$
+                \item A set of firm decision rules: $\tilde{u}^f(K,z), h^f(K,z)$
+                \item A set of pricing functions $r(K,z), w(K,z)$ where consumption price is the numeraire
+                \item A law of motion for the state variables $K' = G(K,z)$ such that:
+                \begin{enumerate}
+                    \item Given pricing functions and perceived law of motion for aggregate capital, the household decision rules solve the household's problem
+                    \item Giving pricing functions, firm decision rules solve the firm's problem.
+                    \item Markets clear:
+                    \begin{enumerate}
+                        \item $h^f(K,z) = h(k,K,z)$
+                        \item $\tilde{u}^f(K,z) = u(k,K,z)$
+                        \item consumption market clears by walras's law
+                    \end{enumerate}
+                    \item There are rational expectations: $G(K) = k'(K,K,z)$
+                \end{enumerate}
+            \end{enumerate}
+        \end{solution}
         \part The Frish elasticity of labor supply is defined to be the elasticity of hours worked to the wage rate holding the marginal utility of wealth (The Lagrange multiplier for the budget constraint) constant. Derive the Frisch Elasticity for your decentralized economy. Make sure you clearly explain your derivation.
-        \part Derive a log-linear approximation that expresses the percentage-deviation of hours worked as a function of the percentage deviation of the wage rate and consumption from their steady states. Assuming consumption is equal to its steady state, use this equation to determine how large is the standard deviation of hours divided by the standard deviation for the wage rate in this economy.
+        \begin{solution}
+            First, we use logs on the FOC for $h$, and substitute in for the wage term holding $\lambda$ constant:
+            \begin{align*} 
+                A h^{\frac{1}{\omega}} = \lambda e^{z} (1-\theta) (u k)^{\theta} h^{-\theta}\\
+                A h^{\frac{1}{\omega}} = \lambda w\\
+                \log{A} + \frac{1}{\omega} \log{h} = \log{\lambda} + \log{w}\\
+            \end{align*}
+            Second, we take the derivative of the log of hours worked wrt to the log of the wage rate:
+            \begin{align*}
+                \frac{d \log{h}}{d \log{w}} = \omega
+            \end{align*}
+            Therefore, the Frisch elasticity of labor supply is $\omega$.
+        \end{solution}
+        \part Derive a log-linear approximation that expresses the percentage-deviation of hours worked as a function of the percentage deviation of the wage rate and consumption from their steady states. Assuming consumption is equal to its steady state, use this equation to determine how large is the standard deviation of hours divided by the standard deviation for the wage rate in this economy. TODo hint bangyu week 9a. add full way and bangyu way
+        \begin{solution}
+            Using FOC for $h$ and $c$:
+            \begin{align*}
+                A h^{\frac{1}{\omega}} = \frac{w}{c}\\
+                \implies A h^{\frac{1}{\omega}} c = w\\
+                \leftrightarrow A (\bar{h} e^{-\tilde{h}})^{\frac{1}{\omega}} (\bar{c} + e^{-\tilde{c}}) = \bar{w} e^{-\tilde{w}}\\
+                \leftrightarrow A (\bar{h}^\frac{1}{\omega} e^{-\frac{\tilde{h}}{\omega}}) (\bar{c} e^{-\tilde{c}}) = \bar{w} e^{-\tilde{w}}\\
+                \leftrightarrow A (\bar{h}^\frac{1}{\omega} (1 + \frac{\tilde{h}}{\omega})) (\bar{c} (1 + \tilde{c})) = \bar{w} (1 + \tilde{w})\\
+            \end{align*}
+        \end{solution}
         \part Discuss the implications of this model for using the Solow residual or total factor productivity to measure exogenous technical progress.
+        \begin{solution}
+            TODO. I don't remember if we discussed this in class.
+        \end{solution}
     \end{parts}
-
     % is c) for that question only? We have calculated everything else based on that assumption.
     \question \href{https://drive.google.com/file/d/1Oc2RsQ-J3MtMMVoAwpuAdPodoOrIJZmm/view}{(Final 2016 Q1)}
     Consider an economy population by a continuum of identical households with the following preferences:
