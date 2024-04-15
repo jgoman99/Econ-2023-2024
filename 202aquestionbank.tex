@@ -21,7 +21,10 @@
 
 \begin{questions}
 
-    \question \href{https://economics.ucla.edu/wp-content/uploads/2016/10/macro-f16.pdf}{(Hansen Comp Spring 2016)} (Similar to: Final 2017 Q1) (Not verified yet)
+    \question \href{https://economics.ucla.edu/wp-content/uploads/2016/10/macro-f16.pdf}{(Hansen Comp Spring 2016)}
+    \href{https://drive.google.com/file/u/3/d/1I_XVSpJZWsAtp4uIZizpPaIZk6EHggCC/view?usp=drive_open}{(Solution)}
+    (Similar to: Final 2017 Q1)
+
     $$E \sum_{t=0}^{\infty} \beta^t \{\frac{c_t^{1-\sigma}}{1-\sigma} - A \frac{h_t^{1+\frac{1}{\omega}}}{1+ \frac{1}{\omega}}\}, A> 0, \omega > 0, \sigma > 0$$
     where $0 < \beta < 1$. For each $t \geq 0$, the technology is given by:
     \begin{align*}
@@ -34,37 +37,58 @@
     \begin{parts}
         \part Are the preferences of the representative agent consistent with balanced growth? Explain.
         \begin{solution}
-            Yes, if $\sigma\ne 1$. From Bangyu's Week 7 TA notes, for a model to exhibit balanced growth it must be characterized by one of the following utility functions:
+            No. From Bangyu's Week 7 TA notes, for a model to exhibit balanced growth it must be characterized by one of the following utility functions:
             \begin{enumerate}
                 \item $U(c,h) = c^{1-\sigma} v(l)$ for $\sigma \ne 1$
                 \item $U(c,h) = \log{c} + v(l)$ for $\sigma = 1$
             \end{enumerate}
-
-            This is because if the representative agent utility is not one of constant relative risk aversion, as the agent changes wealth, his consumption-output ratio will not be steady.
+            Since the utility function above does not fit either of these forms, the preferences of the representative agent are not consistent with balanced growth.
+            TODO: is this enough explanation?
         \end{solution}
         \part Carefully state the representative agent's dynamic programming problem for this economy.
         Obtain a set of equations that determine the optimal stochastic process for $\{k_{t+1}, c_t, h_t, u_t\}_{t=0}^\infty$.
         \begin{solution}
             The dynamic programming problem is:
             \begin{align*}
-                V(k,z) &= \max_{c,h,u,k'} \frac{c^{1-\sigma}}{1-\sigma} - A \frac{h^{1+\frac{1}{\omega}}}{1+ \frac{1}{\omega}} + \beta E[V(k',z'|z)]\\
+                V(k,z) &= \max_{c,h,u,k'} \frac{c^{1-\sigma}}{1-\sigma} - A \frac{h^{1+\frac{1}{\omega}}}{1+ \frac{1}{\omega}} + \beta E[V(k',z'|z,k)]\\
                 &s.t.\ c + k' = e^{z} (u k)^{\theta} h^{1-\theta} + (1-\delta u^\phi) k\\
-                &\text{and } z_{t+1} = \rho z_t + \epsilon_{t+1}
+                &\text{and } z' = \rho z + \epsilon', \text{$\epsilon   '$ is iid with mean 0 and variance $\sigma_{\epsilon}^2$}
             \end{align*}
             The FOC are:
             \begin{align*}
                 &[c]: c^{-\sigma} = \lambda\\
                 &[h]: A h^{\frac{1}{\omega}} = \lambda e^{z} (1-\theta) (u k)^{\theta} h^{-\theta}\\
                 &[u]:  \theta e^z u^{\theta-1}k^\theta h^{1-\theta} = \phi u^{\phi-1} k\\
-                &[k']: \beta E[V_k(k',z'|z)] = \lambda
+                &[k']: \beta E[V_k(k',z'|z,k)] = \lambda
             \end{align*}
-            TODO The envelope condition is: Note: the person I asked about this got it wrong
-            \begin{align*}
-                \beta E[V_k(k',z'|z)] =
+            The envelope condition is:
+            $$
+                E[V_k(k,z|z)] = \lambda (e^z \theta (u k)^{\theta-1} h^{1-\theta} + (1-\delta u^\phi))
+            $$
+            Iterate a period forward
+            $$ E[V_k(k',z'|z)] = \lambda (e^{z'} \theta (u k')^{\theta-1} h^{1-\theta} + (1-\delta u^\phi))$$
+            The Budget constraint is:
+            $$c + k' = e^{z} (u k)^{\theta} h^{1-\theta} + (1-\delta u^\phi) k$$
+
+            So we have for $c,h,u,k'$:
+            \begin{align*} 
+                c^{-\sigma} &= \beta E[V_k(k',z'|z,k)] = \lambda (e^{z'} \theta (u k')^{\theta-1} h^{1-\theta} + (1-\delta u^\phi))\\
+                k' &= e^{z} (u k)^{\theta} h^{1-\theta} + (1-\delta u^\phi) k - c\\
+                h^{\frac{\theta}{\omega}} &= \frac{1}{A}c^{-\sigma}(1-\theta) e^{z} (u k)^{\theta} \\
+                u^{\theta-\phi} &= \frac{\phi \delta k^{1-\theta}}{\theta e^z h^{1-\theta}}
             \end{align*}
+
         \end{solution}
         \part Using the equations obtained in part B, determine if the rate of capital utilization is pro-cyclical or counter-cyclical. Explain [be specific by what you mean by pro (or counter)
         cyclical].
+        \begin{solution}
+            $u$ is pro-cyclical if it increases when $z$ increases. From the FOC for $u$:
+            \begin{align*}
+                u^{\theta-\phi} &= \frac{\phi \delta k^{1-\theta}}{\theta e^z h^{1-\theta}}\\
+                u &= (\frac{\phi \delta}{\theta e^z})^\frac{1}{\theta-\phi} (\frac{k}{h})^\frac{1-\theta}{\theta-\phi}\\
+            \end{align*}
+            TODO: I'm skipping this for now, but essentially use this and FOCs to determine if $u$ is pro-cyclical or counter-cyclical.
+        \end{solution}
         \part Define a recursive competitive equilibrium for this economy. Hint: Consider a market for
         utilized capital services rather than a capital rental market.
         \begin{solution}
@@ -72,18 +96,17 @@
             \begin{enumerate}
                 \item The household's problem:
                 \begin{align*}
-                    V(k,z) &= \max_{c,h,u,k'}  \frac{c^{1-\sigma}}{1-\sigma} - A \frac{h^{1+\frac{1}{\omega}}}{1+ \frac{1}{\omega}} \\
-                    s.t. &\ c + k' = w(K,z)h + r(K,z)\tilde{k} + (1-\delta u^\phi) k\\
-                    &\text{and } z_{t+1} = \rho z_t + \epsilon_{t+1}\\
-                    &\text{and } \tilde{u} = uk\\
+                    V(k,K,z) &= \max_{c,h,u,k'}  \frac{c^{1-\sigma}}{1-\sigma} - A \frac{h^{1+\frac{1}{\omega}}}{1+ \frac{1}{\omega}} \\
+                    s.t. &\ c + k' = w(K,z)h + r(K,z)uk + (1-\delta u^\phi) k\\
+                    &\text{and } z' = \rho z + \epsilon'\\
                     &\text{and } K' = G(K,z)
                 \end{align*}
                 \item The firm's problem:
                 \begin{align*}
-                    \max_{\tilde{u}^f,h^f} e^z \tilde{u}^{f \theta} h^{f 1-\theta} - r(K,z) \tilde{h}^f - w(K,z)h^f
+                    \max_{k^f,h^f} e^z k^{f \theta} h^{f 1-\theta} - r(K,z) {k}^f - w(K,z)h^f
                 \end{align*}
                 \item A set of household decisions rules: $c(k,K,z), h(k,K,z), u(k,K,z), k'(k,K,z)$
-                \item A set of firm decision rules: $\tilde{u}^f(K,z), h^f(K,z)$
+                \item A set of firm decision rules: $k^f(K,z), h^f(K,z)$
                 \item A set of pricing functions $r(K,z), w(K,z)$ where consumption price is the numeraire
                 \item A law of motion for the state variables $K' = G(K,z)$ such that:
                 \begin{enumerate}
@@ -121,8 +144,25 @@
         states. Assuming consumption is equal to its steady state, use this equation to determine how
         large is the standard deviation of hours divided by the standard deviation for the wage rate in
         this economy.
+        \begin{solution}
+            Using FOC for $h$ and $c$:
+            \begin{align*}
+                c^{-\sigma} &= \lambda\\
+                A h^{\frac{1}{\omega}} &= \lambda (w) \text{ where $w$ is the wage rate}\\
+                \implies w c^{-\sigma} &= A h^{\frac{1}{\omega}}\\
+                \tilde{w} - \sigma \tilde{c} &= \frac{1}{\omega} \tilde{h} \text{ using the log linearization shortcut Bangyu taught us}\\
+                \omega &= \frac{\tilde{h}}{\tilde{w}} \text{ since consumption is equal to its steady state, the deviation of consumption is 0}
+            \end{align*}
+
+        \end{solution}
         \part Discuss the implications of this model for using the Solow residual or total factor
         productivity to measure exogenous technical progress.
+        \begin{solution}
+            We normally have: $F(k,h) = e^z k^\theta h^{1-\theta}$. But now we have $F(k,h,u) = e^z (uk)^\theta h^{1-\theta}$.
+
+
+            Normally, we need meaures of total output, capital, and hours worked to estimate the Solow residual. However, in this case we also need measures of $u$ the fraction of capital stock utilized in a given period.
+        \end{solution}
     \end{parts}        
     \question \href{https://economics.ucla.edu/wp-content/uploads/2016/10/macro-f16.pdf}{(Hansen Comp Fall 2016)}
     Consider a real business cycles model with a representative household that lives forever and maximizes the following utility function:
