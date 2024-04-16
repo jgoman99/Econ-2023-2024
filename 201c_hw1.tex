@@ -194,9 +194,36 @@ $$
 where $\int g(x) d x=1$. The agent has increasing, concave, utility $u(\cdot)$. The cost is given by increasing, convex, differentiable function, $c(a)$. The function $p(a)$ is decreasing, convex and differentiable. The agent's utility is thus given by $u\left(W_0-x+R(x)\right)-c(a)$, while the firm's profit is $-R(x)$
 \begin{parts}
     \part Suppose there is no insurance market. What action $\hat{a}$ does the agent take?
+    \begin{solution} TODO: ASK\\
+        Since there is no insurance market, the agent's problem is:
+        \begin{align*}
+            \max_{a} E[u(.)|a] &= (1-p(a))(u(W_0)-c(a)) + p(a)(E[u(W_0-x)-c(a)|a])
+        \end{align*}
+        With some algebra, using the FOC, we show that the agent chooses $\hat{a}$ to maximize:
+        \begin{align*}
+            p'(a)[E[u(W_0-x)-c'(a)|a] - u(W_0)] - c'(a) = 0
+        \end{align*}
+    \end{solution}
     \part Suppose $a$ is contractible. Characterize the first-best payment schedule $R(x)$ and the effort choice, $a^*$.
+    \begin{solution}
+        We are now solving for the Insurance first-best solution. The problem is:
+        \begin{align*}
+            \max_{a} E[u(.)|a] &= (1-p(a))(u(W_0)-c(a)) + p(a)(E[u(W_0 + R(x) - x)-c(a)|a])\\
+            s.t.\  (IR)\ &E[-R(x)|a] \geq 0 
+        \end{align*} 
+    \end{solution}
     \part Suppose $a$ is not observable. Suppose the agent chooses a contract to maximize his utility subject to the competitive market of insurers breaking even. ${ }^5$ Characterize the second-best payment schedule $R(x)$.
+    \begin{solution}
+        The agent's problem is:
+        \begin{align*}
+            \max_{a} E[u(.)|a] &= (1-p(a))(u(W_0)-c(a)) + p(a)(E[u(W_0 + R(x) - x)-c(a)|a])\\
+            s.t.\  (IR)\ &E[-R(x)|a] \geq 0 \\
+            (IC)\ & a\in argmax_{\tilde{a} \in A} U(\tilde{a}) = E[-R(x)|\tilde{a}] 
+        \end{align*}    
+    \end{solution}
     \part Interpret the second-best payment schedule. Would the agent ever have an incentive to hide an accident? (i.e. report $x=0$ when $x>0$ ).
+    \begin{solution}
+    \end{solution}
 
 \end{parts}
 

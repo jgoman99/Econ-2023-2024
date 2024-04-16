@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.2)  15 APR 2024 17:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.2)  16 APR 2024 16:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -290,88 +290,198 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
 \Hy@SectionHShift=\skip79
-)
-Package hyperref Info: Option `colorlinks' set `true' on input line 15.
+) (c:/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks30
+\inpenc@posthook=\toks31
+) (c:/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+) (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+) (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+) (c:/texlive/2023/texmf-dist/tex/latex/mhchem/mhchem.sty
+Package: mhchem 2021/12/31 v4.09 for typesetting chemical formulae
+ (c:/texlive/2023/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2023-08-29 L3 programming layer (loader) 
  (c:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2023-04-19 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count327
 \l__pdf_internal_box=\box55
-) (./202aquestionbank.aux)
+)) (c:/texlive/2023/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2023-08-29 LaTeX2e option processing using LaTeX3 keys
+) (c:/texlive/2023/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count328
+\calc@Bcount=\count329
+\calc@Adimen=\dimen158
+\calc@Bdimen=\dimen159
+\calc@Askip=\skip80
+\calc@Bskip=\skip81
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count330
+\calc@Cskip=\skip82
+) (c:/texlive/2023/texmf-dist/tex/latex/chemgreek/chemgreek.sty (c:/texlive/2023/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2023-08-29 L3 Experimental document command parser
+)
+Package: chemgreek 2020/01/16 v1.1a interface for upright Greek letters for use in chemistry (CN)
+\l__chemgreek_tmpa_int=\count331
+\g__chemgreek_tmpa_int=\count332
+) (c:/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (c:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+))
+\l__mhchem_ce_distanceFromLastComma_int=\count333
+\__mhchem_arrow_extPgfLength_skip=\skip83
+\mhchem@minispace@tmp=\skip84
+\mhchem@minibackspace@tmp=\skip85
+\mhchem@bondwidth=\skip86
+\mhchem@bondheight=\skip87
+\mhchem@smallbondwidth@tmpA=\skip88
+\mhchem@smallbondwidth@tmpB=\skip89
+\mhchem@smallbondwidth=\skip90
+\mhchem@bondtmp@minussidebearingleft=\skip91
+\mhchem@bondtmp@minussidebearingright=\skip92
+\l__mhchem_option_version_int=\count334
+\mhchem@option@minusmathsidebearingleft=\dimen160
+\mhchem@option@minusmathsidebearingright=\dimen161
+\mhchem@option@minustextsidebearingleft=\dimen162
+\mhchem@option@minustextsidebearingright=\dimen163
+) (c:/texlive/2023/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty
+Package: stmaryrd 1994/03/03 St Mary's Road symbol package
+\symstmry=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
+(Font)                  U/stmry/m/n --> U/stmry/b/n on input line 89.
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 21.
+ (./202aquestionbank.aux)
 \openout1 = `202aquestionbank.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
  (c:/texlive/2023/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2022/01/06 v1.3d Standard LaTeX Color (DPC)
  (c:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 149.
- (c:/texlive/2023/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
- (c:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count328
-\scratchdimen=\dimen158
-\scratchbox=\box56
-\nofMPsegments=\count329
-\nofMParguments=\count330
-\everyMPshowfont=\toks30
-\MPscratchCnt=\count331
-\MPscratchDim=\dimen159
-\MPnumerator=\count332
-\makeMPintoPDFobject=\count333
-\everyMPtoPDFconversion=\toks31
-)) (c:/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-Package hyperref Info: Link coloring ON on input line 19.
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+Package hyperref Info: Link coloring ON on input line 25.
  (./202aquestionbank.out) (./202aquestionbank.out)
 \@outlinefile=\write3
 \openout3 = `202aquestionbank.out'.
 
- [1
 
-{c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \vbox (badness 10000) detected at line 124
+Package chemgreek Info: Activating mapping `default' on line 25.
+
+ (c:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count335
+\scratchdimen=\dimen164
+\scratchbox=\box56
+\nofMPsegments=\count336
+\nofMParguments=\count337
+\everyMPshowfont=\toks32
+\MPscratchCnt=\count338
+\MPscratchDim=\dimen165
+\MPnumerator=\count339
+\makeMPintoPDFobject=\count340
+\everyMPtoPDFconversion=\toks33
+) (c:/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (c:/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+LaTeX Font Info:    Trying to load font information for U+msa on input line 27.
+ (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 27.
+ (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 27.
+ (c:/texlive/2023/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
+Underfull \hbox (badness 10000) in paragraph at lines 57--59
+
  []
 
-[2] [3]
-Overfull \hbox (13.26465pt too wide) detected at line 155
-[]
+
+Underfull \vbox (badness 1365) detected at line 83
  []
 
-[4] [5] [6] [7]
-Overfull \hbox (6.36905pt too wide) detected at line 304
+[1
+
+{c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] [2] [3] [4] [5] [6] [7]
+Overfull \hbox (13.17036pt too wide) detected at line 337
 []
  []
 
 [8]
-Overfull \hbox (15.31223pt too wide) in paragraph at lines 345--346
-[]\OT1/cmr/m/n/10 Explain how the equa-tions you ob-tained in part C can be used to cal-i-brate the pa-ram-e-ters $\OML/cmm/m/it/10 ; ^^L; ^^^; ^^N[]; ^^N[]$\OT1/cmr/m/n/10 .
+Underfull \hbox (badness 10000) in paragraph at lines 367--369
+
  []
 
-[9] [10] [11] [12] [13{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-Overfull \hbox (6.77893pt too wide) in paragraph at lines 543--544
-[]\OT1/cmr/m/n/10 A set of house-hold de-ci-sion rules $\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k; K; z; l; L\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; h\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k; K; z; l; L\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; k[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k; K; z; l; L\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; l\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k; K; z; l; L\OT1/cmr/m/n/10 )$ 
+
+Underfull \hbox (badness 10000) in paragraph at lines 385--388
+
  []
 
-[14]
-This exam contains 7 questions with 37 parts, 0 subparts, and 0 subsubparts.
+
+Underfull \vbox (badness 10000) detected at line 404
+ []
+
+[9] [10] [11] [12]
+Overfull \hbox (6.3611pt too wide) detected at line 523
+[]
+ []
+
+[13]
+Overfull \hbox (15.21019pt too wide) in paragraph at lines 564--565
+[]\T1/cmr/m/n/10 Explain how the equa-tions you ob-tained in part C can be used to cal-i-brate the pa-ram-e-ters $\OML/cmm/m/it/10 ; ^^L; ^^^; ^^N[]; ^^N[]$\T1/cmr/m/n/10 .
+ []
+
+[14] [15] [16]
+Underfull \vbox (badness 10000) detected at line 698
+ []
+
+[17] [18]
+Overfull \hbox (6.73749pt too wide) in paragraph at lines 762--763
+[]\T1/cmr/m/n/10 A set of house-hold de-ci-sion rules $\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k; K; z; l; L\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; h\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k; K; z; l; L\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; k[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k; K; z; l; L\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; l\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k; K; z; l; L\OT1/cmr/m/n/10 )$ 
+ []
+
+[19{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [20]
+This exam contains 8 questions with 37 parts, 0 subparts, and 0 subsubparts.
 (./202aquestionbank.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
@@ -385,18 +495,18 @@ Package rerunfilecheck Info: File `202aquestionbank.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 10532 strings out of 474928
- 159261 string characters out of 5763562
- 1945785 words of memory out of 5000000
- 31865 multiletter control sequences out of 15000+600000
- 562875 words of font info for 53 fonts, out of 8000000 for 9000
+ 12888 strings out of 474928
+ 199470 string characters out of 5763562
+ 1943785 words of memory out of 5000000
+ 34098 multiletter control sequences out of 15000+600000
+ 570577 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,14n,79p,545b,821s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on 202aquestionbank.pdf (14 pages, 215621 bytes).
+ 75i,14n,79p,545b,838s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
+Output written on 202aquestionbank.pdf (20 pages, 251379 bytes).
 PDF statistics:
- 286 PDF objects out of 1000 (max. 8388607)
- 239 compressed objects within 3 object streams
- 126 named destinations out of 1000 (max. 500000)
+ 364 PDF objects out of 1000 (max. 8388607)
+ 309 compressed objects within 4 object streams
+ 169 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

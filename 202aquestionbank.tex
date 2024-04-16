@@ -3,6 +3,12 @@
 \usepackage{enumitem} % For customization of numbering
 \usepackage{amsmath} % For \text
 \usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
 
 
 \title{202A Question Bank}
@@ -20,7 +26,183 @@
 \maketitle
 
 \begin{questions}
- 
+    \question \href{http://economics.ucla.edu/wp-content/uploads/2016/10/MacroCompSpring2017.pdf}{(Hansen Comp Spring 2017)} \href{https://drive.google.com/drive/folders/11xTRC6EWE1VcPfk5BbXZRyGUX5oQ-jvo}{(Solutions)}
+
+
+    Consider an economy with a representative household with $N_{t}$ identical members. The household's preferences are given by,
+
+$$
+\sum_{t=0}^{\infty} \beta^{t} N_{t}\left\{\log c_{t}+A \log \left(1-h_{t}\right)\right\}
+$$
+
+Each member of the household is endowed with 1 unit of labor each period. The number of members evolves over time according to the law of motion, $N_{t+1}=\eta N_{t}, \eta>1$.
+
+Output is produced using the following technology:
+
+$$
+Y_{t}=\gamma^{t} e^{z_{t}} K_{t}^{\mu}\left(N_{t} h_{t}\right)^{\phi} L_{t}^{1-\mu-\phi}
+$$
+
+Here, $\gamma>1$ is the gross rate of exogenous total factor productivity growth, $K_{t}$ is total (not per capita) capital, $Y_{t}$ is total output, and $L_{t}$ is the total stock of land. Land is assumed to be a fixed factor; it cannot be produced and does not depreciate. To simplify with out loss of generality, assume that $L_{t}=1$ for all $t$.
+
+The variable $z_{t}$ is technology shock that follows an autoregressive process, $z_{t+1}=\rho z_{t}+\varepsilon_{t+1}$, where $\varepsilon$ is independently and identically distributed over time with mean 0 and standard deviation $\sigma$.
+
+The resource constraint, assuming 100 percent depreciation of capital each period, is given by
+
+$$
+N_{t} c_{t}+K_{t+1} \leq Y_{t}
+$$
+
+A. Formulate the social planning problem for this economy as a stationary dynamic program. Be clear about the transformation performed so that all variables are stationary.
+\begin{solution} TODO: why do we assume $g_h = 1$?\\\\
+    First, we normalize $N_0=1 \implies N_{t}= \eta^t$. We also know that $K_t = N_t k_t \implies K_t = \eta^t k_t$ and $L_t=1$ Plugging into the resource constaint we get:
+    \begin{align*}
+        \eta^t c_t + \eta^{t+1} k_{t+1} &= \gamma^t e^{z_t} (\eta^t k_t)^\mu (\eta^t h_t)^\phi\\
+        \text{we define $c_t = \hat{c}_t g_c^t, k_t = \hat{k}_t g_k^t, h_t= \hat{h}_t g_h^t$}\\
+        \eta^t \hat{c}_t g_c^t + \eta^{t+1} \hat{k}_{t+1} g_k^{t+1} &= \gamma^t e^{z_t} (\eta^t \hat{k}_t g_k^t)^\mu (\eta^t \hat{h}_t g_h^t)^\phi\\
+        \text{we assume $g_h = 1$}\\
+        \eta^t \hat{c}_t g_c^t + \eta^{t+1} \hat{k}_{t+1} g_k^{t+1} &= \gamma^t e^{z_t} (\eta^t \hat{k}_t g_k^t)^\mu (\eta^t \hat{h}_t)^\phi\\
+        \text{divide by $\eta^t g_c^t$}\\
+        \hat{c}_t + \eta \hat{k}_{t+1} g_k (\frac{g_k}{g_c})^t &= (\frac{\gamma \eta^{(\mu+\phi-1)} g_k^\mu}{g_c})^t e^{z_t} \hat{k}_t^\mu \hat{h}_t^\phi
+    \end{align*}
+    Thus, to have stationarity we need $g_k = g_c$ and $g_c = \gamma \eta^{(\mu+\phi-1)} g_k^\mu$. Therefore:
+    $$g_c = g_k = (\gamma \eta^{(\mu+\phi-1)})^\frac{1}{1-\mu}$$
+    Therefore our resource constraint becomes:
+    $$\hat{c}_t + \eta  (\gamma \eta^{(\mu+\phi-1)})^\frac{1}{1-\mu} \hat{k}_{t+1} = e^{z_t} \hat{k}_t^\mu \hat{h}_t^\phi$$
+    We now must stationarize the utility function:
+    \begin{align*}
+        \beta^t \eta^t \{\log(\hat{c}_t g_c^t) + A \log(1-\hat{h}_t g_h^t)\}\\
+        = \beta^t \eta^t \{\log(\hat{c}_t) + \log(g_c^t) + A \log(1-\hat{h}_t)\}\\
+    \end{align*}
+    Note that we can ignore the growth constant in the utility function as it does not affect the optimization problem. Therefore, the social planning problem is:
+    \begin{align*}
+        V(\hat{k},z) &= \max_{} \log \hat{c} + A \log(1-\hat{h}) + \beta \eta E[V(\hat{k}',z')|z]\\
+        s.t.\ &\hat{c}_t + \eta  (\gamma \eta^{(\mu+\phi-1)})^\frac{1}{1-\mu} \hat{k}_{t+1} = e^{z_t} \hat{k}_t^\mu \hat{h}_t^\phi\\
+        \text{and } &z' = \rho z + \epsilon', \epsilon \text{ iid } N(0,\sigma^2)
+    \end{align*}
+\end{solution}
+B. Characterize the balanced growth path of this economy. That is, find expressions that determine $c_{t}$ $h_{t}$ and $K_{t}$ along this growth path. In particular, solve explicitly for the growth rate of this set of variables.
+\begin{solution}
+    First note that we have already solved for thr growth rate of this set of variables:
+    $$g_k = g_c = (\gamma \eta^{(\mu+\phi-1)})^\frac{1}{1-\mu}$$
+    To find the growth path we need to take FOCs and use the envelope condition:
+    \begin{align*}
+        [\hat{c}]:\ &\hat{c}^{-1} = \lambda\\
+        [\hat{h}]:\ &A(1-\hat{h})^{-1} = \lambda e^{z} \phi \hat{k}^\mu \hat{h}^{\phi-1}\\
+        [\hat{k'}]:\ &\beta E[V_k(\hat{k}',z'|z)] = \lambda \eta g_k\\
+    \end{align*}
+    The envelope condition is:
+    $$E[V_k(\hat{k},z|z)] = \lambda e^{z} \mu \hat{k}^{\mu-1} \hat{h}^\phi$$
+    So solving for the steady state:
+    \begin{align*} 
+        A(1-\bar{h})^{-1} &= \frac{1}{\bar{c}} e^{z} \phi \bar{k}^\mu \bar{h}^{\phi-1}\\
+        \beta e^{z} \mu \bar{k}^{\mu-1} \bar{h}^\phi &= g_k\\
+        \bar{c} + \eta  (\gamma \eta^{(\mu+\phi-1)})^\frac{1}{1-\mu} \bar{k} &= e^{z_t} \bar{k}^\mu \bar{h}^\phi
+    \end{align*}
+    Don't forget to replace hats with bars! Note that the 2nd equation comes from EC, and third from stationary resource constraint.
+
+    These three equations characterize the balanced growth path for $\bar{c}, \bar{h}, \bar{k}$. 
+\end{solution}
+C. Discuss how your answer to part $B$ would change if $\phi=1-\mu$. In particular, what is the growth rate of income per capita in the two cases (part $A$ and $B$ )?
+\begin{solution}
+    First, note that if $\phi=1-\mu$ then $g_k = g_c = \gamma^\frac{1}{1-\mu}$. So growth no longer depends on population growth. 
+
+    Additionally our equations from part $B$ would change to:
+    \begin{align*}
+        A(1-\bar{h})^{-1} &= \frac{1}{\bar{c}} e^{z} \phi \bar{k}^\mu \bar{h}^{-\mu}\\
+        \beta e^{z} \mu \bar{k}^{\mu-1} \bar{h}^{1-\mu} &= g_k\\
+        \bar{c} + \eta  (\gamma)^\frac{1}{1-\mu} \bar{k} &= e^{z_t} \bar{k}^\mu \bar{h}^{1-\mu}
+    \end{align*}
+    To calculate the growth rate of income per capita notice that:
+    \begin{align*} 
+        \frac{Y_{t+1}}{Y_t} = \frac{\eta^{t+1} y_{t+1}}{\eta^t y_t}
+    \end{align*}
+    We are interested in $\frac{y_{t+1}}{y_t}$, so we can multiply the LHS by $\eta$ to find growth rate of income per capita.
+    \begin{align*} 
+        \eta \frac{Y_{t+1}}{Y_t} &= \frac{\gamma^{t+1} e^{z_{t+1}} K_{t+1}^{\mu}\left(N_{t+1} h_{t+1}\right)^{\phi} L_{t+1}^{1-\mu-\phi}}{\gamma^{t} e^{z_{t}} K_{t}^{\mu}\left(N_{t} h_{t}\right)^{\phi} L_{t}^{1-\mu-\phi}}\\
+    \end{align*}
+    TODO finish this: Also ask is bar variable for hats?
+\end{solution}
+D. Suppose that a period is one quarter and suppose you are given annual growth rates for population and per capita income. You are also given values for factor shares, the average amount of time spent working and the annual capital-output ratio. Show how these facts can be used to calibrate $\gamma, \eta, A$ and $\beta$.
+\begin{solution} Note: Growth rate is end/start - 1
+    \begin{enumerate}
+        \item We can calculate quarterly growth rates using 
+        $$\text{annual growth rate} = (1 + \text{quarterly growth rate})^4 - 1$$
+        So calculating $\eta$ is easy.
+        \item Factor shares is how much income goes to each factor
+        $$\frac{wh}{Y} =\phi, \frac{rk}{Y} = \mu$$
+        \item For others, plug into FOCs
+    \end{enumerate}
+\end{solution}
+E. Define a recursive competitive equilibrium for this economy assuming markets for labor, consumption goods, land rental, and capital services.
+\begin{solution}
+    A recursive competitive equilibrium is defined by:
+    \begin{enumerate}
+        \item Dropping that hats. The household's problem:
+        \begin{align*}
+            V(k,K,z) &= \max_{c,h,k',l} \log c + A \log(1-h) + \beta \eta E[V(k',K',z'|z)]\\
+            s.t.\ &c + \eta  (\gamma \eta^{(\mu+\phi-1)})^\frac{1}{1-\mu} k' = w(K,z)h + r(K,z)k + t(K,z)l\\
+            &z' = \rho z + \epsilon', \epsilon \text{ iid } N(0,\sigma^2)\\
+            &K' = G(K,z)
+        \end{align*}
+        \item The firm's problem:
+        \begin{align*}
+            \max_{k^f,h^f,l^f} e^{z} k^{f\mu} h^{f\phi}l^{f1- \mu -\phi} - r(K,z)k^f - w(K,z)h^f - t(K,z)l^f
+        \end{align*}
+        \item A set of household decision rules: $c(k,K,z), h(k,K,z), k'(k,K,z), l(k,K,z)$. Note: I think we can uses the simplification here, as land is constant.
+        \item A set of firm decision rules: $k^f(K,z), h^f(K,z), l^f(K,z)$
+        \item A set of pricing functions: $r(K,z),  w(K,z), t(K,z)$ where consumption price is the numeraire
+        \item such that:
+        \begin{enumerate}
+            \item Given pricing functions, percived law of capital motion, and household decision rules solves household problem
+            \item Given pricing function and firm decision rules solves firm's problem
+            \item Markets clear:
+            \begin{enumerate}
+                \item $k^f(K,z) = K$
+                \item $l^f(K,z) = L(K,K,z)$
+                \item $h^f(K,z) = H(K,K,z)$
+                \item consumption by walras's law
+            \end{enumerate}
+            \item Rational expectations: $k'(K,K,z) = G(K,z)$
+        \end{enumerate}
+    \end{enumerate}
+\end{solution}
+F. Add a real estate market to your equilibrium definition in part $E$. Derive an equation determining the price of land.
+\begin{solution}
+    A recursive competitive equilibrium is defined by:
+    \begin{enumerate}
+        \item Dropping that hats. The household's problem:
+        \begin{align*}
+            V(k,l,K,L,z) &= \max_{c,h,k',l} \log c + A \log(1-h) + \beta \eta E[V(k',l',K',L',z'|z)]\\
+            s.t.\ &c + \eta  (\gamma \eta^{(\mu+\phi-1)})^\frac{1}{1-\mu} k' = w(K,L,z)h + r(K,L,z)k + (t(K,L,z) + s(K,L,z))l\\
+            &z' = \rho z + \epsilon', \epsilon \text{ iid } N(0,\sigma^2)\\
+            &K' = G(K,L,z)\\
+            &L' = H(K,L,z)
+        \end{align*}
+        \item The firm's problem:
+        \begin{align*}
+            \max_{k^f,h^f,l^f} e^{z} k^{f\mu} h^{f\phi}l^{f1- \mu -\phi} - r(K,z)k^f - w(K,z)h^f - t(K,z)l^f
+        \end{align*}
+        \item A set of household decision rules: $c(k,l,K,L,z), h(k,l,K,L,z), k'(k,l,K,L,z), l(k,l,K,L,z)$. Note: I think we can uses the simplification here, as land is constant.
+        \item A set of firm decision rules: $k^f(K,,L,z), h^f(K,L,z), l^f(K,L,z)$
+        \item A set of pricing functions: $r(K,L,z),  w(K,L,z), t(K,L,z), s(K,L,z)$ where consumption price is the numeraire
+        \item such that:
+        \begin{enumerate}
+            \item Given pricing functions, percived law of capital motion, and household decision rules solves household problem
+            \item Given pricing function and firm decision rules solves firm's problem
+            \item Markets clear:
+            \begin{enumerate}
+                \item $k^f(K,L,z) = K$
+                \item $l^f(K,L,z) = 1$
+                \item $h^f(K,L,z) = H(K,K,L,L,z)$
+                \item $l(K,K,L,L,z)' = 1$
+                \item consumption by walras's law
+            \end{enumerate}
+            \item Rational expectations: $k'(K,K,L,L,z) = G(K,L,z), H(L) = l(K,K,L,L,z)'$
+        \end{enumerate}
+    \end{enumerate}
+\end{solution}
+
     \question \href{https://economics.ucla.edu/wp-content/uploads/2016/10/macro-f16.pdf}{(Hansen Comp Spring 2016)}
     \href{https://drive.google.com/file/u/3/d/1I_XVSpJZWsAtp4uIZizpPaIZk6EHggCC/view?usp=drive_open}{(Solution)}
     (Similar to: Final 2017 Q1)
@@ -181,8 +363,45 @@
         \part Are the equilibrium allocations for this economy the solution to a social planner’s problem?
         Explain. If so, write the social planners problem for this economy as a dynamic
         programming problem. Be specific about the stochastic process (law of motion) for $z_t$ and $g_t$.
+        \begin{solution}
+            TODO: Check\\\\
+            Yes, the equilibrium allocations for this economy are the solution to the social planner's problem as the taxes are not distortionary. The social planner's problem is:
+            \begin{align*}
+                V(z,g,k,h_{-1}) &= \max_{c,k',h} \log{c} + A \log L_t + \beta E[V(z',g',k',h)|z,g]\\
+                s.t.\ (g + c + k' &= e^{z} k^\theta h^{1-\theta} + (1-\delta)k)\\
+                \text{and } L_t &= a(1-h) + (1-a)(1-h_{-1})\\
+                \text{and } z' &= \rho_z z + \epsilon'^{z}\\
+                \text{and } g' &= \rho^g(g-\bar{g}) + \epsilon'^g + \bar{g}
+            \end{align*}
+            TODO: Understand $\rho_g$ better.
+        \end{solution}
         \part Derive as a set of equations that characterize a sequence $\{c_t,h_t,L_t,k_{t+1},y_t\}_{t=0}^\infty$ that solves the social planner’s problem. Be sure that you have the same number of equations as unknowns. Explain the role of the transversality condition in determining this optimal sequence.
+        \begin{solution}
+            TODO: transversality condition.
+
+            Sketch: Take FOCs for c,k',h, envelope condition, resource constraint, and equation for $L_t$.
+        \end{solution}
         \part Define a recursive competitive equilibrium for this economy. 
+        \begin{solution} TODO\\\\
+            A recursive competitive equilibrium is:
+            \begin{enumerate}
+                \item The household's problem:
+                \begin{align*}
+                    \max_{c,k',h} &\log c + A \log L \\
+                    s.t.\ & c + k' + \tau = r(z,g,K,H)k + w(z,g,K,H)h + (1-\delta)k\\
+                    \text{and } z' &= \rho_z z + \epsilon'^{z}\\
+                    g' &= \rho^g(g-\bar{g}) + \epsilon'^g + \bar{g}\\
+                    K' &= G(z,g,K,H)\\
+                    H &= P(z,g,K,H_{-1})
+                \end{align*}
+                \item The firm's problem:
+                \begin{align*}
+                    \max_{k^f,h^f} e^z k^{f\theta} h^{f(1-\theta)} - r(z,g,K,H)k^f - w(z,g,K,H)h^f
+                \end{align*}
+                \item A set of household decision rules, $c(z,g,K,H), k'(z,g,K,H), h(z,g,K,H)$
+                \item A set of firm decision rules
+            \end{enumerate}
+        \end{solution}
         \part Assume that for a given variable $x, \tilde{x_t} \sim \log{x_t} - \log{\bar{x}}$ where $\bar{x}$ is the non-stochastic steady state value of $x_t$. Derive a linear expression for $\tilde{h_t}$ as a function of $\tilde{k_t}, \tilde{c_t}, z_t, \tilde{h_{t-1}}$.
         \part As in the previous part, derive a linear equation expressing $\tilde{c_t}$ as a function of $\tilde{k_t}, z_t, \tilde{g_t}, \tilde{h_t}, \tilde{k_{t+1}}$.
         \part In a standard real business cycle model, $a=1$. Using the equation derived in part (d and or e), explain how setting $a<1$ might change the cyclical properties of the model economy. In particular, focus on the size of fluctuations in hours worked relative to $z_t$. Provide intuition in your explanation.
