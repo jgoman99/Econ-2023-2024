@@ -1,0 +1,124 @@
+\documentclass[answers]{exam}
+
+\usepackage{enumitem} % For customization of numbering
+\usepackage{amsmath} % For \text
+\usepackage{hyperref}
+
+\title{203C Question Bank}
+\author{John Friedman}
+
+
+\date{\today}
+\hypersetup{
+    colorlinks=true,   
+    urlcolor=blue
+    }
+
+\begin{document}
+\maketitle
+
+
+\begin{questions}
+    \question \href{https://economics.ucla.edu/wp-content/uploads/2023/11/MacroCompFall2023-1.pdf}{(Ariels Comp 2023 Fall Question)}
+    In this question, we consider a specification of the Armington model in which each country produces output using two labor types (high and low skilled labor) and intermediate inputs (materials). Intermediate inputs are made of the same final good as consumption. That it, intermediate inputs contain the same import content as consumption.
+    
+    Output in country $i$ is produced according to
+    
+    $$
+    Q_{i}=F_{i}\left(H_{i}, L_{i}, M_{i}\right)=\left[\left(A_{H i} H_{i}^{\alpha} M_{i}^{1-\alpha}\right)^{\frac{\rho-1}{\rho}}+\left(A_{L i} L_{i}\right)^{\frac{\rho-1}{\rho}}\right]^{\frac{\rho}{\rho-1}},
+    $$
+    
+    where $H_{i}$ and $L_{i}$ denote high- and low-skilled labor (in fixed supply) and $M_{i}$ denotes the use of intermediate input. The parameter $\rho \neq 1$ is the the elasticity of substitution between low-skilled labor and the skilled-labor / materials composite.
+    
+    The intermediate input is made of the same final good that is used for consumption. Specifically, we assume that a final good is produced in each country $j$ according to the Armington
+    
+    aggregator, $\left(\sum_{i \in S} q_{i j}^{\frac{\sigma-1}{\sigma}}\right)^{\frac{\sigma}{\sigma-1}}$, with $\sigma>1$. Given this technology, competitive final good firms purchase individual goods $q_{i j}$ to produce the final good. The final good is then used for production $\left(M_{j}\right)$ and for consumption by households $\left(C_{j}\right)$. Households derive utility from consumption of the final good, $u\left(C_{j}\right)$. The resource constraint for the final good in country $j$ is given by
+    
+    $$
+    \left(\sum_{i \in S} q_{i j}^{\frac{\sigma-1}{\sigma}}\right)^{\frac{\sigma}{\sigma-1}}=M_{j}+C_{j}
+    $$
+    
+    The resource constraint for output produced in country $i$ is
+    
+    $$
+    Q_{i}=\sum_{j} \tau_{i j} q_{i j}
+    $$
+    
+    All markets are competitive. Each labor group earns the value of its marginal product:
+    
+    $$
+    w_{i}=p_{i i} \frac{\partial F_{i}}{\partial L_{i}} \quad \text { and } \quad s_{i}=p_{i i} \frac{\partial F_{i}}{\partial H_{i}}
+    $$
+    
+    where $p_{i i}$ is the output price in country $i$. We denote the price of the final good in country $i$ by $P_{i}$.
+    
+    \begin{enumerate}
+      \item (0.2 points) Write an expression for the skill premium in country $i, s_{i} / w_{i}$, in terms of $L_{i}, H_{i}$, $M_{i}$ and the productivity parameters.
+      \begin{solution}
+        First note that:  
+        $$\frac{s_i}{w_i} = \frac{\partial F_i}{\partial H_i} / \frac{\partial F_i}{\partial L_i}$$
+
+        The output function is:
+        \begin{align*}
+            \left[\left(A_{H i} H_{i}^{\alpha} M_{i}^{1-\alpha}\right)^{\frac{\rho-1}{\rho}}+\left(A_{L i} L_{i}\right)^{\frac{\rho-1}{\rho}}\right]^{\frac{\rho}{\rho-1}}
+        \end{align*}
+        Taking FOCs with respect to $H_i$ and $L_i$ we get:
+        \begin{align*}
+           [L_i]&: [(A_{H i} H_{i}^{\alpha} M_{i}^{1-\alpha})^{\frac{\rho-1}{\rho}} + (A_{L i} L_{i})^{\frac{\rho-1}{\rho}}]^{\frac{1}{\rho-1}} \cdot A_{L i}^\frac{\rho-1}{\rho} L_i^\frac{-1}{\rho}\\
+           [H_i]&: [(A_{H i} H_{i}^{\alpha} M_{i}^{1-\alpha})^{\frac{\rho-1}{\rho}} + (A_{L i} L_{i})^{\frac{\rho-1}{\rho}}]^{\frac{1}{\rho-1}} \cdot \alpha A_{H i}^\frac{\rho-1}{\rho} M_i^\frac{(1-\alpha)(\rho-1)}{\rho} H_i^\frac{\alpha(\rho-1)}{\rho}\\
+           \frac{s_i}{w_i} &= \frac{\alpha A_{H i}^\frac{\rho-1}{\rho} M_i^\frac{(1-\alpha)(\rho-1)}{\rho} H_i^\frac{\alpha(\rho-1)}{\rho}}{A_{L i}^\frac{\rho-1}{\rho} L_i^\frac{-1}{\rho}}
+        \end{align*}
+    \end{solution}
+      \item (0.2 points) Suppose that there is an exogenous increase in the quantity of intermediate inputs used in country $i, M_{i}$. Provide a condition on parameters such that the skill premium\\
+    in country $i$ rises. Provide intuition for your answer.
+    \begin{solution}
+        If $M_i$ increases then the skill premium will rise if $\frac{(1-\alpha)(\rho-1)}{\rho} > 0$. Since $\alpha \in (0,1)$, we know that the skill premium will rise in this situation if $\rho > 1$. This is because the increase in $M_i$ will increase the marginal product of high skilled labor relative to low skilled labor. 
+    \end{solution}
+    
+    \end{enumerate}
+    
+    In the following questions, we endogenize the change in $M_{i}$ in response to a move to autarky. Note that the quantity $M_{i}$ must satisfy the first order condition
+    
+    $$
+    P_{i}=p_{i i} \frac{\partial F_{i}}{\partial M_{i}}
+    $$
+    
+    \begin{enumerate}
+      \setcounter{enumi}{2}
+      \item (0.3 points) Write an expression for the relative price $p_{i i} / P_{i}$ in terms of the domestic share of gross output, $\lambda_{i i}$,
+    \end{enumerate}
+    
+    $$
+    \lambda_{i i} \equiv \frac{p_{i i} q_{i i}}{P_{i}\left(C_{i}+M_{i}\right)}
+    $$
+    
+    and other model parameters.
+    
+    \begin{enumerate}
+      \setcounter{enumi}{3}
+      \item (0.3 points) Suppose that, starting in a trade equilibrium in which $\lambda_{i i}<1$, country $i$ moves to autarky in which $\tau_{i j}=\infty$ for $j \neq i$. All other parameters remain unchanged. What is the impact of this move to autarky on country $i$ 's skill premium? You do not need to fully characterize the solution analytically, but you need to show what equations you use to obtain your answer.
+    \end{enumerate}
+    \question  \href{https://economics.ucla.edu/wp-content/uploads/2023/11/MacroCompFall2023-1.pdf}{(Oleg's Comp 2023 Fall Question)}
+    Consider the following log-linear model of price setting and price level dynamics:
+
+$$
+\begin{aligned}
+\bar{p}_{t} & =(1-\beta \theta) \sum_{j=0}^{\infty}(\beta \theta)^{j} E_{t} \tilde{p}_{t+j} \\
+\tilde{p}_{t+j} & =\alpha p_{t}+(1-\alpha) m_{t} \\
+p_{t} & =\theta p_{t-1}+(1-\theta) \bar{p}_{t} \\
+\Delta m_{t} & =\rho \Delta m_{t-1}+\varepsilon_{t}
+\end{aligned}
+$$
+
+(i) Explain each equation. What is the role of $\theta$ and $\alpha$ ? Why is $m_{t}$ a measure of aggregate demand?
+
+(ii) Derive the Phillips curve, $\pi_{t}=\beta E_{t} \pi_{t+1}+\lambda\left(m_{t}-p_{t}\right)$, where $\pi_{t}=\Delta p_{t}$. What is the value of $\lambda$ and how does it depend on $\theta$ and $\alpha$, and why? Why is $\left(m_{t}-p_{t}\right)$ a measure of output gap?
+
+(iii) For $\alpha=\rho=0$, solve for the dynamics of inflation $\pi_{t}$ and reset-price inflation $\bar{p}_{t}=\Delta \bar{p}_{t}$. What processes do these two series follow? If there is a one-time permanent expansion in aggregate demand $m_{t}$, could this model account for persistent inflation? persistent reset-price inflation?
+
+(iv) Redo part (iii) for $\rho>0$. How do your answers change? What if instead of $\rho>0$, there is $\alpha>0$ ? What are the likely source of persistent reset-price inflation?
+
+
+
+\end{questions}
+\end{document}
