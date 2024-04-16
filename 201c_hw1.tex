@@ -182,7 +182,23 @@ Use the first order approach to implicitly characterize the optimal contract. $(
 \end{solution}
 \end{parts}
 
-\question 
+\question A risk-averse agent starts with wealth $W_0$ and may have an accident $\operatorname{costing} x$ of their wealth, where $x$ is contractible. The agent has access to a perfectly competitive market of risk-neutral insurers who offer payments $R(x)$ net of any insurance premium. ${ }^4$
+
+The agent can affect the outcome by choosing action $a \in \Re_{+}$. The distribution of $x$ is as follows
+$$
+\begin{aligned}
+& f(0 \mid a)=1-p(a) \\
+& f(x \mid a)=p(a) g(x) \text { for } \quad x>0
+\end{aligned}
+$$
+where $\int g(x) d x=1$. The agent has increasing, concave, utility $u(\cdot)$. The cost is given by increasing, convex, differentiable function, $c(a)$. The function $p(a)$ is decreasing, convex and differentiable. The agent's utility is thus given by $u\left(W_0-x+R(x)\right)-c(a)$, while the firm's profit is $-R(x)$
+\begin{parts}
+    \part Suppose there is no insurance market. What action $\hat{a}$ does the agent take?
+    \part Suppose $a$ is contractible. Characterize the first-best payment schedule $R(x)$ and the effort choice, $a^*$.
+    \part Suppose $a$ is not observable. Suppose the agent chooses a contract to maximize his utility subject to the competitive market of insurers breaking even. ${ }^5$ Characterize the second-best payment schedule $R(x)$.
+    \part Interpret the second-best payment schedule. Would the agent ever have an incentive to hide an accident? (i.e. report $x=0$ when $x>0$ ).
+
+\end{parts}
 
 \end{questions}
     
