@@ -116,14 +116,19 @@
                 We now find the optimal effort level.
                 \begin{itemize}
                     \item the binding (IR) constraints show that:
+                    $$
+                        E[u(w(q) - c(a))|a] = \bar{u}
+                    $$
+                    We can drop expectation since wages are constant
                     $$u(w^*) -c(a) = \bar{u}$$
-                    \item Therefore the principal chooses $a$ to maximize 
+                    \item Therefore the principal chooses $a^*$ to maximize 
                     \begin{align*} 
                         \Pi &= E[q|a] - w^*\\
-                        &= E[q|a] - u^{-1}(c(a)+\bar{u})
+                        &= E[q|a] - u^{-1}(c(a)+\bar{u})\\
+                        \text{where } a^* &= \arg \max_a E[q|a] - g(a)
                     \end{align*}
                 \end{itemize}
-                The expected effort is $\Pi^* = q^* - w^*$ 
+                The expected output is $q^* = E[q|a^*]$, and the expected profit is $\Pi = q^* - w^*$.
         \end{itemize}
 
 
@@ -134,7 +139,7 @@
         If the agent does not choose the first-best effort, then $\Pi < q^*$ and the principal will choose not to buyback the firm. If the agent chooses the first-best effort, then $\Pi = q^*$ and the principal will choose to buyback the firm. The intuition here is that by selling the firm with a buyback option the principal pushes the cost of shirking onto the agent.
     \end{solution}
     \part Show that the agent will choose effort $a^*$ and recieve utility $\bar{u}$.
-    \begin{solution}
+    \begin{solution} TODO: Redo using step by step?
         First note that this problem is equivalent to the one in lecture where the principal sells the firm and can't buy it back. This is because of the unstated assumption that the agent is risk-neutral, and the stated assumption that the principal can observe effort. Since the principal can observe effort, the principal will always sell the firm at the price of the first best effort, and so choosing to exercise the buyback in the first best effort case is equivalent to not buying the firm back in the first best effort.
     \\\\
     Suppose $u(w) = w$ the first best action $a^*$ maximizes:
@@ -171,14 +176,49 @@ Show that $\bar{w} = \mu - \frac{\sigma^2}{2}$.
 \end{solution}
 \part Suppose effort is unobservable. The principal's problem is:
 \begin{align*}
-    \max_{w(q), \alpha} E[q-w(q)]\\
+    \max_{w(q), a} E[q-w(q)]\\
     s.t. \ E[u(w(q) - c(a))| a] \geq u(0)\\
     a \in argmax_{a' \in R^+} E[(u(w(q))-c(a'))|a']
 \end{align*}
 Use the first order approach to implicitly characterize the optimal contract. $(\alpha, \beta, a)$ Hint: write utilities in terms of their certainty equivalent.
-\begin{solution}
-    TODO:
-    First, note that this question is equivalent to the one presented on page 10 of the Moral Hazard lecture.
+\begin{solution} Todo: integral is q right?
+    Note that we have the principal's problem already set up, with the 2nd equation being IR, and 3rd being IC. Also note that the choice of $a'$ makes things confusing because we will also be using $'$ for derivatives.
+    
+    \begin{enumerate}
+        \item Derive the IC-FOC
+        \begin{align*}
+            \max_{w(q),a} E[u(w(q)) -c(a)|a'] &= \int u(w(q)) f(q|a)dq - c(a)\\
+            &= \int (u(w(q))) f_a(q|a)dq - \int  c'(a) f(q|a)dq= 0
+        \end{align*}
+        Note that we brought c(a) into the integral.
+        \item replace the IC with the IC-FOC
+        \begin{align*}
+            \max_{w(q), a} E[q-w(q)]\\
+            s.t. \ E[u(w(q) - c(a))| a] \geq u(0)\\
+            \int (u(w(q))) f_a(q|a)dq - \int  c'(a) f(q|a)dq= 0
+        \end{align*}
+        \item Form the Lagrangian
+        \begin{align*}
+            \mathcal{L} &= \int (q-w(q))f(q|a)dq + \lambda \int (u(w(q)) - c(a) -u(0))f(q|a)dq \\
+            &+ \mu \int (u(w(q))) f_a(q|a)dq - \int  c'(a) f(q|a)dq\\
+            &= \int [(q-w(q)) +  \lambda (u(w(q)) - c(a) -u(0)) + \mu (u(w(q)) \frac{f_a(q|a)}{f(q|a)}-c'(a))] f(q|a)dq   \\
+        \end{align*}
+        \item Pointwise maximize wages, fixing q, w:
+        \begin{align*}
+            \max_w = q - w + \lambda u(w) + \mu u(w) \frac{f_a(q|a)}{f(q|a)}\\
+        \end{align*}
+        Taking FOC:
+        \begin{align*}
+            -1 + \lambda u'(w) + \mu u'(w)\frac{f_a(q|a)}{f(q|a)} = 0\\
+            \lambda + \frac{f_a(q|a)}{f(q|a)} \mu = \frac{1}{u'(w)}\\
+        \end{align*}
+        Since this is true for all q:
+        TODO: Think I can simplify both sides. 
+        $$\lambda + \frac{f_a(q|a)}{f(q|a)} \mu = \frac{1}{u'(w(q))}$$\
+        Plugging in for the certainty equivalent
+        $$\lambda + \frac{f_a(q|a)}{f(q|a)} \mu = \frac{1}{e^{-(\mu- \frac{\sigma^2}{2})}}$$\
+        \item Show constraints bind
+    \end{enumerate}
 \end{solution}
 \end{parts}
 
@@ -194,10 +234,11 @@ $$
 where $\int g(x) d x=1$. The agent has increasing, concave, utility $u(\cdot)$. The cost is given by increasing, convex, differentiable function, $c(a)$. The function $p(a)$ is decreasing, convex and differentiable. The agent's utility is thus given by $u\left(W_0-x+R(x)\right)-c(a)$, while the firm's profit is $-R(x)$
 \begin{parts}
     \part Suppose there is no insurance market. What action $\hat{a}$ does the agent take?
-    \begin{solution} TODO: ASK\\
+    \begin{solution} 
         Since there is no insurance market, the agent's problem is:
         \begin{align*}
-            \max_{a} E[u(.)|a] &= (1-p(a))(u(W_0)-c(a)) + p(a)(E[u(W_0-x)-c(a)|a])
+            \max_{a} E[u(.)|a] &= (1-p(a))u(W_0) + p(a)(E[u(W_0-x)|a]) -c(a)\\
+            &= (1-p(a))u(W_0)  -c(a) + p(a)\int u(W_0-x)g(x)dx
         \end{align*}
         With some algebra, using the FOC, we show that the agent chooses $\hat{a}$ to maximize:
         \begin{align*}

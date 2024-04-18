@@ -1,0 +1,174 @@
+% change font size here
+\documentclass[12pt,landscape]{extarticle}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{bm}
+\usepackage{mathtools}
+\usepackage{dsfont}
+\usepackage{pgfplots}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox} % also loads graphicx
+
+
+\pgfplotsset{width=7cm,compat=1.16}
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing,calligraphy}
+% define block style for automatons
+\tikzstyle{block} = [rectangle, text centered, draw=black]
+% arrow style
+\tikzstyle{arrow} = [->,>=stealth]
+\usetikzlibrary{calc}
+
+\usetikzlibrary{decorations.pathmorphing}
+\tikzset{snake/.style={decorate, decoration=snake}}
+
+
+\pdfinfo{
+  /Title (Econ202CheatSheet.pdf)
+  /Creator (TeX)
+  /Producer (pdfTeX 1.40.0)
+  /Author (John Friedman)
+  /Subject (ECON 202)
+  /Keywords (pdflatex, latex,pdftex,tex)}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+    {\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+    }
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+%My Environments
+\newtheorem{example}[section]{Example}
+% -----------------------------------------------------------------------
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rn}{\mathbb{R}^n}
+\DeclareMathOperator*{\argmax}{arg max}
+\DeclareMathOperator*{\argmin}{arg min}
+\newcommand{\E}{\mathbb{E}}
+\DeclareMathOperator{\unif}{unif}
+\DeclareMathOperator{\co}{co}
+
+\begin{document}
+\raggedright
+\footnotesize
+
+\setlength{\columnsep}{0pt}
+%Wait a few days. Go back thru comps from ECON department site, write down all social planner problems by hand, then check against notes.
+%after that add interesting RCE
+% add examples for log linearizing and balanced growth, transversality condition
+% for any unique question, write down question with solution
+
+% TODO look at original size, make sure not to make too big, e.g. add padding on side
+%TODO  run over with llm to clena formmatting
+% TODO eventually want lots of examples for each model, for now just get main points
+\begin{multicols*}{3}
+    \section{202A}
+
+    \subsection{Social Planner's Problem} %TODO replace with examples
+    \begin{enumerate}
+        \item Write down all equations from the prompt
+        \item Check if anything can be simplified easily. Do not simplify if it is not helpful
+    \end{enumerate}
+
+    \subsubsection{Tricks}
+    Additive Consumption, e.g. 
+    \subsubsection{Examples}
+
+    \subsection{Recursive Competitive Equilibrium} %TODO, rewrite with examples
+    A Recursive Competitive Equilibrium consists of:
+    \begin{enumerate}
+        \item Household's Problem
+        \item Firm's Problem(s)
+        \item Household decision rules
+        \item Firm decision rules
+        \item Pricing functions
+        \item Aggregate Perception
+        \item Pricing functions, Aggregate Perception, and Household decision rules solve Household's Problem
+        \item Pricing function and Firm decision rules solve Firm's problem
+        \item Market's clear
+        \item Perception's are correct
+    \end{enumerate}
+
+    \subsection{Log Linearization} % https://drive.google.com/file/d/19z_Bcv7LBhtj6s1C_Gi2zybxa6P6-Ct2/view
+    We define a variable in log deviation from its steady state as:
+    $$ \hat{x} = \log(\frac{x}{\bar{x}})$$
+    By reverse engineering, we can write $x$ as:
+    $$x = \bar{x} \exp(\hat{x})$$
+    The final step in the process, when the approximation plays a role, is that up to first order (meaning, $\hat{x}$ is small enough).
+    $$\exp(\hat{x}) = f(0) + \sum_{i=1}^{\infty} \frac{\partial^i f}{\partial x^i}(0)\frac{(\hat{x}-0)^i}{i!} \approx 1 + \exp(0)(\hat{x}-0) = 1 + \hat{x}$$
+    Then $x \approx \bar{x}(1+\hat{x})$
+    \subsubsection{Tricks}
+    Let $x,y,z$ be variables, and $\alpha, \beta, c$ constants.
+    \begin{enumerate}
+        \item $\hat{c} = 0$
+        \item If $z = x + y$ then $\bar{z} \hat{z} \approx \bar{x} \hat{x} + \bar{y}\hat{y}$. And since $\bar{z} = \bar{x} + \bar{y}$, then
+        $$\hat{z} \approx \frac{\bar{x}}{\bar{x}+{\bar{y}}} \hat{x} + \frac{\bar{y}}{\bar{x}+\bar{y}}\hat{y}$$
+        \item if $z = x^\alpha y^\beta$ then
+        $$\hat{z} = \alpha \hat{x} + \beta \hat{y}$$
+    \end{enumerate}
+    \subsection{Calibration}
+    \subsection{Transversality Condition}
+    \subsection{Characterization}
+    Characterization is usually done using FOC, EC, and budget constraint
+
+    \subsection{Unique Questions}
+    \begin{enumerate}
+        \item Derive expressions that determine how the planner allocates a given amount of capital and
+        labor across the two market sectors. Prove that the same fraction of each input is allocated to
+        a given sector in period t
+        \item Show that the result obtained in part B can be used to aggregate the resource constraints (*)
+        and (**) into one resource constraint (derive it). Repeat part A given this result.
+        \item Suppose an empirical fact about the world is that as durable goods become cheaper,
+        households spend less time in nonmarket activities (female labor supply increases, for
+        example). If you wanted this model to be consistent with this fact, what would this mean for
+        the functional form you would choose for the home production technology, F? (Note: This
+        question is not so much asking for a functional form for F, although that would be fine, but is
+        asking for list of properties that this function should possess.)
+    \end{enumerate}
+
+
+
+\end{multicols*}
+
+\end{document}
